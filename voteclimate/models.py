@@ -32,3 +32,7 @@ class video_statement(statement):
         people to the correct sites.
     """
     video = models.URLField()
+
+class candidate(models.Model):
+    name = models.CharField(max_length=255)
+    state = models.ForeignKey(state)
