@@ -9,6 +9,8 @@ urlpatterns = patterns('',
     # url(r'^$', 'vote_climate.views.home', name='home'),
     # url(r'^vote_climate/', include('vote_climate.foo.urls')),
 
+    url(r'^$', 'voteclimate.views.home'),
+
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
