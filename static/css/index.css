@@ -1,0 +1,22 @@
+/*************** THIS IS AN AUTOMATICALLY COMPILED CSS FILE ***************/
+/*****/
+/*************** DO NOT MAKE CHANGES HERE ***************/
+/*****/
+/*****/
+/*****/
+/*****/
+
+
+
+
+
+
+div#facts_slider div.fact_statement {
+  background-color: #fff;
+}
+div#facts_slider div.fact_statement p {
+  padding: 1em;
+  padding-top: 50px;
+  /* account for the timer */
+
+}

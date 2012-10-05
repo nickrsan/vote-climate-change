@@ -1,0 +1,11 @@
+<form action="/publish" id="publisher">
+    <fieldset id="statement">
+       <p></p><span>I'm voting for</span>
+            <input name="candidate" id="candidate" />
+            <span>because he or she </span>
+            <select></select> has taken/has promised to take action on climate change.
+        Add: <ul><li>Image</li><li>Audio Statement</li><li>Video Statement</li></ul>
+
+        <input type="submit"  name="submit" id="publish_button" class="submit publish">
+    </fieldset>
+</form>
