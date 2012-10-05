@@ -162,3 +162,5 @@ LOGGING = {
         },
     }
 }
+
+SITE_NAME = "Vote Climate Change"
