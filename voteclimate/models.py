@@ -1,4 +1,5 @@
 from django.db import models
+from django import forms
 
 # Create your models here.
 
@@ -15,6 +16,11 @@ class style(models.Model):
 	template_string = models.TextField()
 	available = models.BooleanField(default=True)
 
+
+class candidate(models.Model):
+	name = models.CharField(max_length=255)
+	state = models.ForeignKey(state)
+
 class statement(models.Model):
 	name = models.CharField(max_length=255)
 	state = models.ForeignKey(state,null=True)
@@ -27,22 +33,16 @@ class statement(models.Model):
 	highlight = models.BooleanField(default=False)
 	hidden = models.BooleanField(default=False)
 
-class image_statement(statement):
-	image = models.ImageField(upload_to="images/%Y/%m/%d")
+	candidate = models.ForeignKey(candidate)
 
-class audio_statement(statement):
+	image = models.ImageField(upload_to="images/%Y/%m/%d")
 	audio = models.FileField(upload_to="audio/%Y/%m/%d")
 
-class video_statement(statement):
-	"""
-		Using a URL field for the video, because I don't think we'll be able to record video. Better to just point
-		people to the correct sites.
-	"""
+	# 	Using a URL field for the video, because I don't think we'll be able to record video. Better to just point
+	# 	people to the correct sites.
+
 	video = models.URLField()
 
-class candidate(models.Model):
-	name = models.CharField(max_length=255)
-	state = models.ForeignKey(state)
 
 class fact(models.Model):
 	statement = models.TextField()
@@ -55,9 +55,17 @@ class visit(models.Model):
 	user = models.ForeignKey(user)
 	time_visited = models.DateTimeField(auto_now_add=True)
 
-class random_manager():
+class random_manager(models.Manager):
 	"""
 		Intended to return a random object or set of objects
 		from a model
 	"""
 	pass
+
+class publisher_form(forms.Form):
+	# TODO: make the actual publisher form use these
+	person_name = forms.CharField()
+	state = forms.CharField()
+	style_id = forms.IntegerField(widget=forms.HiddenInput())
+	candidate = forms.CharField()
+	candidate_id = forms.IntegerField(widget=forms.HiddenInput())

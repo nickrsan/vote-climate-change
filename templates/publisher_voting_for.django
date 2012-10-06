@@ -1,11 +1,23 @@
-<form action="/publish" id="publisher">
+<form action="/publish/" id="publisher" xmlns="http://www.w3.org/1999/html">
     <fieldset id="statement">
-       <p></p><span>I'm voting for</span>
-            <input name="candidate" id="candidate" />
-            <span>because he or she </span>
-            <select></select> has taken/has promised to take action on climate change.
-        Add: <ul><li>Image</li><li>Audio Statement</li><li>Video Statement</li></ul>
+        <p><span>I'm voting for</span>
+            <span><label for="candidate" class="hide_label">Candidate</label> <input name="candidate" id="candidate" /><input type="hidden" name="candidate_id" id="candidate_id" /></span>
+            <span>because he or she has taken or has promised to take action on climate change.</span>
+        </p>
+        <div id="statement_media_additions" class="below_float">
+            Add:
+            <ul>
+                <li>Image</li>
+                <li>Audio Statement</li>
+                <li>Video Statement</li>
+            </ul>
+        </div>
 
-        <input type="submit"  name="submit" id="publish_button" class="submit publish">
+        <div class="below_float">
+            <label for="person_name">Your name</label><input name="person_name" id="person_name" />
+            <label for="state">State</label><input name="state" id="state" />
+            <input type="hidden" name="style_id" value="{{ style_id }}" />
+            <input type="submit"  name="submit" id="publish_button" class="submit publish">
+        </div>
     </fieldset>
 </form>
