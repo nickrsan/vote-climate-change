@@ -1,9 +1,45 @@
 div#facts_slider div.fact_statement{
-  background-color: #fff;
+	background-color: #fff;
 
-  p{
-    padding:1em;
-    padding-top: 50px; /* account for the timer */
-  }
+	p{
+		padding:1em;
+		padding-top: 50px; /* account for the timer */
+	}
+}
+
+form#publisher{
+	fieldset#statement{
+		p{
+			font-size:18pt;
+		}
+
+		span{
+			position:relative;
+			float: left;
+			display: inline;
+		}
+
+		input{
+		  	font-size:18pt;
+			border:0;
+			border-bottom:1px solid black;
+			margin: -5px .5em 0 .5em;
+		 	background-color: #eee;
+		  	outline: 0;
+		  	padding-left: 3px;
+		  	padding-right: 3px;
+		}
+
+		label.hide_label{
+			display: none;
+		}
+
+		div.below_float{
+			position: relative;
+			float: left;
+			clear: left;
+		}
+
+	}
 
 }

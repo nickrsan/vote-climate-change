@@ -18,3 +18,27 @@ $().ready(function () {
 function publish(){
     var publisher = $("#publisher");
 }
+
+
+function set_find_electable(selector){
+    $( selector ).autocomplete( {
+        source: function( request, response ){
+            $.ajax({
+                url: "/electable/find/" + request.term,
+                dataType: "jsonp",
+                success: function( data ) {
+                    response( $.map( data.electables, function( item ) {
+                        return {
+                            label: item.name,
+                            value: item.id
+                        }
+                    }));
+                },
+            });
+        },
+        select: function(event, ui) {
+            var t_l = "/patient/" + ui.item.value;
+            window.location.href = t_l;
+        },
+    });
+}

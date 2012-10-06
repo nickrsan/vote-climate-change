@@ -20,3 +20,29 @@ div#facts_slider div.fact_statement p {
   /* account for the timer */
 
 }
+form#publisher fieldset#statement p {
+  font-size: 18pt;
+}
+form#publisher fieldset#statement span {
+  position: relative;
+  float: left;
+  display: inline;
+}
+form#publisher fieldset#statement input {
+  font-size: 18pt;
+  border: 0;
+  border-bottom: 1px solid black;
+  margin: -5px 0.5em 0 0.5em;
+  background-color: #eee;
+  outline: 0;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+form#publisher fieldset#statement label.hide_label {
+  display: none;
+}
+form#publisher fieldset#statement div.below_float {
+  position: relative;
+  float: left;
+  clear: left;
+}

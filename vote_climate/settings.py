@@ -1,6 +1,9 @@
 # Django settings for vote_climate project.
 import os
 
+import sunlight
+sunlight.config.API_KEY = 'eecdb06b778f460a8cc140fdcd2b0185'
+
 _current_dir = os.getcwd()
 
 DEBUG = True
