@@ -1,10 +1,14 @@
 # Create your views here.
 
 from django.http import HttpResponse
-from django.shortcuts import render_to_response, get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect
 from django.template import Context, Template, loader, TemplateDoesNotExist, RequestContext
+from django.template.loader import render_to_string
 
-from models import statement, fact, style, publisher_form
+import models
+import utils
+
+import simplejson
 
 def log(msg):
 	# 	TODO: needs to be fized by the time we go live
@@ -21,11 +25,11 @@ except:
 def home(request):
 
 	# set the publisher
-	publisher_style = style.objects.get(name="voting_for")
+	publisher_style = models.style.objects.get(name="voting_for")
 
-	facts = fact.objects.all()[:8]
+	facts = models.fact.objects.all()[:8]
 
-	statements = statement.objects.all()[:100]
+	statements = models.statement.objects.all()[:100]
 
 	template = loader.get_template("index.django")
 	cont = RequestContext(request,{'title':"Vote Climate Change",
@@ -49,9 +53,9 @@ def add_statement(request):
 	elif request.GET:
 		data = request.GET
 
-	statement_form = publisher_form(data)
+	statement_form = models.publisher_form(data)
 	if statement_form.is_valid():
-		added_style = style.objects.get(pk=statement_form.cleaned_data['style'])
+		added_style = models.style.objects.get(pk=statement_form.cleaned_data['style'])
 		name = statement_form.cleaned_data['person_name']
 
 		# next: if candidate doesn't exist - should check the existing candidates first
@@ -63,11 +67,15 @@ def add_statement(request):
 
 		return redirect("/")
 
+def render_statement_to_json(statement,style):
+	html = render_to_string("statement.django_include", statement)
+	serialized_data = simplejson.dumps({"statement_html": html})
+	return HttpResponse(serialized_data, mimetype="application/json")
+
 
 def find_electable(request, search_string= None):
 	# TODO implement search
-	return search_string
 
-def search_sunlight(name_part = None, state=None):
-	#TODO: Finish
-	legislators = sunlight.congress.legislator_search(name_part) # legislators should be a list...
+
+
+	return search_string
