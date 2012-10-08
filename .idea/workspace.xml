@@ -24,13 +24,13 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.43554842">
+    <splitter split-orientation="horizontal" split-proportion="0.33453888">
       <split-first>
         <leaf>
-          <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/voteclimate/models.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="25" column="46" selection-start="710" selection-end="710" vertical-scroll-proportion="0.0">
+                <state line="28" column="58" selection-start="877" selection-end="877" vertical-scroll-proportion="0.2102161">
                   <folding>
                     <element signature="e#0#28#0" expanded="true" />
                   </folding>
@@ -38,10 +38,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="settings.py" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="settings.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/vote_climate/settings.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="8" column="12" selection-start="173" selection-end="173" vertical-scroll-proportion="0.3222749">
+                <state line="11" column="10" selection-start="208" selection-end="208" vertical-scroll-proportion="0.0">
                   <folding>
                     <element signature="e#44#53#0" expanded="true" />
                   </folding>
@@ -49,11 +49,13 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="globals.py" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/globals.py">
+          <file leaf-file-name="global_funcs.py" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/global_funcs.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="24" column="34" selection-start="1621" selection-end="1621" vertical-scroll-proportion="0.0">
-                  <folding />
+                <state line="29" column="22" selection-start="1850" selection-end="1850" vertical-scroll-proportion="0.0">
+                  <folding>
+                    <element signature="e#0#53#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -72,7 +74,7 @@
           <file leaf-file-name="index.django" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/templates/index.django">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="106" column="23" selection-start="4121" selection-end="4121" vertical-scroll-proportion="-5.230769">
+                <state line="60" column="25" selection-start="2082" selection-end="2082" vertical-scroll-proportion="-11.115385">
                   <folding />
                 </state>
               </provider>
@@ -90,7 +92,7 @@
           <file leaf-file-name="publisher_voting_for.django" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/templates/publisher_voting_for.django">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="13" column="14" selection-start="694" selection-end="694" vertical-scroll-proportion="-8.5">
+                <state line="12" column="17" selection-start="679" selection-end="679" vertical-scroll-proportion="-7.8461537">
                   <folding />
                 </state>
               </provider>
@@ -100,30 +102,32 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="seed_db.py" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/voteclimate/seed_db.py">
+          <file leaf-file-name="reseed.bat" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/reseed.bat">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="19" column="10" selection-start="995" selection-end="995" vertical-scroll-proportion="0.0">
+                <state line="5" column="50" selection-start="196" selection-end="196" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="seed_db.py" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/voteclimate/management/commands/seed_db.py">
+          <file leaf-file-name="template_voting_for.django_include" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/templates/template_voting_for.django_include">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="11" column="50" selection-start="340" selection-end="340" vertical-scroll-proportion="0.0">
+                <state line="14" column="14" selection-start="441" selection-end="441" vertical-scroll-proportion="-9.153846">
                   <folding>
-                    <element signature="e#28#93#0" expanded="true" />
+                    <marker date="1349636319546" expanded="true" signature="36:425" placeholder="..." />
+                    <marker date="1349636319546" expanded="true" signature="157:418" placeholder="..." />
+                    <marker date="1349636319546" expanded="true" signature="336:410" placeholder="..." />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/voteclimate/views.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="66" column="49" selection-start="1643" selection-end="1643" vertical-scroll-proportion="0.67772514">
+                <state line="81" column="0" selection-start="1990" selection-end="1990" vertical-scroll-proportion="0.0">
                   <folding>
                     <element signature="e#27#63#0" expanded="true" />
                   </folding>
@@ -131,11 +135,13 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="congress.py" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://C:/Python27/Lib/site-packages/sunlight/services/congress.py">
+          <file leaf-file-name="tests.py" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/voteclimate/tests.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="47" column="32" selection-start="1541" selection-end="1541" vertical-scroll-proportion="0.0">
-                  <folding />
+                <state line="48" column="29" selection-start="1321" selection-end="1321" vertical-scroll-proportion="0.0">
+                  <folding>
+                    <element signature="e#184#216#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -158,6 +164,15 @@
               </provider>
             </entry>
           </file>
+          <file leaf-file-name="utils.py" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/voteclimate/utils.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="71" column="33" selection-start="1980" selection-end="1980" vertical-scroll-proportion="0.9357278">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
         </leaf>
       </split-second>
     </splitter>
@@ -170,22 +185,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/templates/initializr_index.django" />
-        <option value="$PROJECT_DIR$/templates/publisher.django" />
-        <option value="$PROJECT_DIR$/globals.py" />
-        <option value="$PROJECT_DIR$/vote_climate/wsgi.py" />
-        <option value="$PROJECT_DIR$/voteclimate/management/commands/_private.py" />
-        <option value="$PROJECT_DIR$/voteclimate/management/__init__.py" />
-        <option value="$PROJECT_DIR$/voteclimate/management/commands/seed_db.py" />
-        <option value="$PROJECT_DIR$/voteclimate/seed_db.py" />
-        <option value="$PROJECT_DIR$/static/js/index.js" />
         <option value="$PROJECT_DIR$/vote_climate/urls.py" />
-        <option value="$PROJECT_DIR$/voteclimate/models.py" />
         <option value="$PROJECT_DIR$/templates/publisher_voting_for.django" />
         <option value="$PROJECT_DIR$/static/css/index.less" />
-        <option value="$PROJECT_DIR$/templates/index.django" />
         <option value="$PROJECT_DIR$/vote_climate/settings.py" />
+        <option value="$PROJECT_DIR$/templates/template_voting_for.django_include.html" />
+        <option value="$PROJECT_DIR$/templates/index.django" />
+        <option value="$PROJECT_DIR$/third_party_modules.txt" />
+        <option value="$PROJECT_DIR$/globals.py" />
+        <option value="db-console:/c54cfaf4/9acb5f7e-681a-472c-a029-b0a4f884906f/" />
+        <option value="$PROJECT_DIR$/voteclimate/seed_db.py" />
+        <option value="$PROJECT_DIR$/reseed.bat" />
+        <option value="$PROJECT_DIR$/voteclimate/tests.py" />
+        <option value="$PROJECT_DIR$/global_funcs.py" />
         <option value="$PROJECT_DIR$/voteclimate/views.py" />
+        <option value="$PROJECT_DIR$/voteclimate/models.py" />
+        <option value="$PROJECT_DIR$/voteclimate/utils.py" />
       </list>
     </option>
   </component>
@@ -268,7 +283,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="management" />
+              <option name="myItemId" value="fixtures" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -282,15 +297,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="voteclimate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="management" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="commands" />
+              <option name="myItemId" value="vote_climate" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -308,48 +315,17 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vote_climate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="voteclimate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vote_climate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="voteclimate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="Database.TableEditor.Splitter" value="0.9" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="preferences.sourceCode.LESS" />
-    <property name="restartRequiresConfirmation" value="true" />
+    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PythonSdkConfigurable" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../kSOAP" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="dynamic.classpath" value="false" />
@@ -401,7 +377,7 @@
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
-      <module name="" />
+      <module name="vote_climate" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
       <option name="CLASS_NAME" value="" />
@@ -549,24 +525,24 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32960895" sideWeight="0.497426" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32402235" sideWeight="0.497426" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960895" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13256113" sideWeight="0.6703911" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.09330759" sideWeight="0.59636873" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39944133" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960895" sideWeight="0.4980695" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Regex Tester" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960895" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.325419" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Code Outline" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1962677" sideWeight="0.6703911" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1949807" sideWeight="0.26815644" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Code Outline" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.09330759" sideWeight="0.21368715" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1949807" sideWeight="0.54189944" order="0" side_tool="false" content_ui="combo" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12709497" sideWeight="0.497426" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1801676" sideWeight="0.497426" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -629,46 +605,94 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/globals.py">
+    <entry file="file://$PROJECT_DIR$/templates/publisher_voting_for.django">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="34" selection-start="1621" selection-end="1621" vertical-scroll-proportion="0.0">
+        <state line="12" column="17" selection-start="679" selection-end="679" vertical-scroll-proportion="-7.8461537">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vote_climate/urls.py">
+    <entry file="file://$PROJECT_DIR$/third_party_modules.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="18" selection-start="383" selection-end="383" vertical-scroll-proportion="0.0">
+        <state line="1" column="8" selection-start="19" selection-end="19" vertical-scroll-proportion="0.029310346">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/voteclimate/management/commands/seed_db.py">
+    <entry file="file://$PROJECT_DIR$/templates/index.django">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="50" selection-start="340" selection-end="340" vertical-scroll-proportion="0.0">
+        <state line="60" column="25" selection-start="2082" selection-end="2082" vertical-scroll-proportion="-11.115385">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/template_voting_for.django_include">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="14" selection-start="441" selection-end="441" vertical-scroll-proportion="-9.153846">
           <folding>
-            <element signature="e#28#93#0" expanded="true" />
+            <marker date="1349636319546" expanded="true" signature="36:425" placeholder="..." />
+            <marker date="1349636319546" expanded="true" signature="157:418" placeholder="..." />
+            <marker date="1349636319546" expanded="true" signature="336:410" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vote_climate/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="10" selection-start="208" selection-end="208" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#44#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://db-console:/c54cfaf4/9acb5f7e-681a-472c-a029-b0a4f884906f/">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="59" selection-start="0" selection-end="60" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/c54cfaf4/9acb5f7e-681a-472c-a029-b0a4f884906f/..voteclimate_state">
+      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reseed.bat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="50" selection-start="196" selection-end="196" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/voteclimate/fixtures/dumped.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/global_funcs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="22" selection-start="1850" selection-end="1850" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/voteclimate/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="29" selection-start="1321" selection-end="1321" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#184#216#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/voteclimate/seed_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="10" selection-start="995" selection-end="995" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="16" selection-start="553" selection-end="553" vertical-scroll-proportion="0.92945325">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="33" selection-start="487" selection-end="487" vertical-scroll-proportion="0.0">
+        <state line="91" column="0" selection-start="3047" selection-end="3047" vertical-scroll-proportion="1.0189036">
           <folding />
         </state>
       </provider>
@@ -680,94 +704,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/publisher_voting_for.django">
+    <entry file="file://$PROJECT_DIR$/voteclimate/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="14" selection-start="694" selection-end="694" vertical-scroll-proportion="-8.5">
-          <folding />
+        <state line="81" column="0" selection-start="1990" selection-end="1990" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#27#63#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/voteclimate/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="46" selection-start="710" selection-end="710" vertical-scroll-proportion="0.0">
+        <state line="28" column="58" selection-start="877" selection-end="877" vertical-scroll-proportion="0.2102161">
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.django">
+    <entry file="file://$PROJECT_DIR$/voteclimate/utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="23" selection-start="4121" selection-end="4121" vertical-scroll-proportion="-5.230769">
+        <state line="71" column="33" selection-start="1980" selection-end="1980" vertical-scroll-proportion="0.9357278">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://DATABASE/9acb5f7e-681a-472c-a029-b0a4f884906f">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>DATABASE</ID>
-          <OriginalElement>9acb5f7e-681a-472c-a029-b0a4f884906f</OriginalElement>
-          <nodes />
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="225.0" y="226.5" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Key columns</Category>
-            <Category>Columns</Category>
-          </Categories>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://DATABASE/9acb5f7e-681a-472c-a029-b0a4f884906f.table:voteclimate_style">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>DATABASE</ID>
-          <OriginalElement>9acb5f7e-681a-472c-a029-b0a4f884906f.table:voteclimate_style</OriginalElement>
-          <nodes>
-            <node x="" y="">9acb5f7e-681a-472c-a029-b0a4f884906f.table:voteclimate_style</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="75.0" y="64.5" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Key columns</Category>
-            <Category>Columns</Category>
-          </Categories>
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://db-console:/c54cfaf4/9acb5f7e-681a-472c-a029-b0a4f884906f/">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vote_climate/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="12" selection-start="173" selection-end="173" vertical-scroll-proportion="0.3222749">
-          <folding>
-            <element signature="e#44#53#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/sunlight/services/congress.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="32" selection-start="1541" selection-end="1541" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/voteclimate/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="49" selection-start="1643" selection-end="1643" vertical-scroll-proportion="0.67772514">
-          <folding>
-            <element signature="e#27#63#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
