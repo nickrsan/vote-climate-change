@@ -1,0 +1,5 @@
+syntax: glob
+*.pyc
+.idea/vote_climate.iml
+.idea/workspace.xml.orig
+.idea/workspace.xml
