@@ -5,6 +5,7 @@ from django.core import exceptions
 # Create your models here.
 import global_funcs
 import utils
+import simplejson as json
 
 class state(models.Model):
 	name = models.CharField(max_length=255)
@@ -12,6 +13,7 @@ class state(models.Model):
 	fips_code = models.IntegerField(null=True)
 
 class user(models.Model):
+	name = models.CharField(max_length=255)
 	ip = models.IPAddressField()
 
 class style(models.Model):
@@ -24,10 +26,12 @@ class style(models.Model):
 
 class candidate(models.Model):
 	name = models.CharField(max_length=255)
-	state = models.ForeignKey(state)
+	state = models.ForeignKey(state,null=True)
 	district = models.CharField(max_length=5,null=True)
+	gender = models.CharField(max_length=5,null=True)
 	senate_class = models.CharField(max_length=5,null=True)
 	webform_url = models.URLField(null=True)
+	twitter_handle = models.CharField(max_length=255,null=True)
 	party = models.CharField(max_length=5, null=True)
 
 	# the following are for matching searches
@@ -35,9 +39,26 @@ class candidate(models.Model):
 	crp_id = models.CharField(max_length=50, null=True)
 	votesmart_id = models.CharField(max_length=50, null=True)
 	govtrack_id = models.CharField(max_length=50, null=True)
+	congresspedia_url = models.URLField(null=True)
+
+	def to_json(self):
+		if self.state:
+			state_abbrev = self.state.abbreviation,
+		else:
+			state_abbrev = None
+		return json.dumps(
+			{
+			'cand_id': self.id,
+			'name': self.name,
+			'state_abbrev': state_abbrev,
+			'congresspedia_url': self.congresspedia_url,
+			'twitter_handle': self.twitter_handle,
+			'gender':self.gender,
+			}
+		)
 
 class statement(models.Model):
-	name = models.CharField(max_length=255)
+	user = models.ForeignKey(user)
 	state = models.ForeignKey(state,null=True)
 	text = models.TextField(null=True)
 	extra_text = models.TextField(null=True)
@@ -66,6 +87,13 @@ class fact(models.Model):
 	source_name = models.CharField(max_length=255)
 	cite = models.TextField(null=True)
 
+class sunlight_search (models.Model):
+	"""
+		meant to track what searches we've done with sunlight so we don't double up
+	"""
+
+	search = models.CharField(max_length=255)
+
 class visit(models.Model):
 	user = models.ForeignKey(user)
 	time_visited = models.DateTimeField(auto_now_add=True)
@@ -79,6 +107,7 @@ class random_manager(models.Manager):
 
 class publisher_form(forms.Form):
 	# TODO: make the actual publisher form use these
+	# TODO: Add Honeypot
 	person_name = forms.CharField()
 	state = forms.CharField()
 	style_id = forms.IntegerField(widget=forms.HiddenInput())
@@ -93,6 +122,7 @@ class publisher_form(forms.Form):
 		return utils.find_state(abbrev=state_name)
 
 	def clean(self):
+		cleaned_data = super(publisher_form,self).clean()
 		candidate_id = self.cleaned_data['candidate_id']
 		if candidate_id: # if they provided a candidate_id
 			try:
@@ -106,3 +136,5 @@ class publisher_form(forms.Form):
 				self.cleaned_data['candidate'] = utils.find_candidate(self.cleaned_data['candidate'])
 			else:
 				raise exceptions.ValidationError("No candidate provided. Who are you planning on voting for?")
+
+		return cleaned_data

@@ -1,8 +1,8 @@
 <form action="/publish/" id="publisher" xmlns="http://www.w3.org/1999/html">
     <fieldset id="statement">
-        <p><span>I'm voting for</span>
-            <span><label for="candidate" class="hide_label">Candidate</label> <input name="candidate" id="candidate" /><input type="hidden" name="candidate_id" id="candidate_id" /></span>
-            <span>because he or she has taken or has promised to take action on climate change.</span>
+        <p><span class="maintext">I'm voting for</span>
+            <span class="maintext"><label for="candidate" class="hide_label">Candidate</label> <input name="candidate" id="candidate" /><input type="hidden" name="candidate_id" id="candidate_id" /></span>
+            <span class="maintext">because <span id="gender_he">he</span> <span id="gender_or">or</span> <span id="gender_she">she</span> has taken or has promised to take action on climate change.</span>
         </p>
         <div id="statement_media_additions" class="below_float">
             Add:

@@ -23,7 +23,7 @@ div#facts_slider div.fact_statement p {
 form#publisher fieldset#statement p {
   font-size: 18pt;
 }
-form#publisher fieldset#statement span {
+form#publisher fieldset#statement span.maintext {
   position: relative;
   float: left;
   display: inline;

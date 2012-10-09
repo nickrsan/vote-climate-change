@@ -42,6 +42,14 @@ def home(request):
 	# need RequestContext
 	return HttpResponse(template.render(cont))
 
+def error(request,error_string):
+	# TODO: Finish this and make sure it prints correctly
+	template = loader.get_template("index.django")
+
+	cont = RequestContext(request,{'title':"Error","text":error_string})
+
+	return HttpResponse(template.render(cont))
+
 def add_statement(request):
 
 	data = None
@@ -55,8 +63,16 @@ def add_statement(request):
 
 	statement_form = models.publisher_form(data)
 	if statement_form.is_valid():
-		added_style = models.style.objects.get(pk=statement_form.cleaned_data['style'])
-		name = statement_form.cleaned_data['person_name']
+		try:
+			added_style = models.style.objects.get(pk=statement_form.cleaned_data['style_id'])
+		except:
+			added_style = 1
+			# TODO: Should we fail over to a default style, or should we return an error?
+
+		new_state = utils.find_state(statement_form.cleaned_data['state'])
+		new_user = models.user(name = statement_form.cleaned_data['person_name'],
+		                       ip = request.META['REMOTE_ADDR'])
+		new_user.save()
 
 		# next: if candidate doesn't exist - should check the existing candidates first
 		# then check the sunlight api. This way it learns as people add them
@@ -65,17 +81,48 @@ def add_statement(request):
 
 		# if it does, use it
 
-		return redirect("/")
+		new_statement = models.statement(
+			candidate = statement_form.cleaned_data['candidate'],
+			user = new_user,
+			state = new_state,
+			style = added_style,
+		)
+		new_statement.rendered_text = render_to_string(added_style.output_template, {'statement':new_statement})
+		new_statement.save()
+	else:
+		#TODO: Fix the error display
+		for error in statement_form.errors['__all__']:
+			print error
+		return HttpResponse(statement_form.errors['__all__'])
+
+	return redirect("/")
 
 def render_statement_to_json(statement,style):
-	html = render_to_string("statement.django_include", statement)
+	html = render_to_string(style.output_template, statement)
 	serialized_data = simplejson.dumps({"statement_html": html})
 	return HttpResponse(serialized_data, mimetype="application/json")
 
 
 def find_electable(request, search_string= None):
-	# TODO implement search
 
+	candidates = utils.find_candidate(search_string)
 
+	if True or request.is_ajax():
 
-	return search_string
+		callback = request.GET['callback']
+
+		json_string = "%s({totalResultsCount:%s, electables:[" % (callback,len(candidates))
+
+		for candidate in candidates:
+			try:
+				json_string = "%s%s," % (json_string,candidate.to_json())
+			except:
+				raise
+
+		return HttpResponse("%s]});" % (json_string))
+	#else:
+		# this area is unreachable for now. We need to switch it over if we decide to have a true search
+	#	template = loader.get_template("index.django")
+	#	cont = RequestContext(request,{'title':"Find Patient - searched '%s'" % search_string,'patients': found_patients})
+
+	#	return HttpResponse(template.render(cont))
