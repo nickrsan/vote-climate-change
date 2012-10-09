@@ -19,10 +19,10 @@
   -->
   
   <!-- Included CSS Files (Compressed) -->
-  <link rel="stylesheet" href="../static/css/foundation.min.css">
-  <link rel="stylesheet" href="../static/css/app.css">
-  <link rel="stylesheet" href="../static/css/jui-start/jquery-ui-1.8.24.custom.css">
-  <link rel="stylesheet" href="../static/css/index.css">
+  <link rel="stylesheet" href="/static/css/foundation.min.css">
+  <link rel="stylesheet" href="/static/css/app.css">
+  <link rel="stylesheet" href="/static/css/jui-start/jquery-ui-1.8.24.custom.css">
+  <link rel="stylesheet" href="/static/css/index.css">
 
 </head>
 <body>
@@ -41,19 +41,27 @@
 		<!-- This has been source ordered to come first in the markup (and on small devices) but to be to the right of the nav on larger screens -->
 
 		{%  block pageheader %}
-			<h2>Climate Solutions Win Votes</h2>
+			<h2>{{ pagetitle }}</h2>
 		{%  endblock %}
 
-		{% include publisher %}
+		{% if alert_msg %}
+			<div class="alert-box">
+				{{ alert_msg }}
+			</div>
+		{% endif %}
+		{%  if publisher %}
+			{% include publisher %}
+		{% endif %}
 
-		<h3>Recent Pledges</h3>
-		{%  for statement in statements %} <!-- TODO Make output correct -->
-			{{ statement.rendered_text|safe }}
-			{%  comment %}
-                {%  include "template_voting_for.django_include" %}
-            {%  endcomment %}
-		{% endfor %}
-
+		{% if statements %}
+			<h3>Recent Pledges</h3>
+			{%  for statement in statements %} <!-- TODO Make output correct -->
+				{{ statement.rendered_text|safe }}
+				{%  comment %}
+					{%  include "template_voting_for.django_include" %}
+				{%  endcomment %}
+			{% endfor %}
+		{%  endif %}
 			<!-- Feed Entry -->
 			<!--  <div class="row">
 				<div class="two columns mobile-one"><img src="http://placehold.it/80x80&text=[img]" /></div>
@@ -106,8 +114,8 @@
 		  <!-- On small devices this column is hidden -->
 		<aside class="four columns">
 			<div class="row">
-				<div class="highlight_post"><img src="http://placehold.it/300x150&text=[highlight]" /></div>
-				<div class="highlight_post"><img src="http://placehold.it/300x300&text=[highlight]" /></div>
+				<div class="highlight_post"><img src="http://placehold.it/300x150&text=[highlight]" style="width:300px;height:150px;background-color: #ccc;"/></div>
+				<div class="highlight_post"><img src="http://placehold.it/300x300&text=[highlight]" style="width:300px;height:300px;background-color: #ccc;"/></div>
 				<div class="highlight_post" id="facts_slider">
 				{%  for fact in facts %}
 					<div class="fact_statement">
@@ -115,7 +123,7 @@
 					</div>
 				{%  endfor %}
 				</div>
-				<div class="highlight_post"><img src="http://placehold.it/300x300&text=[highlight]" /></div>
+				<div class="highlight_post"><img src="http://placehold.it/300x300&text=[highlight]" style="width:300px;height:300px;background-color: #ccc;"/></div>
 			</div>
 		</aside>
 	</div> <!-- class="eight columns" -->

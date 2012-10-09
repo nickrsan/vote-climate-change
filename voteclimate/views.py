@@ -25,22 +25,65 @@ except:
 def home(request):
 
 	# set the publisher
-	publisher_style = models.style.objects.get(name="voting_for")
+	common_elements = get_common_elements()
 
-	facts = models.fact.objects.all()[:8]
-
-	statements = models.statement.objects.all()[:100]
+	statements = models.statement.objects.all().order_by('-id')[:100]
 
 	template = loader.get_template("index.django")
 	cont = RequestContext(request,{'title':"Vote Climate Change",
-								   'publisher':publisher_style.publisher,
-								   'style_id':publisher_style.id,
-								   'facts':facts,
+								   'publisher':common_elements['publisher'].publisher,
+								   'style_id':common_elements['publisher'].id,
+								   'facts':common_elements['facts'],
 								   'statements':statements,
+								   'pagetitle':"Climate Solutions Win Votes",
 								   })
 
 	# need RequestContext
 	return HttpResponse(template.render(cont))
+
+def get_common_elements():
+
+	common_elements = {}
+	common_elements['publisher'] = models.style.objects.get(name="voting_for")
+	common_elements['facts'] = models.fact.objects.all()[:8]
+	return common_elements
+
+def candidate(request,candidate_name = None, state = None):
+	if candidate_name is None:
+		return redirect("/")
+
+	if state is None:
+		possible_candidates = models.candidate.objects.filter(name__iexact = candidate_name)
+	else:
+		state_obj = utils.find_state(state)
+		possible_candidates = models.candidate.objects.filter(name__iexact = candidate_name,state = state_obj)
+
+	common_elements = get_common_elements()
+	template = loader.get_template("index.django")
+
+	if state:
+		page_title = "%s (%s)" % (candidate_name,state)
+	else:
+		page_title = candidate_name
+
+	if len(possible_candidates) == 0:
+
+		cont = RequestContext(request,{'title':"Vote Climate Change",
+									   'pagetitle':page_title,
+									   'facts':common_elements['facts'],
+									   'alert_msg': "No candidate with that name and state",
+									   })
+
+
+	for candidate in possible_candidates:
+		candidate_statements = models.statement.objects.filter(candidate = candidate)
+		cont = RequestContext(request,{'title':"Vote Climate Change",
+									   'pagetitle':page_title,
+									   'statements': candidate_statements,
+									   'facts':common_elements['facts'],
+									   })
+	return HttpResponse(template.render(cont))
+
 
 def error(request,error_string):
 	# TODO: Finish this and make sure it prints correctly
@@ -69,7 +112,7 @@ def add_statement(request):
 			added_style = 1
 			# TODO: Should we fail over to a default style, or should we return an error?
 
-		new_state = utils.find_state(statement_form.cleaned_data['state'])
+		new_state = statement_form.cleaned_data['state'] # the cleaned data already includes the state
 		new_user = models.user(name = statement_form.cleaned_data['person_name'],
 		                       ip = request.META['REMOTE_ADDR'])
 		new_user.save()

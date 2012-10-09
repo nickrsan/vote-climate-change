@@ -84,7 +84,7 @@ class StateTest(TestCase):
 	def test_state_retrieval(self):
 
 		self.setup()
-
+		print self.ca_state.abbreviation
 		retrieved_ok = utils.find_state('ok')
 		self.assertEqual(self.ok_state,retrieved_ok)
 		retrieved_full = utils.find_state("oklahoma")

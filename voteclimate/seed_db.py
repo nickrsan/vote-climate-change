@@ -91,16 +91,16 @@ def seed():
 		new_state.save()
 
 	print "Seeding Candidates"
-
+	comment ="""
 	utils.find_candidate("Barack Obama")
-	obama = models.candidate.objects.get(name="Barack Obama")
-	obama.state = None
-	obama.save()
+	#obama = models.candidate.objects.get(name="Barack Obama")
+	#obama.state = None
+	#obama.save()
 
 	utils.find_candidate("Joe Biden")
-	biden = models.candidate.objects.get(pk=2)
-	biden.state = None
-	biden.save()
+	#biden = models.candidate.objects.get(pk=2)
+	#biden.state = None
+	#biden.save()
 
 	utils.find_candidate("Jon Kyl")
 	utils.find_candidate("Dianne Feinstein")
@@ -135,6 +135,9 @@ def seed():
 	utils.find_candidate("Joe Manchin")
 	utils.find_candidate("Herb Kohl")
 	utils.find_candidate("John Barrasso")
+	"""
+	utils._load_congress()
+	utils._load_openstates()
 
 if __name__ == "__main__":
 	seed()
