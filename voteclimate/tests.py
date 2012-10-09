@@ -12,6 +12,61 @@ import global_funcs
 import models
 import utils
 
+class CandidateLoadTest(TestCase):
+	"""
+		We need a test that makes sure we get a candidate out of searching sunlight
+	"""
+
+	fixtures = ["dumped.json"]
+
+	def setup(self):
+		self.candidates = utils.search_and_merge("Pelosi")
+		self.single_candidate = self.candidates[0]
+
+	def test_candidate_loading(self):
+		self.setup()
+		self.assertEqual(type(self.single_candidate),models.candidate)
+		self.assertEqual(self.single_candidate.name,"Nancy Pelosi") # this is probably the wrong way to write this, but it'll do for now
+
+	def test_candidate_matching(self):
+		"""
+			Test that if we provide only the IDs for a candidate (the one that is already set up)
+			we get back the full candidate with all details
+		"""
+
+		self.setup()
+
+		self.fake_leg = {
+			# ids for Nancy Pelosi
+			'govtrack_id': '400314',
+			'crp_id': 'N00007360',
+			'votesmart_id':'26732',
+			'fec_id':'H8CA05035',
+		}
+		self.fake_results = [{
+			'legislator':self.fake_leg,
+		}]
+
+		candidates = utils.match_sunlight_to_db(self.fake_results)
+		single_cand = candidates[0]
+
+		self.assertEqual(single_cand.name,"Nancy Pelosi") # this is probably the wrong way to write this, but it'll do for now
+		self.assertEqual(single_cand,self.single_candidate)
+
+	def test_sunlight_short_circuit(self):
+		"""
+			Checks that when we search sunlight, it short circuits correctly - searches we've already made get skipped
+		"""
+
+		return_val = utils.search_sunlight("barbara boxer")
+		self.assertNotEqual(None,return_val)
+		second_time = utils.search_sunlight("nancy pelosi")
+		self.assertNotEqual(None,second_time)
+		should_be_none = utils.search_sunlight("barbara boxer")
+		self.assertEqual(None,should_be_none)
+
+
+
 class StateTest(TestCase):
 	"""
 		Tests the state retrieval code to make sure that each passed in item returns the correct state

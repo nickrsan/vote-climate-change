@@ -1,4 +1,5 @@
 import models
+import utils
 
 states = (
 	('Alabama','AL','1'),
@@ -89,6 +90,51 @@ def seed():
 		new_state = models.state(name=state[0],abbreviation=state[1],fips_code=state[2])
 		new_state.save()
 
+	print "Seeding Candidates"
+
+	utils.find_candidate("Barack Obama")
+	obama = models.candidate.objects.get(name="Barack Obama")
+	obama.state = None
+	obama.save()
+
+	utils.find_candidate("Joe Biden")
+	biden = models.candidate.objects.get(pk=2)
+	biden.state = None
+	biden.save()
+
+	utils.find_candidate("Jon Kyl")
+	utils.find_candidate("Dianne Feinstein")
+	utils.find_candidate("Joe Lieberman")
+	utils.find_candidate("Tom Carper")
+	utils.find_candidate("Bill Nelson")
+	utils.find_candidate("Daniel Akaka")
+	utils.find_candidate("Richard Lugar")
+	utils.find_candidate("Olympia Snowe")
+	utils.find_candidate("Ben Cardin")
+	utils.find_candidate("Scott Brown")
+	utils.find_candidate("Debbie Stabenow")
+	utils.find_candidate("Amy Klobuchar")
+	utils.find_candidate("Roger Wicker")
+	utils.find_candidate("Claire McCaskill")
+	utils.find_candidate("Jon Tester")
+	utils.find_candidate("Ben Nelson")
+	utils.find_candidate("Dean Heller")
+	utils.find_candidate("Bob Menendez")
+	utils.find_candidate("Jeff Bingaman")
+	utils.find_candidate("Kirsten Gillibrand")
+	utils.find_candidate("Kent Conrad")
+	utils.find_candidate("Sherrod Brown")
+	utils.find_candidate("Bob Casey")
+	utils.find_candidate("Sheldon Whitehouse")
+	utils.find_candidate("Bob Corker")
+	utils.find_candidate("Kay Bailey Hutchison")
+	utils.find_candidate("Orrin Hatch")
+	utils.find_candidate("Bernie Sanders")
+	utils.find_candidate("Jim Webb")
+	utils.find_candidate("Maria Cantwell")
+	utils.find_candidate("Joe Manchin")
+	utils.find_candidate("Herb Kohl")
+	utils.find_candidate("John Barrasso")
 
 if __name__ == "__main__":
 	seed()
