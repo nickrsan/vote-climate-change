@@ -33,12 +33,17 @@ class candidate(models.Model):
 	webform_url = models.URLField(null=True)
 	twitter_handle = models.CharField(max_length=255,null=True)
 	party = models.CharField(max_length=5, null=True)
+	level = models.CharField(max_length=50, null=True)
 
 	# the following are for matching searches
 	fec_id = models.CharField(max_length=50, null=True)
 	crp_id = models.CharField(max_length=50, null=True)
 	votesmart_id = models.CharField(max_length=50, null=True)
 	govtrack_id = models.CharField(max_length=50, null=True)
+	leg_id = models.CharField(max_length=50, null=True)
+	transparencydata_id = models.CharField(max_length=50, null=True)
+	nimsp_id = models.CharField(max_length=50, null=True)
+	photo_url = models.URLField(null=True)
 	congresspedia_url = models.URLField(null=True)
 
 	def to_json(self):
@@ -118,8 +123,9 @@ class publisher_form(forms.Form):
 		state_name = self.cleaned_data['state']
 		state_name = global_funcs.strip_tags(state_name) # get rid of any HTML
 
-		# replace the cleaned_data['state'] wiith the object
-		return utils.find_state(abbrev=state_name)
+		# replace the cleaned_data['state'] with the object
+		self.cleaned_data['state'] = utils.find_state(abbrev=state_name)
+		return self.cleaned_data['state']
 
 	def clean(self):
 		cleaned_data = super(publisher_form,self).clean()

@@ -30,8 +30,13 @@ function set_find_electable(selector){
                 autoFocus: true,
                 success: function( data ) {
                     response( $.map( data.electables, function( item ) {
+						var state_append = ""
+						if ( !(item.state_abbrev === 'undefined')) {
+							state_append = " (" + item.state_abbrev + ")";
+						}
+
                         return {
-                            label: highlight_terms(item.name,request.term),
+                            label: highlight_terms(item.name, request.term) + state_append,
                             value: item.name,
                             cand_id: item.cand_id,
                             state_abbrev: item.state_abbrev,
@@ -81,11 +86,12 @@ function change_gender(gender){
     var fade_time =500;
     var male_selector = "span#gender_he";
     var female_selector = "span#gender_she";
+	var or_selector = "span#gender_or";
 
     console.log("[" + gender + "]");
 
-    if (!(typeof gender === 'undefined' || gender === '')){
-        $("span#gender_or").fadeOut(fade_time);
+    if (!(typeof gender === 'undefined' || gender === '' || gender === null)){
+        $(or_selector).fadeOut(fade_time);
         if (gender == "M"){
             $(male_selector).fadeIn(fade_time);
             $(female_selector).fadeOut(fade_time);
@@ -93,7 +99,11 @@ function change_gender(gender){
             $(male_selector).fadeOut(fade_time);
             $(female_selector).fadeIn(fade_time);
         }
-    }
+    }else{
+		$(or_selector).fadeIn(fade_time);
+		$(female_selector).fadeIn(fade_time);
+		$(male_selector).fadeIn(fade_time);
+	}
 }
 
 

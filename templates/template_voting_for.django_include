@@ -12,7 +12,7 @@
             {% if not statement.candidate.gender %}
                 he or she
             {%  endif %}
-            has taken or has promised to take constructive action on climate change.<span class="signature">{{ statement.user.name }} in {{ statement.state.name }}</span></p>
+            has taken or has promised to take constructive action on climate change.<span class="signature">{{ statement.user.name }} in <a href="/state/{{ statement.state.abbreviation }}/">{{ statement.state.name }}</a></span></p>
 <!--		<p><strong>Some Person said:</strong> Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong.</p>
 		<ul class="link-list">
 			<li><a href="">Reply</a></li>
