@@ -3,3 +3,5 @@ syntax: glob
 .idea/vote_climate.iml
 .idea/workspace.xml.orig
 .idea/workspace.xml
+.idea/misc.xml
+.idea/codeStyleSettings.xml
