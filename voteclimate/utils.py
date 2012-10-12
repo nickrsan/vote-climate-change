@@ -57,6 +57,7 @@ def search_and_merge(name_string):
 	#print "found %s candidates" % len(found_candidates)
 	return found_candidates
 
+
 def search_sunlight(name_part = None, state=None):
 
 	if not name_part:
@@ -217,3 +218,29 @@ def isiterable(item):
 		return True
 	else:
 		return False
+
+
+def find_or_make_candidate(candidate_name, user_object):
+	candidate_object = find_candidate(candidate_name)
+	print str(candidate_object)
+	if candidate_object is None or len(candidate_object) == 0:
+		candidate_object = make_candidate(candidate_name, user_object)
+		if candidate_object is None or len(candidate_object) == 0:
+			# it's still None?? balls.
+			raise LookupError("Couldn't find or make a candidate")
+	return candidate_object
+
+def make_candidate(candidate_name, user_object):
+	new_candidate = models.candidate(name=candidate_name,user_submitted = True,submitted_by = user_object,unconfirmed=True)
+	new_candidate.save()
+	return new_candidate
+
+def find_or_make_user(user_name,user_ip,user_state):
+
+	try:
+		new_user = models.user.objects.get(name=user_name,state=user_state,ip=user_ip)
+	except models.user.DoesNotExist:
+		new_user = models.user(name=user_name,state=user_state,ip=user_ip)
+		new_user.save()
+
+	return new_user

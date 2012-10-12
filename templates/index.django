@@ -115,7 +115,7 @@
 		<aside class="four columns">
 			<div class="row">
 				<div class="highlight_post"><img src="http://placehold.it/300x150&text=[highlight]" style="width:300px;height:150px;background-color: #ccc;"/></div>
-				<div class="highlight_post"><img src="http://placehold.it/300x300&text=[highlight]" style="width:300px;height:300px;background-color: #ccc;"/></div>
+				<div class="highlight_post"><img src="http://placehold.it/300x300&text=[registerToVote]" style="width:300px;height:300px;background-color: #ccc;"/></div>
 				<div class="highlight_post" id="facts_slider">
 				{%  for fact in facts %}
 					<div class="fact_statement">

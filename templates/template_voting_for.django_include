@@ -2,7 +2,7 @@
 <div class="row" xmlns="http://www.w3.org/1999/html">
 	<div class="two columns mobile-one"><img src="http://placehold.it/80x80&text=[img]" /></div>
 	<div class="ten columns">
-        <p>I'm voting for <a href="/candidate/{{ statement.candidate.name }}">{{ statement.candidate.name }}</a> because
+        <p>{{ statement.support_style }} <a href="/candidate/{{ statement.candidate.name }}">{{ statement.candidate.name }}</a> because
             {% if statement.candidate.gender and statement.candidate.gender == "M" %}
                 he
             {%  endif %}
@@ -12,8 +12,8 @@
             {% if not statement.candidate.gender %}
                 he or she
             {%  endif %}
-            has taken or has promised to take constructive action on climate change.<span class="signature">{{ statement.user.name }} in <a href="/state/{{ statement.state.abbreviation }}/">{{ statement.state.name }}</a></span></p>
-<!--		<p><strong>Some Person said:</strong> Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong.</p>
+            has taken or has promised to take constructive action on climate change&mdash;<span class="signature">{{ statement.user.name }} in <a href="/state/{{ statement.user.state.abbreviation }}/">{{ statement.user.state.name }}</a></span></p>
+<!--		<p><strong>Some Personipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong.</p>
 		<ul class="link-list">
 			<li><a href="">Reply</a></li>
 			<li><a href="">Share</a></li>
