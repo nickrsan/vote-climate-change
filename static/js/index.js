@@ -26,12 +26,12 @@ function set_find_electable(selector){
             $.ajax({
                 url: "/electable/find/" + request.term + "/",
                 dataType: "jsonp",
-                minLength: 3,
+                minLength: 4,
                 autoFocus: true,
                 success: function( data ) {
                     response( $.map( data.electables, function( item ) {
 						var state_append = ""
-						if ( !(item.state_abbrev === 'undefined')) {
+						if ( !(item.state_abbrev === 'undefined' || item.state_abbrev === null)) {
 							state_append = " (" + item.state_abbrev + ")";
 						}
 

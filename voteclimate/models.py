@@ -15,6 +15,7 @@ class state(models.Model):
 class user(models.Model):
 	name = models.CharField(max_length=255)
 	ip = models.IPAddressField()
+	state = models.ForeignKey(state,null=True)
 
 class style(models.Model):
 	name = models.CharField(max_length=255)
@@ -22,7 +23,6 @@ class style(models.Model):
 	template_string = models.TextField()
 	available = models.BooleanField(default=True)
 	output_template = models.CharField(max_length=255,null=False)
-
 
 class candidate(models.Model):
 	name = models.CharField(max_length=255)
@@ -46,6 +46,17 @@ class candidate(models.Model):
 	photo_url = models.URLField(null=True)
 	congresspedia_url = models.URLField(null=True)
 
+	unconfirmed = models.BooleanField(default=False)
+	user_submitted = models.BooleanField(default=False)
+	submitted_by = models.ForeignKey(user,null=True)
+
+	def __str__(self):
+		return self.__unicode__(self)
+
+	def __unicode__(self):
+		uni_str = "%s\n%s\n%s\n" % (self.name,self.state.name,self.district)
+		return uni_str
+
 	def to_json(self):
 		if self.state:
 			state_abbrev = self.state.abbreviation,
@@ -64,7 +75,6 @@ class candidate(models.Model):
 
 class statement(models.Model):
 	user = models.ForeignKey(user)
-	state = models.ForeignKey(state,null=True)
 	text = models.TextField(null=True)
 	extra_text = models.TextField(null=True)
 	rendered_text = models.TextField(null=True)
@@ -73,6 +83,8 @@ class statement(models.Model):
 	date_updated = models.DateTimeField(auto_now=True)
 	highlight = models.BooleanField(default=False)
 	hidden = models.BooleanField(default=False)
+
+	support_style = models.CharField(max_length=255,choices=(("I'm voting for","I'm voting for"),("I support","I support")))
 
 	candidate = models.ForeignKey(candidate)
 
@@ -110,14 +122,28 @@ class random_manager(models.Manager):
 	"""
 	pass
 
-class publisher_form(forms.Form):
+class publisher_form(forms.ModelForm):
 	# TODO: make the actual publisher form use these
 	# TODO: Add Honeypot
+
+	class Meta:
+		model=statement
+		fields=('support_style',)
+
+	def __init__(self, *args, **kwargs):
+		"""
+			Set up this way to allow access to IP address during validation. Thanks to http://stackoverflow.com/questions/1418611/django-forms-clean-method-need-ip-address-of-client
+		"""
+		self.request_ip = kwargs.pop('request_ip', None)
+		super(publisher_form, self).__init__(*args, **kwargs)
+
+
 	person_name = forms.CharField()
 	state = forms.CharField()
 	style_id = forms.IntegerField(widget=forms.HiddenInput())
 	candidate = forms.CharField()
-	candidate_id = forms.IntegerField(widget=forms.HiddenInput())
+	candidate_id = forms.IntegerField(widget=forms.HiddenInput(),required=False)
+	#support_style = forms.ChoiceField()
 
 	def clean_state(self):
 		state_name = self.cleaned_data['state']
@@ -127,20 +153,32 @@ class publisher_form(forms.Form):
 		self.cleaned_data['state'] = utils.find_state(abbrev=state_name)
 		return self.cleaned_data['state']
 
+
+
 	def clean(self):
 		cleaned_data = super(publisher_form,self).clean()
-		candidate_id = self.cleaned_data['candidate_id']
+		if not 'candidate_id' in self.cleaned_data:
+			candidate_id = None
+		else:
+			candidate_id = self.cleaned_data['candidate_id']
+
+		cleaned_data['user_object'] = utils.find_or_make_user(cleaned_data['person_name'],self.request_ip,cleaned_data['state'])
+
 		if candidate_id: # if they provided a candidate_id
 			try:
-				self.cleaned_data['candidate'] = candidate.objects.get(pk=candidate_id)
+				cleaned_data['candidate'] = candidate.objects.get(pk=candidate_id)
 			except candidate.DoesNotExist:
 				raise exceptions.ValidationError('Candidate ID was set, but does not correspond to an actual candidate')
 		else:
 			# ok, now make it do the magic of finding a candidate by name
-			candidate_name = self.cleaned_data['candidate']
-			if candidate_name:
-				self.cleaned_data['candidate'] = utils.find_candidate(self.cleaned_data['candidate'])
+			if cleaned_data['candidate']:
+				try:
+					cleaned_data['candidate'] = utils.find_or_make_candidate(cleaned_data['candidate'],cleaned_data['user_object'])
+				except:
+					raise exceptions.ValidationError("Problem looking up candidate. We hope this is temporary. Would you care to try again?")
 			else:
 				raise exceptions.ValidationError("No candidate provided. Who are you planning on voting for?")
 
 		return cleaned_data
+
+

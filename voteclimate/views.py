@@ -104,7 +104,7 @@ def add_statement(request):
 	elif request.GET:
 		data = request.GET
 
-	statement_form = models.publisher_form(data)
+	statement_form = models.publisher_form(data,request_ip=request.META['REMOTE_ADDR'])
 	if statement_form.is_valid():
 		try:
 			added_style = models.style.objects.get(pk=statement_form.cleaned_data['style_id'])
@@ -112,11 +112,8 @@ def add_statement(request):
 			added_style = 1
 			# TODO: Should we fail over to a default style, or should we return an error?
 
-		new_state = statement_form.cleaned_data['state'] # the cleaned data already includes the state
-		new_user = models.user(name = statement_form.cleaned_data['person_name'],
-		                       ip = request.META['REMOTE_ADDR'])
-		new_user.save()
-
+		new_user = statement_form.cleaned_data['user_object']
+		new_state = statement_form.cleaned_data['state']
 		# next: if candidate doesn't exist - should check the existing candidates first
 		# then check the sunlight api. This way it learns as people add them
 
@@ -127,9 +124,9 @@ def add_statement(request):
 		new_statement = models.statement(
 			candidate = statement_form.cleaned_data['candidate'],
 			user = new_user,
-			state = new_state,
 			style = added_style,
 		)
+		new_statement.support_style = statement_form.cleaned_data['support_style']
 		new_statement.rendered_text = render_to_string(added_style.output_template, {'statement':new_statement})
 		new_statement.save()
 	else:

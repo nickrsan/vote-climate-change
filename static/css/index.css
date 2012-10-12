@@ -28,7 +28,7 @@ form#publisher fieldset#statement span.maintext {
   float: left;
   display: inline;
 }
-form#publisher fieldset#statement input {
+form#publisher fieldset#statement input, form#publisher fieldset#statement select {
   font-size: 18pt;
   border: 0;
   border-bottom: 1px solid black;
@@ -37,6 +37,11 @@ form#publisher fieldset#statement input {
   outline: 0;
   padding-left: 3px;
   padding-right: 3px;
+}
+form#publisher fieldset#statement select {
+  margin-right: 4em;
+  margin-left: 0;
+  padding-right: 0em;
 }
 form#publisher fieldset#statement label.hide_label {
   display: none;
