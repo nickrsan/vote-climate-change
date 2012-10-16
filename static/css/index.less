@@ -1,9 +1,43 @@
-div#facts_slider div.fact_statement{
-	background-color: #fff;
+.rounded(@rad:4px){
+  -moz-border-radius: @rad;
+  -webkit-border-radius: @rad;
+  border-radius: @rad;
 
-	p{
-		padding:1em;
-		padding-top: 50px; /* account for the timer */
+  padding:1em;
+}
+
+
+#side_bar div.row{
+
+	padding-left:1em;
+	font-style:normal;
+
+	div.box_widget{
+		.rounded(6px);
+
+		background-color: #ccc ; /*#5BAFBA*/
+
+	  	h3{
+			margin-top:0;
+		}
+
+		#reg_button{
+			display:block;
+			margin-left:0;
+			margin-right:auto;
+
+			cursor:hand;
+		}
+	}
+
+	div#facts_slider div.fact_statement{
+		background-color: #fff;
+
+		p{
+			font-style:italic;
+			padding:1em;
+			padding-top: 50px; /* account for the timer */
+		}
 	}
 }
 
@@ -46,6 +80,30 @@ form#publisher{
 			clear: left;
 		}
 
+		div#statement_media_additions{
+
+		  	margin-top:1em;
+
+			ul#add_items{
+				list-style-type:none;
+
+				li{
+					position:relative;
+					float:left;
+					padding:0 1em;
+
+
+					a.selected{
+						.rounded;
+						background-color: #444;
+						padding:2px 1em;
+						color: #ccc;
+						text-shadow: 1px 1px #666;
+
+					}
+				}
+		 	}
+		}
 	}
 
 }

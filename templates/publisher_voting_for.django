@@ -15,9 +15,14 @@
             <input type="submit"  name="submit" id="publish_button" class="submit publish">
         </div>
 		<div id="statement_media_additions" class="below_float">
+			<div id="text_addition_container">
+				<label for="text_addition">Is there anything else you'd like to add?</label><textarea id="text_addition"></textarea>
+			</div>
+
 			Add:
 			<ul id="add_items">
-				<li>Image</li>
+				<li><a class="selected trigger" data-trigger="text_addition_container">Text</a></li>
+				<li><a class="trigger" data-trigger="image_addition_container">Image</a></li>
 				<li>Audio Statement</li>
 				<li>Video Statement</li>
 			</ul>
