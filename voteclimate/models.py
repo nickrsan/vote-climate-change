@@ -173,8 +173,10 @@ class publisher_form(forms.ModelForm):
 			# ok, now make it do the magic of finding a candidate by name
 			if cleaned_data['candidate']:
 				try:
+					# TODO: This should be a single candidate and in some cases, it's returning more than one
 					cleaned_data['candidate'] = utils.find_or_make_candidate(cleaned_data['candidate'],cleaned_data['user_object'])
 				except:
+					raise
 					raise exceptions.ValidationError("Problem looking up candidate. We hope this is temporary. Would you care to try again?")
 			else:
 				raise exceptions.ValidationError("No candidate provided. Who are you planning on voting for?")

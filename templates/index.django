@@ -112,10 +112,10 @@
 		</div>
 		  <!-- Right Sidebar -->
 		  <!-- On small devices this column is hidden -->
-		<aside class="four columns">
+		<aside class="four columns" id="side_bar">
 			<div class="row">
 				<div class="highlight_post"><img src="http://placehold.it/300x150&text=[highlight]" style="width:300px;height:150px;background-color: #ccc;"/></div>
-				<div class="highlight_post"><img src="http://placehold.it/300x300&text=[registerToVote]" style="width:300px;height:300px;background-color: #ccc;"/></div>
+				<div class="box_widget"><h3>Not Registered?</h3><p>TurboVote can help you get registered in time <a class="button" id="reg_button" href="https://turbovote.org/register" target="_blank">Register Now</a></span></p></div>
 				<div class="highlight_post" id="facts_slider">
 				{%  for fact in facts %}
 					<div class="fact_statement">

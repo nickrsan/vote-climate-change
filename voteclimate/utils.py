@@ -222,7 +222,6 @@ def isiterable(item):
 
 def find_or_make_candidate(candidate_name, user_object):
 	candidate_object = find_candidate(candidate_name)
-	print str(candidate_object)
 	if candidate_object is None or len(candidate_object) == 0:
 		candidate_object = make_candidate(candidate_name, user_object)
 		if candidate_object is None or len(candidate_object) == 0:

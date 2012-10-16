@@ -14,11 +14,36 @@ $(function () {
     $("#facts_slider").orbit({ fluid: '2x1' , animationSpeed:400, advanceSpeed:10000, bullets:true,directionalNav:false});
 
     set_find_electable('input#candidate');
+
+	set_addition_triggers("#add_items");
 });
 
 function publish(){
     var publisher = $("#publisher");
 }
+
+
+function trigger_action(event_target) {
+
+	var target_attribute = event_target.attr('data-trigger');
+	var target_container = $('div#' + target_attribute);
+	if (event_target.hasClass('selected') {
+		event_target.removeClass('selected');
+		target_container.slideUp();
+	} else {
+		event_target.addClass('selected');
+		target_container.slideDown();
+	}
+}
+
+function set_addition_triggers(container){
+	var trigger_items = $(container + "li a.trigger");
+	trigger_items.click(function(event){
+		trigger_action(event.target);
+		event.preventDefault();
+	});
+}
+
 
 function set_find_electable(selector){
     $( selector ).autocomplete( {
