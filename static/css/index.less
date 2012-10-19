@@ -1,50 +1,176 @@
+@the_blue: #2284A1;
+@ff_orange: #F1A446;
+@trans_back: rgba(255,255,255,.90);
+
 .rounded(@rad:4px){
   -moz-border-radius: @rad;
   -webkit-border-radius: @rad;
   border-radius: @rad;
 
+/* useful if you don't want a bg color from leaking outside the border: */
+  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
   padding:1em;
 }
 
+.rounded_bottom(@rad:4px){
+  -moz-border-bottom-left-radius: @rad;
+  -webkit-border-bottom-left-radius: @rad;
 
-#side_bar div.row{
+  -moz-border-bottom-right-radius: @rad;
+  -webkit-border-bottom-right-radius: @rad;
 
-	padding-left:1em;
-	font-style:normal;
+  border-bottom-left-radius: @rad;
+  border-bottom-right-radius: @rad;
 
-	div.box_widget{
-		.rounded(6px);
+  padding:1em;
+}
 
-		background-color: #ccc ; /*#5BAFBA*/
+.rounded_top(@rad:4px){
+  -moz-border-top-left-radius: @rad;
+  -webkit-border-top-left-radius: @rad;
 
-	  	h3{
-			margin-top:0;
-		}
+  -moz-border-top-right-radius: @rad;
+  -webkit-border-top-right-radius: @rad;
 
-		#reg_button{
-			display:block;
-			margin-left:0;
-			margin-right:auto;
+  border-top-left-radius: @rad;
+  border-top-right-radius: @rad;
 
-			cursor:hand;
-		}
+  padding:1em;
+}
+
+.gradiented(@top:#2284A1,@bottom:#10243A){
+  background-color: @top;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(@top), to(@bottom)); /* Safari 4+, Chrome */
+  background-image: -webkit-linear-gradient(top, @top, @bottom); /* Chrome 10+, Safari 5.1+, iOS 5+ */
+  background-image:    -moz-linear-gradient(top, @top, @bottom); /* Firefox 3.6-15 */
+  background-image:      -o-linear-gradient(top, @top, @bottom); /* Opera 11.10-12.00 */
+  background-image:         linear-gradient(to bottom, @top, @bottom); /* Firefox 16+, IE10, Opera 12.50+ */
+
+  box-shadow: 2px 2px 4px #333;
+}
+
+body{
+  background-image: url('/static/background_nasa_1600.jpg');
+}
+
+h1{
+	font-family: Arial,Helvetica,sans-serif;
+  	font-variant: small-caps;
+}
+
+div#content #statements, footer{
+ 	background-color: @trans_back;
+}
+
+div#content{
+	div#statements{
+		.rounded_top(8px);
 	}
 
-	div#facts_slider div.fact_statement{
-		background-color: #fff;
+	#main_body{
+	}
 
-		p{
-			font-style:italic;
-			padding:1em;
-			padding-top: 50px; /* account for the timer */
+}
+
+footer{
+	padding:1em;
+
+	.nine.columns{
+	 	 padding-left:0;
+	}
+}
+
+div.panel{
+
+  	.rounded_bottom(6px);
+
+  	border:0;
+  	padding:2em;
+  	margin-bottom:1em;
+}
+
+#side_bar{
+
+  	padding-right:0;
+
+ 	div.row{
+	   	background-color: @trans_back;
+	   	margin:0;
+	   	padding:0;
+		font-style:normal;
+
+		.columns{
+		   padding:0;
+		   margin:0;
+		}
+
+		div.box_widget{
+			/*.rounded(6px);*/
+
+		  	padding:1em;
+
+			background-color: #ccc ; /*#5BAFBA*/
+
+			h3{
+				margin-top:0;
+			}
+
+			#reg_button{
+				display:block;
+				margin-left:0;
+				margin-right:auto;
+
+				cursor:hand;
+			}
+		}
+
+		div#facts_slider div.fact_statement{
+			/*background-color: #fff;*/
+
+			left: -295px; /* start with all of them slid off because otherwise a bug
+							causes them to overlay */
+
+			p{
+				font-style:italic;
+				padding:1em;
+				padding-top: 50px; /* account for the timer */
+			}
 		}
 	}
 }
 
+span.icon_sprite{
+  background-image: url('/static/icon_sprite.png');
+  background-repeat: no-repeat;
+  height:16px;
+  width:16px;
+  display: block;
+  position:relative;
+  float:left;
+}
+.sprite-image_add{ background-position: 0 0; }
+.sprite-textfield_add{ background-position: 0 -41px;}
+
 form#publisher{
+
+	.gradiented;
+
+  	padding:.5em;
+  	.rounded(8px);
+
+  	.row{
+		margin-bottom:1em;
+	}
+
 	fieldset#statement{
+		.rounded(8px);
+	  	border:0;
+	  	padding:0 .5em;
+	  	margin: 0;
+
 		p{
 			font-size:18pt;
+		  	text-shadow: 1px 1px #555;
 		}
 
 		span.maintext{
@@ -53,15 +179,18 @@ form#publisher{
 			display: inline;
 		}
 
-		input, select{
+		input.text_input, select, textarea{
+		  	.rounded(3px);
 		  	font-size:18pt;
-			border:0;
-			border-bottom:1px solid black;
-			margin: -5px .5em 0 .5em;
+			border: 1px solid #666;
+			margin: 0 0 0 0;
 		 	background-color: #eee;
 		  	outline: 0;
-		  	padding-left: 3px;
-		  	padding-right: 3px;
+		  	padding: 5px;
+		}
+
+		input#candidate{
+		  	margin-left:1em;
 		}
 
 		select{
@@ -74,36 +203,71 @@ form#publisher{
 			display: none;
 		}
 
-		div.below_float{
-			position: relative;
-			float: left;
-			clear: left;
+		label{
+		  	color: #222;
+		  	font-weight:bold;
+		  	font-size: 1.1em;
+		}
+
+		#statement_text_row{
+		  	margin-bottom:.5em;
 		}
 
 		div#statement_media_additions{
 
 		  	margin-top:1em;
+			margin-bottom:0;
+
+		  	h6#add_head{
+				margin-top:0;
+				font-size:1.2em;
+				margin-bottom:.5em;
+			}
+
+		  	div.row#additions_row{
+				margin-bottom: 0;
+			}
 
 			ul#add_items{
 				list-style-type:none;
+			  	display:block;
+			  	text-align:center;
+			  	/*border-bottom: 2px groove #2284A1;*/
+			  	width: 100%;
 
 				li{
-					position:relative;
-					float:left;
-					padding:0 1em;
+				  	margin:0;
 
+					a{
+					  display:block;
+					  cursor:pointer;
+					  .rounded;
+					  width:100%;
+					  height: 100%;
+					}
 
 					a.selected{
-						.rounded;
-						background-color: #444;
-						padding:2px 1em;
+						background-color: rgba(50,50,50,.5);
 						color: #ccc;
 						text-shadow: 1px 1px #666;
-
 					}
 				}
+
+				li.three.columns{
+				  margin: 0;
+				}
 		 	}
+
+			div#image_addition_container{
+			  	display: none;
+			}
+
+			#image_filedrop{
+			  	border:1px solid black;
+			  	padding:1em;
+			  	margin: 1em;
+			 	background-color: #25424F;
+			}
 		}
 	}
-
 }

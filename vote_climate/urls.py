@@ -15,6 +15,7 @@ urlpatterns = patterns('',
 	url(r'^candidate/(?P<candidate_name>.+?)/$', 'voteclimate.views.candidate'),
 	url(r'^electable/find/?(?P<search_string>.+)/$', 'voteclimate.views.find_electable'),
 	url(r'^electable/find/$', 'voteclimate.views.find_electable'),
+	url(r'^rerender/all/statements/seriously/$','voteclimate.views.rerender'),
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

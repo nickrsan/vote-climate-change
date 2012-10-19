@@ -1,31 +1,69 @@
 <form action="/publish/" id="publisher" xmlns="http://www.w3.org/1999/html">
     <fieldset id="statement">
-        <p><span class="maintext">
-			<select id="support_style" name="support_style">
-				<option value="I'm voting for">I'm voting for</option>
-				<option value="I support">I support</option>
-			</select></span>
-            <span class="maintext"><label for="candidate" class="hide_label">Candidate</label> <input name="candidate" id="candidate" /><input type="hidden" name="candidate_id" id="candidate_id" /></span>
-            <span class="maintext">because <span id="gender_he">he</span> <span id="gender_or">or</span> <span id="gender_she">she</span> has taken or has promised to take action on climate change.</span>
-        </p>
-        <div class="below_float">
-            <label for="person_name">Your name</label><input name="person_name" id="person_name" />
-            <label for="state">State</label><input name="state" id="state" />
-            <input type="hidden" name="style_id" value="{{ style_id }}" />
-            <input type="submit"  name="submit" id="publish_button" class="submit publish">
+		<div class="row" id="statement_text_row">
+			<p><span class="maintext">
+				<select id="support_style" name="support_style">
+					<option value="I'm voting for">I'm voting for</option>
+					<option value="I support">I support</option>
+				</select></span>
+				<span class="maintext"><label for="candidate" class="hide_label">Candidate</label> <input name="candidate" class="text_input" id="candidate" /><input type="hidden" name="candidate_id" id="candidate_id" /></span>
+				<span class="maintext">because <span id="gender_he">he</span> <span id="gender_or">or</span> <span id="gender_she">she</span> has taken or has promised to take action on climate change.</span>
+			</p>
+		</div>
+		<div class="below_float row" style="width:100%">
+			<div class="six columns">
+				<label for="person_name">Your name</label>
+			</div>
+			<div class="six columns">
+				<label for="state">State</label>
+			</div>
+		</div>
+        <div class="below_float row">
+			<div class="six columns">
+            	<input class="text_input" name="person_name" id="person_name" />
+			</div>
+			<div class="six columns">
+				<input class="text_input"  name="state" id="state" />
+				<input type="hidden" name="style_id" value="{{ style_id }}" />
+			</div>
         </div>
-		<div id="statement_media_additions" class="below_float">
-			<div id="text_addition_container">
-				<label for="text_addition">Is there anything else you'd like to add?</label><textarea id="text_addition"></textarea>
+		<div id="statement_media_additions" class="below_float row">
+			<div class="twelve columns">
+				<div class="row" id="additions_row">
+					<div class="three columns">
+						<h6 id="add_head">Add:</h6>
+						<ul id="add_items" class="row">
+							<li><a class="selected trigger" data-trigger="text_addition_container"><span class="icon_sprite sprite-textfield_add">&nbsp;</span> Text</a></li>
+							<li><a class="trigger" data-trigger="image_addition_container"><span class="icon_sprite sprite-image_add">&nbsp;</span> Image</a></li>
+							<!--<li>Audio Statement</li>
+							<li>Video Statement</li>-->
+						</ul>
+					</div>
+					<div class="nine columns">
+						<div id="text_addition_container" class="row">
+							<div class="twelve columns">
+								<label for="text_addition">Make your statement stronger by saying something about your support</label>
+								<textarea id="text_addition"></textarea>
+							</div>
+						</div>
+						<div id="image_addition_container" class="row">
+							<div class="twelve columns">
+								<input id="image_location" name="image_location" type="hidden"/>
+								<div id="image_filedrop">
+									Upload your images here
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 
-			Add:
-			<ul id="add_items">
-				<li><a class="selected trigger" data-trigger="text_addition_container">Text</a></li>
-				<li><a class="trigger" data-trigger="image_addition_container">Image</a></li>
-				<li>Audio Statement</li>
-				<li>Video Statement</li>
-			</ul>
+		</div>
+		<div class="row">
+			<div class="twelve columns">
+				<input type="submit"  name="submit" value="Save" id="publish_button" class="submit publish button">
+			</div>
 		</div>
     </fieldset>
 </form>

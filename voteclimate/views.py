@@ -5,11 +5,12 @@ from django.shortcuts import get_object_or_404, redirect
 from django.template import Context, Template, loader, TemplateDoesNotExist, RequestContext
 from django.template.loader import render_to_string
 
+from vote_climate import settings
 import models
 import utils
 
 import simplejson
-
+import compile_less # we want to autocompile less scripts on load
 def log(msg):
 	# 	TODO: needs to be fized by the time we go live
 
@@ -23,6 +24,8 @@ except:
 
 
 def home(request):
+
+	compile_less.compile_less(dirs = settings.STATICFILES_DIRS)
 
 	# set the publisher
 	common_elements = get_common_elements()
@@ -40,6 +43,11 @@ def home(request):
 
 	# need RequestContext
 	return HttpResponse(template.render(cont))
+
+def rerender(request):
+	#utils._fix_photo_urls(r'C:\Users\Nick\workspace\voteclimate')
+	utils._rerender_statements()
+	return HttpResponse("done")
 
 def get_common_elements():
 

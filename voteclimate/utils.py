@@ -1,7 +1,10 @@
+import os
 from django.db.models import Q
+from django.template.loader import render_to_string
 
 import views
 import models
+
 import sunlight
 
 
@@ -48,10 +51,12 @@ def find_candidate(search_str,request=None):
 	return search_and_merge(search_str)
 
 def search_and_merge(name_string):
-	if len(name_string) > 4:
+
+	# commented out the searching for now because we bring in a dump and this will make it faster
+	#if len(name_string) > 4:
 		# don't search if it's too short. Waste of resources because it won't return anything
-		sunlight_data = search_sunlight(name_string)
-		new_list = match_sunlight_to_db(sunlight_data)
+	#	sunlight_data = search_sunlight(name_string)
+	#	new_list = match_sunlight_to_db(sunlight_data)
 
 	found_candidates = search_only_candidate(name_string)
 	#print "found %s candidates" % len(found_candidates)
@@ -105,7 +110,7 @@ def match_sunlight_to_db(sunlight_results, mode="search"):
 	if not isiterable(sunlight_results):
 		sunlight_results = [sunlight_results] # make it iterable to use the next block
 
-	missing_keys = ('firstname','webform','district','senate_class','gender','lastname','state','party','nimsp_candidate_id','votesmart_id','govtrack_id','crp_id','fec_id')
+	missing_keys = ('firstname','webform','bioguide_id','district','senate_class','gender','lastname','state','party','nimsp_candidate_id','votesmart_id','govtrack_id','crp_id','fec_id')
 	for legislator in sunlight_results:
 		if mode == "search": # from the searches, we get it back as a subkey - otherwise, it's just there in each item
 			legislator = legislator['legislator'] # need to get the subkey and overwrite - it's a subdictionary
@@ -131,6 +136,7 @@ def match_sunlight_to_db(sunlight_results, mode="search"):
 				party = legislator['party'],
 			    gender = legislator['gender'],
 
+				bioguide_id = legislator['bioguide_id'],
 				fec_id = legislator['fec_id'],
 				crp_id = legislator['crp_id'],
 				votesmart_id = legislator['votesmart_id'],
@@ -164,7 +170,7 @@ def match_openstates_to_db(results):
 
 	return_candidates =[]
 
-	missing_keys = ('level','url','photo_url','party','nimsp_candidate_id','votesmart_id','leg_id','transparencydata_id',)
+	missing_keys = ('level','url','bioguide_id','photo_url','party','nimsp_candidate_id','votesmart_id','leg_id','transparencydata_id',)
 
 	for legislator in results:
 		# check the following keys to make sure they are defined, even if None
@@ -194,6 +200,7 @@ def match_openstates_to_db(results):
 				webform_url = legislator['url'],
 				party = party,
 
+				bioguide_id = legislator['bioguide_id'],
 				nimsp_id = legislator['nimsp_candidate_id'],
 				leg_id = legislator['leg_id'],
 				votesmart_id = legislator['votesmart_id'],
@@ -243,3 +250,21 @@ def find_or_make_user(user_name,user_ip,user_state):
 		new_user.save()
 
 	return new_user
+
+def _fix_photo_urls(base_folder):
+	candidates = models.candidate.objects.all()
+	photo_folder = os.path.join(base_folder,"static","img","congress","100x125")
+	for candidate in candidates:
+		photo_loc = os.path.join(photo_folder,"%s.jpg" % candidate.bioguide_id)
+		if candidate.bioguide_id and os.path.exists(photo_loc):
+			candidate.photo_url = "/static/img/congress/100x125/%s.jpg" % candidate.bioguide_id
+			candidate.save()
+		else:
+			candidate.photo_url = "/static/img/congress/100x125/null.jpg"
+			candidate.save()
+
+def _rerender_statements():
+	statements = models.statement.objects.all()
+	for statement in statements:
+		statement.rendered_text = render_to_string(statement.style.output_template, {'statement':statement})
+		statement.save()

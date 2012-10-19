@@ -1,3 +1,5 @@
+import os
+wd = os.getcwd()
 import models
 import utils
 
@@ -138,6 +140,10 @@ def seed():
 	"""
 	utils._load_congress()
 	utils._load_openstates()
+
+	print "Loading photos"
+	utils._fix_photo_urls(wd)
+
 
 if __name__ == "__main__":
 	seed()

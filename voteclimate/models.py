@@ -36,6 +36,7 @@ class candidate(models.Model):
 	level = models.CharField(max_length=50, null=True)
 
 	# the following are for matching searches
+	bioguide_id = models.CharField(max_length=50,null=True)
 	fec_id = models.CharField(max_length=50, null=True)
 	crp_id = models.CharField(max_length=50, null=True)
 	votesmart_id = models.CharField(max_length=50, null=True)
