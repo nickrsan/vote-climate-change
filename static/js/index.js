@@ -11,33 +11,52 @@ $(function () {
         event.preventDefault();
     });
 
-    $("#facts_slider").orbit({ fluid: '2x1' , animationSpeed:400, advanceSpeed:10000, bullets:true,directionalNav:false});
-
+	var slider = $("#facts_slider")
+	slider.orbit({ fluid: '2x1', animationSpeed: 400, advanceSpeed: 10000, bullets:true,directionalNav:false});
+	slider.children("div.fact_statement").first().css("left", 0); // bring the first fact back into view
     set_find_electable('input#candidate');
 
 	set_addition_triggers("#add_items");
+
+	$.backstretch('/static/background_nasa_1600.jpg')
+	set_file_drop()
 });
 
 function publish(){
     var publisher = $("#publisher");
 }
 
+function set_file_drop(){
+	// Tell FileDrop we can deal with iframe uploads using this URL:
+	var options = {iframe: {url: '/upload/image'}};
+	// Attach FileDrop to an area:
+	var zone = new FileDrop('#image_filedrop', options);
+
+	// Do something when a user chooses or drops a file:
+	zone.on.send.push(function (files) {
+		// if browser supports files[] will contain multiple items.
+		for (var i = 0; i < files.length; i++) {
+			files[i].SendTo('/upload/image');
+		}
+	});
+}
+
 
 function trigger_action(event_target) {
 
-	var target_attribute = event_target.attr('data-trigger');
+	var target_attribute = $(event_target).attr('data-trigger');
 	var target_container = $('div#' + target_attribute);
-	if (event_target.hasClass('selected') {
-		event_target.removeClass('selected');
+	if ($(event_target).hasClass('selected')) {
+		$(event_target).removeClass('selected');
 		target_container.slideUp();
 	} else {
-		event_target.addClass('selected');
+		$(event_target).addClass('selected');
 		target_container.slideDown();
 	}
 }
 
 function set_addition_triggers(container){
-	var trigger_items = $(container + "li a.trigger");
+	var trigger_items = $(container + " li a.trigger");
 	trigger_items.click(function(event){
 		trigger_action(event.target);
 		event.preventDefault();

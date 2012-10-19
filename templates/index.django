@@ -19,6 +19,7 @@
   -->
   
   <!-- Included CSS Files (Compressed) -->
+  <link href='http://fonts.googleapis.com/css?family=Archivo+Black' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="/static/css/foundation.min.css">
   <link rel="stylesheet" href="/static/css/app.css">
   <link rel="stylesheet" href="/static/css/jui-start/jquery-ui-1.8.24.custom.css">
@@ -28,105 +29,62 @@
 <body>
   
   <!-- Header and Nav -->
-<div class="row">
-	<div class="eight columns">
+<div class="row" id="content">
+	<div class="eight columns" id="main_body">
 		<div class="row">
 			<div class="panel">
 				<h1>{{ title }}</h1>
+				{%  block pageheader %}
+					<h2>{{ pagetitle }}</h2>
+				{%  endblock %}
 			</div>
 		</div>
-		<div class="row">
 
 		<!-- Main Feed -->
 		<!-- This has been source ordered to come first in the markup (and on small devices) but to be to the right of the nav on larger screens -->
-
-		{%  block pageheader %}
-			<h2>{{ pagetitle }}</h2>
-		{%  endblock %}
-
-		{% if alert_msg %}
-			<div class="alert-box">
-				{{ alert_msg }}
-			</div>
-		{% endif %}
-		{%  if publisher %}
-			{% include publisher %}
-		{% endif %}
-
-		{% if statements %}
-			<h3>Recent Pledges</h3>
-			{%  for statement in statements %} <!-- TODO Make output correct -->
-				{{ statement.rendered_text|safe }}
-				{%  comment %}
-					{%  include "template_voting_for.django_include" %}
-				{%  endcomment %}
-			{% endfor %}
-		{%  endif %}
-			<!-- Feed Entry -->
-			<!--  <div class="row">
-				<div class="two columns mobile-one"><img src="http://placehold.it/80x80&text=[img]" /></div>
-				<div class="ten columns">
-					<p><strong>Some Person said:</strong> Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong.</p>
-					<ul class="link-list">
-						<li><a href="">Reply</a></li>
-						<li><a href="">Share</a></li>
-					</ul>
-
-
-					<h6>2 Comments</h6>
-					<div class="row">
-						<div class="two columns mobile-one"><img src="http://placehold.it/50x50&text=[img]" /></div>
-						<div class="ten columns"><p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit</p></div>
-					</div>
-					<div class="row">
-						<div class="two columns mobile-one"><img src="http://placehold.it/50x50&text=[img]" /></div>
-						<div class="ten columns"><p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit</p></div>
-					</div>
+		<div class="row">
+			{% if alert_msg %}
+				<div class="alert-box">
+					{{ alert_msg }}
 				</div>
-			  </div> -->
-			  <!-- End Feed Entry -->
-
-			  <hr />
-
-			  <!-- Feed Entry -->
-			  <!--<div class="row">
-				<div class="two columns mobile-one"><img src="http://placehold.it/80x80&text=[img]" /></div>
-				<div class="ten columns">
-				  <p><strong>Some Person said:</strong> Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong.</p>
-				  <ul class="link-list">
-					<li><a href="">Reply</a></li>
-					<li><a href="">Share</a></li>
-				  </ul>
-
-
-				  <h6>2 Comments</h6>
-				  <div class="row">
-					<div class="two columns mobile-one"><img src="http://placehold.it/50x50&text=[img]" /></div>
-					<div class="ten columns"><p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit</p></div>
-				  </div>
-				</div>
-			  </div>-->
-			  <!-- End Feed Entry -->
-
-			</div>
+			{% endif %}
+			{%  if publisher %}
+				{% include publisher %}
+			{% endif %}
 		</div>
+
+		<div class="row" id="statements">
+			{% if statements %}
+				<h3>Recent Pledges</h3>
+				{%  for statement in statements %} <!-- TODO Make output correct -->
+					{{ statement.rendered_text|safe }}
+					{%  comment %}
+						{%  include "template_voting_for.django_include" %}
+					{%  endcomment %}
+				{% endfor %}
+			{%  endif %}
+		</div>
+	</div>
+
+
 		  <!-- Right Sidebar -->
 		  <!-- On small devices this column is hidden -->
-		<aside class="four columns" id="side_bar">
-			<div class="row">
-				<div class="highlight_post"><img src="http://placehold.it/300x150&text=[highlight]" style="width:300px;height:150px;background-color: #ccc;"/></div>
-				<div class="box_widget"><h3>Not Registered?</h3><p>TurboVote can help you get registered in time <a class="button" id="reg_button" href="https://turbovote.org/register" target="_blank">Register Now</a></span></p></div>
-				<div class="highlight_post" id="facts_slider">
-				{%  for fact in facts %}
-					<div class="fact_statement">
-						<p>{{ fact.statement }} - <a href="{{fact.source}}" class="offsite" target="_blank">{{ fact.source_name }}</a></p>
-					</div>
-				{%  endfor %}
+	<aside class="four columns" id="side_bar">
+		<div class="row">
+			<div class="twelve columns">
+			<div class="highlight_post"><img src="http://placehold.it/300x150&text=[highlight]" style="width:300px;height:150px;background-color: #ccc;"/></div>
+			<div class="box_widget"><h3>Not Registered?</h3><p>TurboVote can help you get registered in time <a class="button" id="reg_button" href="https://turbovote.org/register" target="_blank">Register Now</a></span></p></div>
+			<div class="highlight_post" id="facts_slider">
+			{%  for fact in facts %}
+				<div class="fact_statement">
+					<p>{{ fact.statement }} - <a href="{{fact.source}}" class="offsite" target="_blank">{{ fact.source_name }}</a></p>
 				</div>
-				<div class="highlight_post"><img src="http://placehold.it/300x300&text=[highlight]" style="width:300px;height:300px;background-color: #ccc;"/></div>
+			{%  endfor %}
 			</div>
-		</aside>
-	</div> <!-- class="eight columns" -->
+			<div class="highlight_post"><img src="http://placehold.it/300x150&text=[num_pledges]" style="width:300px;height:150px;background-color: #ccc;"/></div>
+			<div class="highlight_post"><img src="http://placehold.it/300x300&text=[highlight]" style="width:300px;height:300px;background-color: #ccc;"/></div>
+		</div></div>
+	</aside>
 </div> <!-- class="row" -->
   <!--<div class="row">-->
 
@@ -136,7 +94,7 @@
       <div class="panel">
         <a href="#"><img src="http://placehold.it/300x240&text=[img]" /></a>
         <h5><a href="#">Your Name</a></h5>
-        
+
         <dl class="vertical tabs">
           <dd><a href="#">Section 1</a></dd>
           <dd><a href="#">Section 2</a></dd>
@@ -145,35 +103,26 @@
           <dd><a href="#">Section 5</a></dd>
           <dd><a href="#">Section 6</a></dd>
         </dl>
-        
+
       </div>
     </div>
-    
+
   </div> -->
-    
+
   
   <!-- Footer -->
   
-  <footer class="row">
-    <div class="twelve columns">
-      <hr />
-      <div class="row">
-        <div class="six columns">
-          <p>&copy; Copyright 2012 Nick Santos</p>
-        </div>
-        <div class="six columns">
-          <ul class="link-list right">
-            <li><a href="#">Section 1</a></li>
-            <li><a href="#">Section 2</a></li>
-            <li><a href="#">Section 3</a></li>
-            <li><a href="#">Section 4</a></li>
-            <li><a href="#">Section 5</a></li>
-            <li><a href="#">Section 6</a></li>
-          </ul>
-        </div>
-      </div>
-    </div> 
-  </footer>
+<footer class="row">
+	<div class="nine columns">
+	  <p>&copy; Copyright 2012 <a href="http://nicksantos.com" target="_blank">Nick Santos</a>. Vote Climate Change is a joint project with <a href="http://rooseveltpipeline.org" target="_blank">Roosevelt Institute: Pipeline</a>.<br/>
+		  Background image: <a href="http://www.nasa.gov/multimedia/imagegallery/image_feature_2377.html" target="_blank">NASA/GSFC/Jeff Schmaltz/MODIS Land Rapid Response Team</a></p>
+	</div>
+	<div class="three columns">
+	  <ul class="link-list right">
+		<li><a href="#">Section 1</a></li>
+	  </ul>
+	</div>
+</footer>
 
   <!-- Included JS Files (Uncompressed) -->
   <!--
@@ -205,10 +154,12 @@
 
   <script src="/static/js/jquery.placeholder.js"></script>
   <script src="/static/js/jquery.foundation.orbit.js"></script>
+  <script src="/static/js/jquery.backstretch.min.js"></script>
   <!-- Initialize JS Plugins -->
   <script src="/static/js/app.js"></script>
   <script src="/static/js/jquery-ui-1.8.24.custom.min.js"></script>
 
+  <script src="/static/js/filedrop.min.js"></script>
   <script src="/static/js/index.js"></script>
 </body>
 </html>

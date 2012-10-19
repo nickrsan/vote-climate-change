@@ -1,6 +1,11 @@
 <!-- Feed Entry -->
 <div class="row" xmlns="http://www.w3.org/1999/html">
-	<div class="two columns mobile-one"><img src="http://placehold.it/80x80&text=[img]" /></div>
+	<div class="two columns mobile-one">
+	{% if statement.candidate.photo_url %}
+		<img src="{{ statement.candidate.photo_url }}" width="100"/></div>
+	{%  else %}
+		<img src="http://placehold.it/80x80&text=[img]" /></div>
+	{% endif %}
 	<div class="ten columns">
         <p>{{ statement.support_style }} <a href="/candidate/{{ statement.candidate.name }}">{{ statement.candidate.name }}</a> because
             {% if statement.candidate.gender and statement.candidate.gender == "M" %}
