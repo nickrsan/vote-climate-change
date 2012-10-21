@@ -4,7 +4,7 @@ def compile_less(dirs = None, node = "node", lessc = None):
 	for l_dir in dirs:
 		if os.path.exists(l_dir):
 			if (lessc is None) or (not os.path.exists(lessc)):
-				lessc = os.path.join(l_dir,"..","utils","less","bin","lessc") # set the default less location to a subfolder of the directory here
+				lessc = os.path.join(l_dir,"..","..","utils","less","bin","lessc") # set the default less location to a subfolder of the directory here
 				if not os.path.exists(lessc):
 					raise BaseException("No lessc at %s" % lessc) # this won't handle if lessc is in the path
 			for root, dirs, files in os.walk(l_dir): # for every file in every subdirectory of this folder

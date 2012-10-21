@@ -133,8 +133,9 @@ def add_statement(request):
 			candidate = statement_form.cleaned_data['candidate'],
 			user = new_user,
 			style = added_style,
+			extra_text = statement_form.cleaned_data['extra_text'],
+			support_style = statement_form.cleaned_data['support_style'],
 		)
-		new_statement.support_style = statement_form.cleaned_data['support_style']
 		new_statement.rendered_text = render_to_string(added_style.output_template, {'statement':new_statement})
 		new_statement.save()
 	else:

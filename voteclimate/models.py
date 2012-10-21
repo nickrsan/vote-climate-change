@@ -142,6 +142,7 @@ class publisher_form(forms.ModelForm):
 	person_name = forms.CharField()
 	state = forms.CharField()
 	style_id = forms.IntegerField(widget=forms.HiddenInput())
+	extra_text = forms.CharField(widget=forms.Textarea(),required=False)
 	candidate = forms.CharField()
 	candidate_id = forms.IntegerField(widget=forms.HiddenInput(),required=False)
 	#support_style = forms.ChoiceField()

@@ -43,7 +43,7 @@
 						<div id="text_addition_container" class="row">
 							<div class="twelve columns">
 								<label for="text_addition">Make your statement stronger by saying something about your support</label>
-								<textarea id="text_addition"></textarea>
+								<textarea id="text_addition" name="extra_text"></textarea>
 							</div>
 						</div>
 						<div id="image_addition_container" class="row">

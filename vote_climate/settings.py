@@ -70,6 +70,7 @@ MEDIA_URL = '/static/media/'
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
 static_main = os.path.join(_current_dir,"static")
+static_server = os.path.join(_current_dir,"public","static")
 static_collected = os.path.join(_current_dir,"static","collected")
 STATIC_ROOT = static_collected
 
@@ -79,6 +80,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
+	static_server,
 	static_main,
     media_folder,
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
@@ -120,8 +122,10 @@ ROOT_URLCONF = 'vote_climate.urls'
 WSGI_APPLICATION = 'vote_climate.wsgi.application'
 
 templates_dir = os.path.join(_current_dir,'templates')
-TEMPLATE_DIRS = ('C:/Users/Nick/Eclipse/workspace-main/voteclimate/vote_climate/templates',
-   templates_dir)
+TEMPLATE_DIRS = (
+	templates_dir,
+	'C:/Users/Nick/Eclipse/workspace-main/voteclimate/vote_climate/templates',
+)
 
 INSTALLED_APPS = (
     'django.contrib.auth',
