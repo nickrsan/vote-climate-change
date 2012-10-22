@@ -27,7 +27,7 @@ class style(models.Model):
 class candidate(models.Model):
 	name = models.CharField(max_length=255)
 	state = models.ForeignKey(state,null=True)
-	district = models.CharField(max_length=5,null=True)
+	district = models.CharField(max_length=50,null=True)
 	gender = models.CharField(max_length=5,null=True)
 	senate_class = models.CharField(max_length=5,null=True)
 	webform_url = models.URLField(null=True)
