@@ -253,7 +253,7 @@ def find_or_make_user(user_name,user_ip,user_state):
 
 def _fix_photo_urls(base_folder):
 	candidates = models.candidate.objects.all()
-	photo_folder = os.path.join(base_folder,"static","img","congress","100x125")
+	photo_folder = os.path.join(base_folder,"public","static","img","congress","100x125")
 	for candidate in candidates:
 		photo_loc = os.path.join(photo_folder,"%s.jpg" % candidate.bioguide_id)
 		if candidate.bioguide_id and os.path.exists(photo_loc):

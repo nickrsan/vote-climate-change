@@ -101,6 +101,13 @@ def error(request,error_string):
 
 	return HttpResponse(template.render(cont))
 
+def fix_photos(request):
+
+	utils._fix_photo_urls('/home/voteclimatechange/voteclimatechange.com')
+
+	return HttpResponse("done")
+
+
 def add_statement(request):
 
 	data = None
