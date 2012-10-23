@@ -20,8 +20,6 @@ $(function () {
 
 	$.backstretch('/static/background_nasa_1600.jpg')
 	set_file_drop();
-
-    set_qatab();
 });
 
 function publish(){
@@ -32,7 +30,7 @@ function set_file_drop(){
 	// Tell FileDrop we can deal with iframe uploads using this URL:
 	var options = {iframe: {url: '/upload/image'}};
 	// Attach FileDrop to an area:
-	var zone = new FileDrop('#image_filedrop', options);
+	var zone = new FileDrop('image_filedrop', options);
 
 	// Do something when a user chooses or drops a file:
 	zone.on.send.push(function (files) {
@@ -154,11 +152,5 @@ function change_gender(gender){
 		$(female_selector).fadeIn(fade_time);
 		$(male_selector).fadeIn(fade_time);
 	}
-}
-
-function set_qatab(){
-    (function(d,t,l){var q=d.createElement(t),s=d.getElementsByTagName(t)[0];q.async=1;
-        q.src="https://secure.qatab.com/tab/load/50868c2ee779899747000012.js?d="+l.hostname;
-        s.parentNode.insertBefore(q,s);}(document,"script",location));
 }
 

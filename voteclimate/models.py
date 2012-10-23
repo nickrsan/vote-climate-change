@@ -184,7 +184,7 @@ class publisher_form(forms.ModelForm):
 				raise exceptions.ValidationError("No candidate provided. Who are you planning on voting for?")
 
 		if utils.isiterable(cleaned_data['candidate']):
-			print "iterable!"
+			# if it would result in multiple candidates, just take the first
 			cleaned_data['candidate'] = cleaned_data['candidate'][0]
 
 		return cleaned_data
