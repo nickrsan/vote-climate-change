@@ -97,9 +97,13 @@ function set_find_electable(selector){
 
             $("input#candidate_id").val(ui.item.cand_id);
 
-            //if(!(typeof ui.item.state === 'undefined')){
-            $("input#state").val(ui.item.state_abbrev);
-            //}
+            var state_field = $("input#state");
+            var state_val = state_field.val()
+            var support_type = $("select#support_style");
+            if((state_val === undefined || state_val === '')
+                && support_type.val() === "I'm voting for"){
+                state_field.val(ui.item.state_abbrev);
+            }
         }
     }).data( "autocomplete" )._renderItem = function( ul, item ) {
         return $( "<li>" )
