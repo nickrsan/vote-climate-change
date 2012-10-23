@@ -19,7 +19,9 @@ $(function () {
 	set_addition_triggers("#add_items");
 
 	$.backstretch('/static/background_nasa_1600.jpg')
-	set_file_drop()
+	set_file_drop();
+
+    set_qatab();
 });
 
 function publish(){
@@ -154,4 +156,9 @@ function change_gender(gender){
 	}
 }
 
+function set_qatab(){
+    (function(d,t,l){var q=d.createElement(t),s=d.getElementsByTagName(t)[0];q.async=1;
+        q.src="https://secure.qatab.com/tab/load/50868c2ee779899747000012.js?d="+l.hostname;
+        s.parentNode.insertBefore(q,s);}(document,"script",location));
+}
 
