@@ -1,7 +1,7 @@
 # Create your views here.
 
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect, render_to_response
 from django.template import Context, Template, loader, TemplateDoesNotExist, RequestContext
 from django.template.loader import render_to_string
 
@@ -182,3 +182,16 @@ def find_electable(request, search_string= None):
 	#	cont = RequestContext(request,{'title':"Find Patient - searched '%s'" % search_string,'patients': found_patients})
 
 	#	return HttpResponse(template.render(cont))
+
+
+def upload_image(request):
+	if request.method == 'POST':
+		form = models.ImageUploadForm(request.POST, request.FILES)
+		if form.is_valid():
+			id = save_img(request.FILES['file'])
+			return HttpResponse(id)
+			#return HttpResponseRedirect('/success/url/')
+	else:
+		pass
+		form = models.ImageUploadForm()
+	return render_to_response('upload.html', {'form': form})
