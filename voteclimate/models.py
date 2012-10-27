@@ -123,6 +123,9 @@ class random_manager(models.Manager):
 	"""
 	pass
 
+class ImageUploadForm(forms.Form):
+	file  = forms.FileField()
+
 class publisher_form(forms.ModelForm):
 	# TODO: make the actual publisher form use these
 	# TODO: Add Honeypot
