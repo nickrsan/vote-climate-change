@@ -18,7 +18,7 @@ $(function () {
 
 	set_addition_triggers("#add_items");
 
-	$.backstretch('/static/background_nasa_1600.jpg')
+	$.backstretch('/static/background_nasa_1600_black50_blur.jpg')
 	set_file_drop();
 });
 
@@ -27,18 +27,25 @@ function publish(){
 }
 
 function set_file_drop(){
+    var url = '/upload/image/';
+    var fdid = 'image_filedrop';
 	// Tell FileDrop we can deal with iframe uploads using this URL:
-	var options = {iframe: {url: '/upload/image'}};
+	var options = {iframe: {url: url},dragOverClass:'drag_enter'};
 	// Attach FileDrop to an area:
-	var zone = new FileDrop('image_filedrop', options);
+	var zone = new FileDrop(fdid, options);
 
 	// Do something when a user chooses or drops a file:
 	zone.on.send.push(function (files) {
 		// if browser supports files[] will contain multiple items.
 		for (var i = 0; i < files.length; i++) {
-			files[i].SendTo('/upload/image');
+			files[i].SendTo(url);
 		}
 	});
+
+    zone.on[fileSetup].push(function(file){
+        $('#' + fdid).append('<p>'+ file.filename + '</p>');//<img src="' + file.nativeFile + '">');
+    });
+
 }
 
 

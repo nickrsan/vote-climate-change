@@ -50,7 +50,7 @@
 							<div class="twelve columns">
 								<input id="image_location" name="image_location" type="hidden"/>
 								<div id="image_filedrop">
-									Upload your images here
+									Drag and drop up an image here to include it
 
 								</div>
 							</div>
