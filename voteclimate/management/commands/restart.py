@@ -11,4 +11,4 @@ class Command(BaseCommand):
 
 	def handle(self, *args, **options):
 		subprocess.call(['bash','/home/voteclimatechange/voteclimatechange.com/restart.sh'])
-		self.stdout.write("Ran shell script - passenger set to restart\nThis command does not check that the file was successfully touched, so if you must be sure, check ./tmp/restart.txt")
+		self.stdout.write("Ran shell script - passenger set to restart\nThis command does not check that the file was successfully touched, so if you must be sure, check ./tmp/restart.txt\n")

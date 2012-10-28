@@ -63,7 +63,8 @@ def candidate(request,candidate_id=None,candidate_name = None, state = None):
 	possible_candidates = []
 	if candidate_id:
 		print candidate_id
-		single_candidate = models.candidate.objects.filter(pk=candidate_id)
+		single_candidate = models.candidate.objects.get(pk=candidate_id)
+		candidate_name = single_candidate.name
 	else:
 		if state is None:
 			possible_candidates = models.candidate.objects.filter(name__iexact = candidate_name)
@@ -94,6 +95,10 @@ def candidate(request,candidate_id=None,candidate_name = None, state = None):
 		for a_candidate in possible_candidates:
 			# TODO: This area doesn't work like it was intended to - it was meant to print headers for multiple candidates and put out their statements
 			candidate_statements = models.statement.objects.filter(candidate = a_candidate)
+			if state:
+				page_title = "%s (%s)" % (a_candidate.name,state)
+			else:
+				page_title = a_candidate.name
 			cont = RequestContext(request,{'title':"Vote Climate Change",
 										   'pagetitle':page_title,
 										   'statements': candidate_statements
