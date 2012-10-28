@@ -5,32 +5,54 @@
  * Time: 10:04 PM
  */
 
+var form_container = "form#publisher";
+
 $(function () {
     $("#publish_button").click(function (target, event) {
         publish();
         event.preventDefault();
     });
 
-	var slider = $("#facts_slider")
-	slider.orbit({ fluid: '2x1', animationSpeed: 400, advanceSpeed: 10000, bullets:true,directionalNav:false});
+	var slider = $("#facts_slider");
+	slider.orbit({ fluid: '2x1', animationSpeed: 400, advanceSpeed: 10000, bullets: true, directionalNav: false});
 	slider.children("div.fact_statement").first().css("left", 0); // bring the first fact back into view
     set_find_electable('input#candidate');
 
 	set_addition_triggers("#add_items");
 
-	$.backstretch('/static/background_nasa_1600_black50_blur.jpg')
+	set_ajax_submit(form_container);
+
+	$.backstretch('/static/background_nasa_1600_black50_blur.jpg');
 	set_file_drop();
+
+	$( "div#action_box" ).dialog({
+		modal: true,
+		autoOpen: false,
+		buttons: {
+			Close: function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	});
 });
 
-$(window).load(function(){
-	$('p').syncHeight();
+$(window).load(function () {
+	//$('p').syncHeight();
 });
 
-function publish(){
-    var publisher = $("#publisher");
+function set_ajax_submit(form_container){
+	var submit_obj = $(form_container + " input#publish_button");
+
+	submit_obj.click(
+		function(event){
+			event.preventDefault();
+			submit_statement(form_container);
+		}
+	)
+
 }
 
-function set_file_drop(){
+function set_file_drop() {
     var url = '/upload/image/';
     var fdid = 'image_filedrop';
 	// Tell FileDrop we can deal with iframe uploads using this URL:
@@ -51,7 +73,6 @@ function set_file_drop(){
     });
 
 }
-
 
 function trigger_action(event_target) {
 
@@ -74,6 +95,28 @@ function set_addition_triggers(container){
 	});
 }
 
+function submit_statement(form_container){
+	var url = '/publish/';
+	var success_func = submit_success;
+	$.ajax({
+		type: 'POST',
+		url: url,
+		data: $(form_container).serialize(),
+		success: submit_success,
+		dataType: 'text',
+		error: submit_error
+	});
+}
+
+function submit_error(){
+
+}
+
+function submit_success(data, textStatus, jqXHR){
+	if (data === "success") {
+		$( "#action_box").dialog("open");
+	}
+}
 
 function set_find_electable(selector){
     $( selector ).autocomplete( {

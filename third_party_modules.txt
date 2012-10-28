@@ -1,3 +1,4 @@
 simplejson
 sunlight
 PIL
+django-pipeline

@@ -7,7 +7,7 @@
 					<option value="I support">I support</option>
 				</select></span>
 				<span class="maintext"><label for="candidate" class="hide_label">Candidate</label> <input name="candidate" class="text_input" id="candidate" /><input type="hidden" name="candidate_id" id="candidate_id" /></span>
-				<span class="maintext">because <span id="gender_he">he</span> <span id="gender_or">or</span> <span id="gender_she">she</span> has taken or has promised to take action on climate change.</span>
+				<span class="maintext">because <span id="gender_he">he</span>&nbsp;<span id="gender_or">or</span>&nbsp;<span id="gender_she">she</span>&nbsp;has taken or has promised to take action on climate change.</span>
 			</p>
 		</div>
 		<div class="below_float row" style="width:100%">

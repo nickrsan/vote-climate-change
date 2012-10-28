@@ -124,9 +124,7 @@ def fix_photos(request):
 def add_statement(request):
 
 	data = None
-	if request.is_ajax():
-		#TODO Make this part work
-		pass
+
 	if request.POST:
 		data = request.POST
 	elif request.GET:
@@ -165,7 +163,10 @@ def add_statement(request):
 			print error
 		return HttpResponse(statement_form.errors['__all__'])
 
-	return redirect("/")
+	if request.is_ajax():
+		return HttpResponse("success")
+	else:
+		return redirect("/?show_confirm=True")
 
 def render_statement_to_json(statement,style):
 	html = render_to_string(style.output_template, statement)

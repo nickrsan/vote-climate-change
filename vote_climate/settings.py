@@ -89,6 +89,8 @@ STATICFILES_FINDERS = (
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '2wa@&amp;pzg%bst+3nb)^h^-*w)u7$q4%*y@qbvgn_s0(b4l((8jd'
 
@@ -108,6 +110,7 @@ MIDDLEWARE_CLASSES = (
 	'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+	'pipeline.middleware.MinifyHTMLMiddleware',
 )
 
 ROOT_URLCONF = 'vote_climate.urls'
@@ -134,6 +137,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'voteclimate',
 	'django.contrib.flatpages',
+	'pipeline',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -166,3 +170,41 @@ LOGGING = {
 }
 
 SITE_NAME = "Vote Climate Change"
+
+PIPELINE = True
+
+PIPELINE_CSS = {
+	'index': {
+		'source_filenames': (
+			'public/static/css/foundation.min.css',
+			'public/static/css/app.css',
+			'public/static/css/jui-start/jquery-ui-1.8.24.custom.css',
+			'public/static/css/index_base.css',
+			),
+		'output_filename': 'css/index.css',
+		'extra_context': {
+			'media': 'screen,projection',
+			},
+		},
+	}
+
+PIPELINE_JS = {
+	'index': {
+		'source_filenames': (
+			'public/static/js/modernizr.foundation.js',
+			'public/static/js/jquery-1.8.2.min.js',
+			'public/static/js/jquery.placeholder.js',
+			'public/static/js/jquery.foundation.orbit.js',
+			'public/static/js/jquery.backstretch.min.js',
+			'public/static/js/app.js',
+			'public/static/js/jquery-ui-1.8.24.custom.min.js',
+			'public/static/js/filedrop-min.js',
+			'public/static/js/index_base.js',
+
+			),
+		'output_filename': 'js/index.js',
+		}
+}
+
+PIPELINE_CSS_COMPRESSOR = 'pipeline.compressors.yui.YUICompressor'
+PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.yui.YUICompressor'
