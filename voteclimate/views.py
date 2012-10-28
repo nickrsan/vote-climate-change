@@ -36,7 +36,6 @@ def home(request):
 	cont = RequestContext(request,{'title':"Vote Climate Change",
 								   'publisher':common_elements['publisher'].publisher,
 								   'style_id':common_elements['publisher'].id,
-								   'facts':common_elements['facts'],
 								   'statements':statements,
 								   'pagetitle':"Climate Solutions Win Votes",
 								   })
@@ -53,7 +52,6 @@ def get_common_elements():
 
 	common_elements = {}
 	common_elements['publisher'] = models.style.objects.get(name="voting_for")
-	common_elements['facts'] = models.fact.objects.all()[:8]
 	return common_elements
 
 def candidate(request,candidate_name = None, state = None):

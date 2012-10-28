@@ -1,0 +1,7 @@
+<div class="highlight_post" id="facts_slider">
+	{%  for fact in facts %}
+		<div class="fact_statement">
+			<p>{{ fact.statement }} - <a href="{{fact.source}}" class="offsite" target="_blank">{{ fact.source_name }}</a></p>
+		</div>
+	{%  endfor %}
+</div>

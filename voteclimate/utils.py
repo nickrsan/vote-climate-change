@@ -1,6 +1,7 @@
 import os
 from django.db.models import Q
 from django.template.loader import render_to_string
+from django.contrib.flatpages.models import FlatPage
 
 import views
 import models
@@ -268,3 +269,22 @@ def _rerender_statements():
 	for statement in statements:
 		statement.rendered_text = render_to_string(statement.style.output_template, {'statement':statement})
 		statement.save()
+
+def make_acknowledgements_page():
+	ack_page = FlatPage(title="Acknowledgements")
+	ack_page.url = '/acknowledgements/'
+	ack_page.template_name = 'flat_page.django'
+	ack_page.enable_comments = False
+	ack_page.registration_required = False
+	ack_page.content = """
+		We would like to acknowledge the following:
+
+	"""
+	ack_page.save()
+	ack_page.sites = (1,)
+	ack_page.save()
+
+def remove_acknowledgements_page(url="/acknowledgements/"):
+	ack_pages = FlatPage.objects.filter(url=url)
+	for page in ack_pages:
+		page.delete()

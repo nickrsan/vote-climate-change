@@ -16,8 +16,8 @@ urlpatterns = patterns('',
 	url(r'^electable/find/?(?P<search_string>.+)/$', 'voteclimate.views.find_electable'),
 	url(r'^electable/find/$', 'voteclimate.views.find_electable'),
 	url(r'^upload/image/$', 'voteclimate.views.upload_image'),
-	url(r'^rerender/all/statements/seriously/$','voteclimate.views.rerender'),
-	url(r'^fix/all/photos/seriously/$','voteclimate.views.fix_photos'),
+	#url(r'^rerender/all/statements/seriously/$','voteclimate.views.rerender'),
+	#url(r'^fix/all/photos/seriously/$','voteclimate.views.fix_photos'),
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

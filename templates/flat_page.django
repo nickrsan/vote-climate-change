@@ -1,0 +1,14 @@
+{% extends "index.django" %}
+{% load inclusion_tags %}
+
+{%  block title %}
+	<h1>{%  global_var 'SITE_NAME' %}</h1>
+{%  endblock %}
+
+{%  block pageheader %}
+	<h2>{{ flatpage.title }}</h2>
+{%  endblock %}
+
+{%  block other_content %}
+	{{ flatpage.content }}
+{%  endblock %}
