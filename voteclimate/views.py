@@ -141,6 +141,7 @@ def add_statement(request):
 			extra_text = statement_form.cleaned_data['extra_text'],
 			support_style = statement_form.cleaned_data['support_style'],
 		)
+		new_statement.save() # need to save before rendering or the id will be missing
 		new_statement.rendered_text = render_to_string(added_style.output_template, {'statement':new_statement})
 		new_statement.save()
 	else:
