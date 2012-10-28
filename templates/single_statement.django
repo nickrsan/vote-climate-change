@@ -1,0 +1,5 @@
+{% extends "index.django" %}
+
+{% block inner_title %}
+	<h3>Statement from {{ name }}</h3>
+{% endblock %}

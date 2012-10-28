@@ -156,6 +156,9 @@ def render_statement_to_json(statement,style):
 	serialized_data = simplejson.dumps({"statement_html": html})
 	return HttpResponse(serialized_data, mimetype="application/json")
 
+def single_statement(request,sid):
+	statement = get_object_or_404(models.statement,pk=sid)
+	return render_to_response('single_statement.django',{'statements':(statement,),'name':statement.user.name})
 
 def find_electable(request, search_string= None):
 

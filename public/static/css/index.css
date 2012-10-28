@@ -93,7 +93,7 @@ div.panel {
   /* account for the timer */
 
 }
-span.icon_sprite {
+span.icon_sprite, li.icon_sprite {
   background-image: url('/static/icon_sprite.png');
   background-repeat: no-repeat;
   height: 16px;
@@ -107,6 +107,23 @@ span.icon_sprite {
 }
 .sprite-textfield_add {
   background-position: 0 -41px;
+}
+.sprite-permalink {
+  background-position: -41px 0;
+}
+ul.iconset {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+ul.iconset li.icon_sprite {
+  padding: 0;
+  margin: 0;
+}
+ul.iconset li.icon_sprite a {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 form#publisher {
   background-color: #2284a1;

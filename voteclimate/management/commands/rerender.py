@@ -8,5 +8,5 @@ class Command(BaseCommand):
 	help = 'Rerenders all of the cached statements in the database'
 
 	def handle(self, *args, **options):
-		utils.__rerender_statements()
+		utils._rerender_statements()
 		self.stdout.write("Done\n")
