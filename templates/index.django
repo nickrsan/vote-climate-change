@@ -36,7 +36,7 @@
 		<div class="row">
 			<div class="panel">
 				{% block title %}
-					<h1>{{ title }}</h1>
+					<h1>{% global_var 'SITE_NAME' %}</h1>
 				{%  endblock %}
 
 				{%  block pageheader %}
@@ -63,7 +63,9 @@
 
 			{%  endblock %}
 			{% if statements %}
-				<h3>Recent Pledges</h3>
+				{% block inner_title %}
+					<h3>Recent Pledges</h3>
+				{%  endblock %}
 				{%  for statement in statements %} <!-- TODO Make output correct -->
 					{{ statement.rendered_text|safe }}
 					{%  comment %}

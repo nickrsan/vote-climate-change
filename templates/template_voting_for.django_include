@@ -2,11 +2,12 @@
 <div class="row" xmlns="http://www.w3.org/1999/html">
 	<div class="two columns mobile-one">
 	{% if statement.candidate.photo_url %}
-		<img src="{{ statement.candidate.photo_url }}" width="100"/></div>
+		<img src="{{ statement.candidate.photo_url }}" width="100"/>
 	{%  else %}
-		<img src="http://placehold.it/80x80&text=[img]" /></div>
+		<img src="http://placehold.it/80x80&text=[img]" />
 	{% endif %}
-	<div class="ten columns">
+	</div>
+	<div class="nine columns">
         <p>{{ statement.support_style }} <a href="/candidate/{{ statement.candidate.name }}">{{ statement.candidate.name }}</a> because
             {% if statement.candidate.gender and statement.candidate.gender == "M" %}
                 he
@@ -22,11 +23,16 @@
 			<blockquote>{{ statement.extra_text }}</blockquote>
 		{% endif %}
 		<p>&mdash;<span class="signature">{{ statement.user.name }} in <a href="/state/{{ statement.user.state.abbreviation }}/">{{ statement.user.state.name }}</a></span></p>
-<!--		<p><strong>Some Personipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong.</p>
+		<!--		<p><strong>Some Personipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong.</p>
 		<ul class="link-list">
 			<li><a href="">Reply</a></li>
 			<li><a href="">Share</a></li>
 		</ul>-->
+	</div>
+	<div class="one column">
+		<ul class="iconset">
+			<li class="icon_sprite sprite-permalink"><a href="/statement/{{ statement.id }}" title="Permalink to this statement"></a></li>
+		</ul>
 	</div>
 </div>
 <!-- End Feed Entry -->
