@@ -36,7 +36,7 @@
       resetTimerOnClick: false,      // true resets the timer instead of pausing slideshow progress on manual navigation
       bullets: false,           // true or false to activate the bullet navigation
       bulletThumbs: false,        // thumbnails for the bullets
-      bulletThumbLocation: '',      // location from this file where thumbs will be
+      bulletThumbLocation: '../img/foundation/orbit/bullets.png',      // location from this file where thumbs will be
       afterSlideChange: $.noop,   // empty function
       afterLoadComplete: $.noop, //callback to execute after everything has been loaded
       fluid: true,

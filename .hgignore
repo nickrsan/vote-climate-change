@@ -9,3 +9,4 @@ syntax: glob
 .idea/modules.xml
 vote_climate/connection.py
 .idea/*
+Thumbs.db

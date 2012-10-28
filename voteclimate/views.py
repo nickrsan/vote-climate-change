@@ -54,15 +54,22 @@ def get_common_elements():
 	common_elements['publisher'] = models.style.objects.get(name="voting_for")
 	return common_elements
 
-def candidate(request,candidate_name = None, state = None):
-	if candidate_name is None:
+def candidate(request,candidate_id=None,candidate_name = None, state = None):
+	if candidate_name is None and candidate_id is None:
 		return redirect("/")
 
-	if state is None:
-		possible_candidates = models.candidate.objects.filter(name__iexact = candidate_name)
+
+	single_candidate = None
+	possible_candidates = []
+	if candidate_id:
+		print candidate_id
+		single_candidate = models.candidate.objects.filter(pk=candidate_id)
 	else:
-		state_obj = utils.find_state(state)
-		possible_candidates = models.candidate.objects.filter(name__iexact = candidate_name,state = state_obj)
+		if state is None:
+			possible_candidates = models.candidate.objects.filter(name__iexact = candidate_name)
+		else:
+			state_obj = utils.find_state(state)
+			possible_candidates = models.candidate.objects.filter(name__iexact = candidate_name,state = state_obj)
 
 	common_elements = get_common_elements()
 	template = loader.get_template("index.django")
@@ -72,20 +79,25 @@ def candidate(request,candidate_name = None, state = None):
 	else:
 		page_title = candidate_name
 
-	if len(possible_candidates) == 0:
-
+	if len(possible_candidates) == 0 and not single_candidate:
 		cont = RequestContext(request,{'title':"Vote Climate Change",
 									   'pagetitle':page_title,
 									   'alert_msg': "No candidate with that name and state",
 									   })
-
-
-	for candidate in possible_candidates:
-		candidate_statements = models.statement.objects.filter(candidate = candidate)
+	elif single_candidate:
+		candidate_statements = models.statement.objects.filter(candidate = single_candidate).order_by('-id')
 		cont = RequestContext(request,{'title':"Vote Climate Change",
-									   'pagetitle':page_title,
-									   'statements': candidate_statements
-									   })
+								   'pagetitle':page_title,
+								   'statements': candidate_statements
+		})
+	else:
+		for a_candidate in possible_candidates:
+			# TODO: This area doesn't work like it was intended to - it was meant to print headers for multiple candidates and put out their statements
+			candidate_statements = models.statement.objects.filter(candidate = a_candidate)
+			cont = RequestContext(request,{'title':"Vote Climate Change",
+										   'pagetitle':page_title,
+										   'statements': candidate_statements
+										   })
 	return HttpResponse(template.render(cont))
 
 
