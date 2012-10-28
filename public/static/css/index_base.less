@@ -148,9 +148,13 @@ span.icon_sprite, li.icon_sprite{
   position:relative;
   float:left;
 }
+
 .sprite-image_add{ background-position: 0 0; }
 .sprite-textfield_add{ background-position: 0 -41px;}
 .sprite-permalink{ background-position: -41px 0;}
+.sprite-gplus{ background-position: -41px -41px;}
+.sprite-twitter{ background-position: 0 -16px;}
+.sprite-fb{ background-position: -41px -16px;}
 
 ul.iconset{
 	padding:0;
@@ -158,9 +162,10 @@ ul.iconset{
     list-style-type:none;
 
 	li.icon_sprite{
-	  	padding:0;
-	  	margin:0;
-
+	  	padding: 0;
+	  	margin: 3px 0;
+		position:static;
+		float:none;
 	  	a{
 			display:block;
 			width:100%;
@@ -316,4 +321,8 @@ form#publisher{
 
 #image_filedrop.drag_enter{
   border: 4px solid black;
+}
+
+div#action_box{
+  	display:none;
 }

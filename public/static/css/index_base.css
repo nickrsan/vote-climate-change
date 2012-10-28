@@ -111,6 +111,15 @@ span.icon_sprite, li.icon_sprite {
 .sprite-permalink {
   background-position: -41px 0;
 }
+.sprite-gplus {
+  background-position: -41px -41px;
+}
+.sprite-twitter {
+  background-position: 0 -16px;
+}
+.sprite-fb {
+  background-position: -41px -16px;
+}
 ul.iconset {
   padding: 0;
   margin: 0;
@@ -118,7 +127,9 @@ ul.iconset {
 }
 ul.iconset li.icon_sprite {
   padding: 0;
-  margin: 0;
+  margin: 3px 0;
+  position: static;
+  float: none;
 }
 ul.iconset li.icon_sprite a {
   display: block;
@@ -294,4 +305,7 @@ form#publisher fieldset#statement div#statement_media_additions div#image_additi
 }
 #image_filedrop.drag_enter {
   border: 4px solid black;
+}
+div#action_box {
+  display: none;
 }
