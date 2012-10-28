@@ -85,8 +85,7 @@ def candidate(request,candidate_name = None, state = None):
 		candidate_statements = models.statement.objects.filter(candidate = candidate)
 		cont = RequestContext(request,{'title':"Vote Climate Change",
 									   'pagetitle':page_title,
-									   'statements': candidate_statements,
-									   'facts':common_elements['facts'],
+									   'statements': candidate_statements
 									   })
 	return HttpResponse(template.render(cont))
 
