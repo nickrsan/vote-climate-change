@@ -8,3 +8,4 @@ syntax: glob
 .idea/voteclimate.iml
 .idea/modules.xml
 vote_climate/connection.py
+.idea/*
