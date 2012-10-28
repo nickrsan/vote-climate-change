@@ -7,3 +7,4 @@ syntax: glob
 .idea/codeStyleSettings.xml
 .idea/voteclimate.iml
 .idea/modules.xml
+vote_climate/connection.py

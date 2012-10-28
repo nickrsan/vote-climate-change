@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 
+{% load inclusion_tags %}
+
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
@@ -33,7 +35,10 @@
 	<div class="eight columns" id="main_body">
 		<div class="row">
 			<div class="panel">
-				<h1>{{ title }}</h1>
+				{% block title %}
+					<h1>{{ title }}</h1>
+				{%  endblock %}
+
 				{%  block pageheader %}
 					<h2>{{ pagetitle }}</h2>
 				{%  endblock %}
@@ -54,6 +59,9 @@
 		</div>
 
 		<div class="row" id="statements">
+			{%  block other_content %}
+
+			{%  endblock %}
 			{% if statements %}
 				<h3>Recent Pledges</h3>
 				{%  for statement in statements %} <!-- TODO Make output correct -->
@@ -74,13 +82,7 @@
 			<div class="twelve columns">
 			<div class="highlight_post"><img src="http://placehold.it/300x150&text=[highlight]" style="width:300px;height:150px;background-color: #ccc;"/></div>
 			<div class="box_widget"><h3>Not Registered?</h3><p>TurboVote can help you get registered in time <a class="button" id="reg_button" href="https://turbovote.org/register" target="_blank">Register Now</a></span></p></div>
-			<div class="highlight_post" id="facts_slider">
-			{%  for fact in facts %}
-				<div class="fact_statement">
-					<p>{{ fact.statement }} - <a href="{{fact.source}}" class="offsite" target="_blank">{{ fact.source_name }}</a></p>
-				</div>
-			{%  endfor %}
-			</div>
+			{% facts_box %}
 			<div class="highlight_post"><img src="http://placehold.it/300x150&text=[num_pledges]" style="width:300px;height:150px;background-color: #ccc;"/></div>
 			<div class="highlight_post"><img src="http://placehold.it/300x300&text=[highlight]" style="width:300px;height:300px;background-color: #ccc;"/></div>
 		</div></div>
