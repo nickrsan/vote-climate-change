@@ -8,7 +8,7 @@
 	{% endif %}
 	</div>
 	<div class="nine columns">
-        <p>{{ statement.support_style }} <a href="/candidate/{{ statement.candidate.name }}">{{ statement.candidate.name }}</a> because
+        <p>{{ statement.support_style }} <a href="/candidate/{{ statement.candidate.id }}/{{ statement.candidate.name }}">{{ statement.candidate.name }}</a> because
             {% if statement.candidate.gender and statement.candidate.gender == "M" %}
                 he
             {%  endif %}
