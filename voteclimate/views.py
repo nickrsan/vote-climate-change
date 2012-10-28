@@ -76,7 +76,6 @@ def candidate(request,candidate_name = None, state = None):
 
 		cont = RequestContext(request,{'title':"Vote Climate Change",
 									   'pagetitle':page_title,
-									   'facts':common_elements['facts'],
 									   'alert_msg': "No candidate with that name and state",
 									   })
 
