@@ -1,13 +1,14 @@
 <form action="/publish/" id="publisher" xmlns="http://www.w3.org/1999/html">
     <fieldset id="statement">
 		<div class="row" id="statement_text_row">
+			{% csrf_token %}
 			<p><span class="maintext">
 				<select id="support_style" name="support_style">
 					<option value="I'm voting for">I'm voting for</option>
 					<option value="I support">I support</option>
 				</select></span>
 				<span class="maintext"><label for="candidate" class="hide_label">Candidate</label> <input name="candidate" class="text_input" id="candidate" /><input type="hidden" name="candidate_id" id="candidate_id" /></span>
-				<span class="maintext">because <span id="gender_he">he</span>&nbsp;<span id="gender_or">or</span>&nbsp;<span id="gender_she">she</span>&nbsp;has taken or has promised to take action on climate change.</span>
+				<span class="maintext">because<span id="gender_he">&nbsp;he&nbsp;</span><span id="gender_or">or</span><span id="gender_she">&nbsp;she&nbsp;</span>has taken or has promised to take action on climate change.</span>
 			</p>
 		</div>
 		<div class="below_float row" style="width:100%">

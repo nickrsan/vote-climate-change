@@ -276,6 +276,20 @@ form#publisher fieldset#statement div#statement_media_additions ul#add_items li.
 form#publisher fieldset#statement div#statement_media_additions div#image_addition_container {
   display: none;
 }
+div.new_insert {
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  /* useful if you don't want a bg color from leaking outside the border: */
+
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  padding: 1em;
+  background-color: #89db69;
+  display: none;
+  margin-bottom: 1em;
+}
 #image_filedrop {
   border: 1px solid black;
   padding: 1em;
@@ -308,4 +322,7 @@ form#publisher fieldset#statement div#statement_media_additions div#image_additi
 }
 div#action_box {
   display: none;
+}
+.ui-widget-content a, .ui-overlay a:link {
+  color: #003399;
 }

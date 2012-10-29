@@ -7,7 +7,20 @@ import views
 import models
 
 import sunlight
+import simplejson
 
+class submit_response:
+	def __init__(self):
+		self.status = None
+		self.data = None
+		self.long_message = None
+
+	def to_json(self):
+		return simplejson.dumps({
+		'status': self.status,
+		'data': self.data,
+		'long_message': self.long_message,
+		})
 
 def find_state(abbrev):
 	"""

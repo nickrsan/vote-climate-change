@@ -1,0 +1,1 @@
+java -jar "C:\Users\Nick\Downloads\yuicompressor-2.4.7\yuicompressor-2.4.7\build\yuicompressor-2.4.7.jar" %*

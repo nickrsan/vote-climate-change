@@ -6,9 +6,6 @@ sunlight.config.API_KEY = 'eecdb06b778f460a8cc140fdcd2b0185'
 
 _current_dir = os.getcwd()
 
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
-
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
@@ -50,7 +47,7 @@ USE_TZ = True
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
 
-media_folder = os.path.join(_current_dir,"static","media")
+media_folder = os.path.join(_current_dir,"public","static","media")
 MEDIA_ROOT = media_folder
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
@@ -62,20 +59,21 @@ MEDIA_URL = '/static/media/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-static_main = os.path.join(_current_dir,"static")
+static_main = os.path.join(_current_dir,"public","static")
 static_server = os.path.join(_current_dir,"public","static")
-static_collected = os.path.join(_current_dir,"static","collected")
+static_collected = os.path.join(_current_dir,"public","static","collected")
 STATIC_ROOT = static_collected
 
+LESSC = os.path.join(_current_dir,"utils","less","bin","lessc")
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-	static_server,
-	static_main,
     media_folder,
+	static_main,
+	static_server,
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -89,7 +87,7 @@ STATICFILES_FINDERS = (
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+#STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '2wa@&amp;pzg%bst+3nb)^h^-*w)u7$q4%*y@qbvgn_s0(b4l((8jd'
@@ -137,7 +135,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'voteclimate',
 	'django.contrib.flatpages',
-	'pipeline',
+	#'pipeline',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -170,8 +168,6 @@ LOGGING = {
 }
 
 SITE_NAME = "Vote Climate Change"
-
-PIPELINE = True
 
 PIPELINE_CSS = {
 	'index': {
