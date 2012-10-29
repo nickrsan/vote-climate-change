@@ -191,7 +191,6 @@ def find_electable(request, search_string= None):
 		json_string = "%s({totalResultsCount:%s, electables:[" % (callback,len(candidates))
 
 		for candidate in candidates:
-			print candidate.name
 			try:
 				json_string = "%s%s," % (json_string,candidate.to_json())
 			except:
