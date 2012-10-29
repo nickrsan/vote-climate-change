@@ -4,14 +4,7 @@
  * Date: 10/2/12
  * Time: 10:04 PM
  */
-
-var form_container = "form#publisher";
-
 $(function () {
-    $("#publish_button").click(function (target, event) {
-        publish();
-        event.preventDefault();
-    });
 
 	var slider = $("#facts_slider");
 	slider.orbit({ fluid: '2x1', animationSpeed: 400, advanceSpeed: 10000, bullets: true, directionalNav: false});
@@ -20,6 +13,7 @@ $(function () {
 
 	set_addition_triggers("#add_items");
 
+	var form_container = "form#publisher";
 	set_ajax_submit(form_container);
 
 	$.backstretch('/static/background_nasa_1600_black50_blur.jpg');
@@ -28,6 +22,7 @@ $(function () {
 	$( "div#action_box" ).dialog({
 		modal: true,
 		autoOpen: false,
+		width: 450,
 		buttons: {
 			Close: function() {
 				$( this ).dialog( "close" );
@@ -41,14 +36,13 @@ $(window).load(function () {
 });
 
 function set_ajax_submit(form_container){
-	var submit_obj = $(form_container + " input#publish_button");
-
-	submit_obj.click(
+	var submit_obj = $(form_container);
+	submit_obj.submit(
 		function(event){
-			event.preventDefault();
 			submit_statement(form_container);
+			event.preventDefault();
 		}
-	)
+	);
 
 }
 
@@ -68,9 +62,9 @@ function set_file_drop() {
 		}
 	});
 
-    zone.on[fileSetup].push(function(file){
-        $('#' + fdid).append('<p>'+ file.filename + '</p>');//<img src="' + file.nativeFile + '">');
-    });
+    //zone.on[fileSetup].push(function(file){
+    //    $('#' + fdid).append('<p>'+ file.filename + '</p>');//<img src="' + file.nativeFile + '">');
+    //});
 
 }
 
@@ -103,19 +97,31 @@ function submit_statement(form_container){
 		url: url,
 		data: $(form_container).serialize(),
 		success: submit_success,
-		dataType: 'text',
-		error: submit_error
+		dataType: 'json',
+		error: submit_error,
+		submit: submit_setup,
 	});
 }
 
-function submit_error(){
+function submit_setup(){
+	$(".error_box").hide();
+}
 
+function submit_error(){
+	$(".error_box").show();
 }
 
 function submit_success(data, textStatus, jqXHR){
-	if (data === "success") {
+	if (data.status === "success") {
 		$( "#action_box").dialog("open");
+		add_to_page(data.data);
 	}
+}
+
+function add_to_page(rendered_html){
+	var after_target = $("div#statements h3");
+	after_target.after("<div class=\"new_insert\">" + rendered_html + "</div>");
+	$("div.new_insert").show('swing');
 }
 
 function set_find_electable(selector){
@@ -189,8 +195,6 @@ function change_gender(gender){
     var male_selector = "span#gender_he";
     var female_selector = "span#gender_she";
 	var or_selector = "span#gender_or";
-
-    console.log("[" + gender + "]");
 
     if (!(typeof gender === 'undefined' || gender === '' || gender === null)){
         $(or_selector).fadeOut(fade_time);

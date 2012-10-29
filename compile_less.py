@@ -1,6 +1,7 @@
 import os, subprocess, re
+from vote_climate.settings import LESSC
 
-def compile_less(dirs = None, node = "node", lessc = None):
+def compile_less(dirs = None, node = "node", lessc = LESSC):
 	for l_dir in dirs:
 		if os.path.exists(l_dir):
 			if (lessc is None) or (not os.path.exists(lessc)):

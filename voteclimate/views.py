@@ -164,7 +164,10 @@ def add_statement(request):
 		return HttpResponse(statement_form.errors['__all__'])
 
 	if request.is_ajax():
-		return HttpResponse("success")
+		t_response = utils.submit_response()
+		t_response.status = "success"
+		t_response.data = new_statement.rendered_text
+		return HttpResponse(t_response.to_json(),mimetype="application/json")
 	else:
 		return redirect("/?show_confirm=True")
 
