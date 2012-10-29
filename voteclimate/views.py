@@ -191,12 +191,13 @@ def find_electable(request, search_string= None):
 		json_string = "%s({totalResultsCount:%s, electables:[" % (callback,len(candidates))
 
 		for candidate in candidates:
+			print candidate.name
 			try:
 				json_string = "%s%s," % (json_string,candidate.to_json())
 			except:
 				raise
 
-		return HttpResponse("%s]});" % (json_string))
+		return HttpResponse("%s]});" % (json_string), mimetype="application/json")
 	#else:
 		# this area is unreachable for now. We need to switch it over if we decide to have a true search
 	#	template = loader.get_template("index.django")
