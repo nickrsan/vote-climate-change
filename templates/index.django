@@ -41,6 +41,9 @@
 
 				{%  block pageheader %}
 					<h2>{{ pagetitle }}</h2>
+					<p>Conventional wisdom holds that climate change is not an "election issue"&mdash;an issue that sways votes at the polls.
+					We need to prove conventional wisdom wrong. <strong>Tell your elected officials that your vote comes with a requirement
+					that they act on climate change.</strong></p>
 				{%  endblock %}
 			</div>
 		</div>
