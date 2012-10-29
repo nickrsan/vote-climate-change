@@ -39,7 +39,7 @@ def search_only_candidate(search_str,request = None):
 		Finds a candidate based upon name. request can be provided as an optional backup (not implemented)
 	"""
 
-	if not search_str and request:
+	if request and not search_str:
 		try:
 			search_str = request.GET['candidate_find']
 		except:
@@ -50,6 +50,8 @@ def search_only_candidate(search_str,request = None):
 
 	# split all of the words, we'll search for each word in the first name and last name fields and only
 	# return patients who have a match for each word
+
+	search_str = search_str.replace("%20"," ") # TODO: This is a HACK - should have to do this...
 	strings = search_str.split(" ")
 
 	tQ = Q(name__contains=strings[0]) # initialize the Q object by searching for the first string
