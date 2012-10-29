@@ -43,7 +43,7 @@ def search_only_candidate(search_str,request = None):
 		try:
 			search_str = request.GET['candidate_find']
 		except:
-			pass 
+			pass
 
 	if not search_str:
 		raise ValueError("No search string provided")

@@ -30,9 +30,9 @@
 	<div class="one column">
 		<ul class="iconset">
 			<li class="icon_sprite sprite-permalink row"><a href="/statement/{{ statement.id }}" title="Permalink to this statement"></a></li>
-			<li class="icon_sprite sprite-gplus row"><a href="/statement/{{ statement.id }}" title="Share this statement on Google Plus"></a></li>
-			<li class="icon_sprite sprite-fb row"><a href="/statement/{{ statement.id }}" title="Share this statement on Facebook"></a></li>
-			<li class="icon_sprite sprite-twitter row"><a href="/statement/{{ statement.id }}" title="Share this statement on Twitter"></a></li>
+			<li class="icon_sprite sprite-gplus row"><a class="unimplemented" href="/statement/{{ statement.id }}" title="Share this statement on Google Plus"></a></li>
+			<li class="icon_sprite sprite-fb row"><a class="unimplemented"  href="/statement/{{ statement.id }}" title="Share this statement on Facebook"></a></li>
+			<li class="icon_sprite sprite-twitter row"><a class="unimplemented"  href="/statement/{{ statement.id }}" title="Share this statement on Twitter"></a></li>
 		</ul>
 	</div>
 </div>

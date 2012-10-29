@@ -51,7 +51,7 @@
 							<div class="twelve columns">
 								<input id="image_location" name="image_location" type="hidden"/>
 								<div id="image_filedrop">
-									Drag and drop up an image here to include it
+									(UNIMPLEMENTED) - Drag and drop an image here to include it
 
 								</div>
 							</div>

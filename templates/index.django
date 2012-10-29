@@ -5,7 +5,8 @@
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en" xmlns="http://www.w3.org/1999/html"> <!--<![endif]-->
 <head>
   <meta charset="utf-8" />
 
@@ -140,6 +141,11 @@
 	 which helps you to make smart decisions for yourself and our environment.
 	</p>
 </div>
+<div id="unimplemented_msg">
+	<p stlye="font-weight: bold;">This feature is unimplmented. Expect it soon. Thanks for testing!</p>
+</div>
+
+
 	<script src="/static/js/modernizr.foundation.js"></script>
 
   <!-- IE Fix for HTML5 Tags -->
