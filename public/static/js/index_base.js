@@ -6,6 +6,20 @@
  */
 $(function () {
 
+	$(".unimplemented").click(function (event) {
+		$("div#unimplemented_msg").dialog({
+			modal: true,
+			width: 450,
+			buttons: {
+				Close: function() {
+					$( this ).dialog( "close" );
+				}
+			}
+		});
+		event.preventDefault();
+		return false;
+	});
+
 	var slider = $("#facts_slider");
 	slider.orbit({ fluid: '2x1', animationSpeed: 400, advanceSpeed: 10000, bullets: true, directionalNav: false});
 	slider.children("div.fact_statement").first().css("left", 0); // bring the first fact back into view
