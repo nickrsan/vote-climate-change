@@ -34,16 +34,28 @@
 <div class="row" id="content">
 	<div class="eight columns" id="main_body">
 		<div class="row">
-			<div class="panel">
-				{% block title %}
-					<h1>{% global_var 'SITE_NAME' %}</h1>
-				{%  endblock %}
+			<div class="panel" id="site_header">
+                {%  block pageheader %}
+                <div class="row">
+                    <!--div class="three columns">
+                        <img src="/static/logo.png">
+                    </div>-->
 
-				{%  block pageheader %}
-					<h2>{{ pagetitle }}</h2>
+                    <div class="twelve columns">
+                        {% block title %}
+                            <h1>{% global_var 'SITE_NAME' %}</h1>
+                        {%  endblock %}
+
+                        <h2 id="page_head">{{ pagetitle }}</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="twelve columns">
 					<p>Conventional wisdom holds that climate change is not an "election issue"&mdash;an issue that sways votes at the polls.
 					We need to prove conventional wisdom wrong. <strong>Tell your elected officials that your vote comes with a requirement
 					that they act on climate change.</strong></p>
+                    </div>
+                </div>
 				{%  endblock %}
 			</div>
 		</div>
@@ -85,12 +97,26 @@
 	<aside class="four columns" id="side_bar">
 		<div class="row">
 			<div class="twelve columns">
-			<div class="highlight_post"><img src="http://placehold.it/300x150&text=[highlight]" style="width:300px;height:150px;background-color: #ccc;"/></div>
-			<div class="box_widget"><h3>Not Registered?</h3><p>TurboVote can help you get registered in time <a class="button" id="reg_button" href="https://turbovote.org/register" target="_blank">Register Now</a></span></p></div>
-			{% facts_box %}
-			<div class="highlight_post"><img src="http://placehold.it/300x150&text=[num_pledges]" style="width:300px;height:150px;background-color: #ccc;"/></div>
-			<div class="highlight_post"><img src="http://placehold.it/300x300&text=[highlight]" style="width:300px;height:300px;background-color: #ccc;"/></div>
-		</div></div>
+                <div class="highlight_post"><img src="http://placehold.it/300x150&text=[highlight]" style="width:300px;height:150px;background-color: #ccc;"/></div>
+                {% facts_box %}
+                <div class="box_widget"><h3>Not Registered?</h3><p>TurboVote can help you get registered now <a class="button" id="reg_button" href="https://turbovote.org/register" target="_blank">Register Now</a></span></p></div>
+                <div class="highlight_post"><img src="http://placehold.it/300x150&text=[num_pledges]" style="width:300px;height:150px;background-color: #ccc;"/></div>
+                <div class="highlight_post"><img src="http://placehold.it/300x300&text=[highlight]" style="width:300px;height:300px;background-color: #ccc;"/></div>
+                <div class="side_block row twelve columns">
+                    <h3>Top Candidates</h3>
+                    {% top_candidates %}
+                </div>
+                <div class="side_block row twelve columns">
+                    <h3>More Action</h3>
+                    <p>Like this site? Be sure to get involved with these other organizations working on climate change.</p>
+                    <ul>
+                        <li><a href="http://350.org" target="_blank" class="offsite">350.org</a></li>
+                        <li><a href="http://energyaction.org" target="_blank" class="offsite">Energy Action Coalition</a></li>
+                        <li><a href="http://enviroconsumer.org" target="_blank" class="offsite">Environmental Consumer</a></li>
+                    </ul>
+                </div>
+		    </div>
+        </div>
 	</aside>
 </div> <!-- class="row" -->
   <!--<div class="row">-->
@@ -123,6 +149,7 @@
 	<div class="nine columns">
 	  <p>&copy; Copyright 2012 <a href="http://nicksantos.com" target="_blank">Nick Santos</a>. Vote Climate Change is a joint project with <a href="http://rooseveltpipeline.org" target="_blank">Roosevelt Institute: Pipeline</a>.<br/>
 		  Background image: <a href="http://www.nasa.gov/multimedia/imagegallery/image_feature_2377.html" target="_blank">NASA/GSFC/Jeff Schmaltz/MODIS Land Rapid Response Team</a></p>
+       <p>Logo based on <a href="http://thenounproject.com/noun/global-warming/#icon-No4963" target="_blank">Global Warming</a> designed by <a href="http://thenounproject.com/Luis" target="_blank">Luis Prado</a> from The Noun Project</p>
 	</div>
 	<div class="three columns">
 	  <ul class="link-list right">

@@ -90,13 +90,26 @@ footer{
 	}
 }
 
-div.panel{
+div#site_header.panel{
 
   	.rounded_bottom(6px);
 
   	border:0;
   	padding:2em;
   	margin-bottom:1em;
+
+    background-image:url('/static/logo_large_fade.png');
+    background-repeat:no-repeat;
+    background-position: right 20px;
+
+
+    h1{
+        margin-top:0;
+    }
+
+    p{
+      margin-bottom:0;
+    }
 }
 
 #side_bar{
@@ -113,6 +126,10 @@ div.panel{
 		   padding:0;
 		   margin:0;
 		}
+
+       .side_block.columns{
+         padding: 0 15px;
+       }
 
 		div.box_widget{
 			/*.rounded(6px);*/
@@ -147,6 +164,17 @@ div.panel{
 			}
 		}
 	}
+
+    ul#top_candidates{
+        margin:0;
+        padding:0;
+        list-style-type: none;
+        li{
+            margin:0;
+            padding:0;
+            list-style-type: none;
+        }
+    }
 }
 
 span.icon_sprite, li.icon_sprite{
@@ -346,4 +374,8 @@ div#action_box{
 
 .ui-widget-content a, .ui-overlay a:link{
 	color: #003399;
+}
+
+div#unimplemented_msg{
+  display:none;
 }
