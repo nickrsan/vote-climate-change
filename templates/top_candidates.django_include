@@ -1,0 +1,5 @@
+<ul id="top_candidates">
+    {% for candidate in top_candidates %}
+        <li><a href="/candidate/{{ candidate.id }}/{{ candidate.name }}>">{{  candidate.name }}</a> ({{ candidate.num_statements }})</li>
+    {% endfor %}
+</ul>

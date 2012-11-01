@@ -11,21 +11,23 @@
 				<span class="maintext">because<span id="gender_he">&nbsp;he&nbsp;</span><span id="gender_or">or</span><span id="gender_she">&nbsp;she&nbsp;</span>has taken or has promised to take action on climate change.</span>
 			</p>
 		</div>
-		<div class="below_float row" style="width:100%">
-			<div class="six columns">
-				<label for="person_name">Your name</label>
-			</div>
-			<div class="six columns">
-				<label for="state">State</label>
-			</div>
-		</div>
         <div class="below_float row">
 			<div class="six columns">
-            	<input class="text_input" name="person_name" id="person_name" />
+                <div class="row">
+                    <label for="person_name">Your name</label>
+                </div>
+                <div class="row">
+                    <input class="text_input" name="person_name" id="person_name" />
+                </div>
 			</div>
 			<div class="six columns">
-				<input class="text_input"  name="state" id="state" />
-				<input type="hidden" name="style_id" value="{{ style_id }}" />
+                <div class="row">
+                    <label for="state">State</label>
+                </div>
+                <div class="row">
+				    <input class="text_input"  name="state" id="state" />
+				    <input type="hidden" name="style_id" value="{{ style_id }}" />
+                </div>
 			</div>
         </div>
 		<div id="statement_media_additions" class="below_float row">

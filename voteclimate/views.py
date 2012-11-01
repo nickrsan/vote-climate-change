@@ -30,7 +30,7 @@ def home(request):
 	# set the publisher
 	common_elements = get_common_elements()
 
-	statements = models.statement.objects.all().order_by('-id')[:100]
+	statements = models.statement.objects.all().order_by('-id')[:15]
 
 	template = loader.get_template("index.django")
 	cont = RequestContext(request,{'title':"Vote Climate Change",
@@ -53,6 +53,10 @@ def get_common_elements():
 	common_elements = {}
 	common_elements['publisher'] = models.style.objects.get(name="voting_for")
 	return common_elements
+
+def contact(request):
+	if request.method == "GET":
+		render_to_response("contact.django")
 
 def candidate(request,candidate_id=None,candidate_name = None, state = None):
 	if candidate_name is None and candidate_id is None:

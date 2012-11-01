@@ -291,7 +291,7 @@ def _fix_photo_urls(base_folder):
 def tweet_statement(user,statement):
 	global twitter_api
 
-	tweet_status =
+	tweet_status = ''
 
 	status = api.PostUpdate(tweet_status)
 

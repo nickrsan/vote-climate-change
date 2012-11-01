@@ -1,0 +1,16 @@
+{%  extends 'index.django' %}
+
+{%  block other_content %}
+
+   <form id="contact_form" name="contact_form" action="/contact" method="POST">
+        <p>Want to get in touch? Use the form below and we'll respond as soon as possible.</p>
+
+        <ul>
+            <li><label for="name">Your Name</label><input name="name" type="text"></li>
+            <li><label for="email">Your email</label><input name="email" type="email"></li>
+            <li><label for="message">What's on your mind?</label><textarea name="message"></textarea> </li>
+        </ul>
+
+   </form>
+
+{%  endblock %}

@@ -19,6 +19,7 @@ urlpatterns = patterns('',
 	url(r'^statement/(?P<sid>\d+?)/$', 'voteclimate.views.single_statement'),
 	#url(r'^rerender/all/statements/seriously/$','voteclimate.views.rerender'),
 	#url(r'^fix/all/photos/seriously/$','voteclimate.views.fix_photos'),
+    url(r'^contact/$','voteclimate.views.contact'),
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

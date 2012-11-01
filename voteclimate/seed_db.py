@@ -145,7 +145,7 @@ def seed():
 	print "Loading photos"
 	utils._fix_photo_urls(wd)
 
-	utils.make_acknowledements_page()
+	utils.make_acknowledgements_page()
 
 if __name__ == "__main__":
 	seed()
