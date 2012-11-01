@@ -23,6 +23,7 @@ class style(models.Model):
 	template_string = models.TextField()
 	available = models.BooleanField(default=True)
 	output_template = models.CharField(max_length=255,null=False)
+	twitter_template = models.CharField(max_length=200)
 
 class candidate(models.Model):
 	name = models.CharField(max_length=255)

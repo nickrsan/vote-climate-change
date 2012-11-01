@@ -204,3 +204,9 @@ PIPELINE_JS = {
 
 PIPELINE_CSS_COMPRESSOR = 'pipeline.compressors.yui.YUICompressor'
 PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.yui.YUICompressor'
+
+
+twitter_consumer_key = 'pavcG3CaomhAeq6caqWpdg'
+twitter_consumer_secret = 'MQUZgPGrj9GIEQ6tlJHrPPMvxhxOHbqgMOJUMUT2m0'
+twitter_access_token = '884550516-GK5jd3tnPA6Nzow0Cr5hIXLoHb93R4QFm8vWCNnU'
+twitter_access_token_secret = 'NUKePC99baGCC4vf1dmeW01wIzPBcXfSbe5qZda3vRc'

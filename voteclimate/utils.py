@@ -5,9 +5,18 @@ from django.contrib.flatpages.models import FlatPage
 
 import views
 import models
+from vote_climate import settings
 
 import sunlight
 import simplejson
+import twitter
+
+twitter_api  = twitter.Api(
+	consumer_key = settings.twitter_consumer_key,
+	consumer_secret = settings.twitter_consumer_secret,
+	access_token_key = settings.twitter_access_token_key,
+	access_token_secret = settings.twitter_access_token_secret
+)
 
 class submit_response:
 	def __init__(self):
@@ -278,6 +287,14 @@ def _fix_photo_urls(base_folder):
 		else:
 			candidate.photo_url = "/static/img/congress/100x125/null.jpg"
 			candidate.save()
+
+def tweet_statement(user,statement):
+	global twitter_api
+
+	tweet_status =
+
+	status = api.PostUpdate(tweet_status)
+
 
 def _rerender_statements():
 	statements = models.statement.objects.all()
