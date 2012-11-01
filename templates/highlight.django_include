@@ -1,0 +1,8 @@
+{% if highlight %}
+    <p>{{ highlight.user.name }}
+    {% if highlight.user.state.abbreviation != "XOT" %}
+        in {{ highlight.user.state.name }}
+    {% endif %}
+        is voting for {{ highlight.candidate.name }} and said:</p>
+        <blockquote>{{ highlight.extra_text }}</blockquote>
+{% endif %}

@@ -320,3 +320,16 @@ def remove_acknowledgements_page(url="/acknowledgements/"):
 	ack_pages = FlatPage.objects.filter(url=url)
 	for page in ack_pages:
 		page.delete()
+
+def _highlight_statement(statement_id):
+	statement = models.statement.objects.get(pk = statement_id)
+	statement.highlight = True
+	statement.save()
+
+def _unhighlight_statement(statement_id):
+	statement = models.statement.objects.get(pk = statement_id)
+	if statement.highlight is False:
+		return False
+	statement.highlight = False
+	statement.save()
+	return True

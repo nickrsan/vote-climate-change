@@ -25,3 +25,19 @@ def facts_box():
 def top_candidates():
 	candidates = models.candidate.objects.annotate(num_statements = Count('statement')).filter(num_statements__gte=1).order_by('-num_statements')[:15]
 	return {'top_candidates':candidates}
+
+@register.inclusion_tag('highlight.django_include')
+def highlight(number):
+	offset = number - 1
+	try:
+		print number
+		print offset
+		highlight = models.statement.objects.filter(highlight = True)[offset:number][0] # limit 1
+		print highlight.extra_text
+	except IndexError:
+		return {'highlight':None}
+	return {'highlight':highlight}
+
+@register.inclusion_tag('stats.django_include')
+def pledge_stats():
+	

@@ -116,11 +116,14 @@ div#site_header.panel{
 
   	padding-right:0;
 
+
+
  	div.row{
 	   	background-color: @trans_back;
 	   	margin:0;
 	   	padding:0;
 		font-style:normal;
+
 
 		.columns{
 		   padding:0;
@@ -128,19 +131,14 @@ div#site_header.panel{
 		}
 
        .side_block.columns{
-         padding: 0 15px;
+         padding: 1em 15px;
        }
 
 		div.box_widget{
 			/*.rounded(6px);*/
 
-		  	padding:1em;
+			background-color: #ddd ; /*#5BAFBA*/
 
-			background-color: #ccc ; /*#5BAFBA*/
-
-			h3{
-				margin-top:0;
-			}
 
 			#reg_button{
 				display:block;
@@ -174,6 +172,15 @@ div#site_header.panel{
             padding:0;
             list-style-type: none;
         }
+    }
+
+    div.side_block.highlight_post{
+      .rounded;
+      background-color: #ccc;
+    }
+
+    div.side_block#top_item{
+       padding-top: 1em;
     }
 }
 
