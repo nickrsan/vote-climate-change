@@ -11,6 +11,7 @@ urlpatterns = patterns('',
 
     url(r'^$', 'voteclimate.views.home'),
 	url(r'^publish/$', 'voteclimate.views.add_statement'),
+	url(r'^state/(?P<state_abbrev>.+?)/$', 'voteclimate.views.state'),
 	url(r'^candidate/(?P<candidate_id>\d+?)/(?P<candidate_name>.+?)/(?P<state>.*?)/$', 'voteclimate.views.candidate'),
 	url(r'^candidate/(?P<candidate_id>\d+?)/(?P<candidate_name>.+?)/$', 'voteclimate.views.candidate'),
 	url(r'^electable/find/(?P<search_string>.+)/$', 'voteclimate.views.find_electable'),

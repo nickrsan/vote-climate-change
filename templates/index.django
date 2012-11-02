@@ -96,6 +96,9 @@
                 <div class="highlight_post side_block row twelve columns" id="top_item">
                     {%  highlight 1 %}
                 </div>
+				<div class="side_block row twelve columns" id="side_nav">
+					<a href="/" class="button" style="width:100%;">Add your own pledge</a>
+				</div>
                 <div class="row twelve columns">
                     {% facts_box %}
                 </div>
@@ -132,30 +135,7 @@
         </div>
 	</aside>
 </div> <!-- class="row" -->
-  <!--<div class="row">-->
 
-    <!-- Nav Sidebar -->
-    <!-- This is source ordered to be pulled to the left on larger screens -->
-    <!--<div class="three columns push-three">
-      <div class="panel">
-        <a href="#"><img src="http://placehold.it/300x240&text=[img]" /></a>
-        <h5><a href="#">Your Name</a></h5>
-
-        <dl class="vertical tabs">
-          <dd><a href="#">Section 1</a></dd>
-          <dd><a href="#">Section 2</a></dd>
-          <dd><a href="#">Section 3</a></dd>
-          <dd><a href="#">Section 4</a></dd>
-          <dd><a href="#">Section 5</a></dd>
-          <dd><a href="#">Section 6</a></dd>
-        </dl>
-
-      </div>
-    </div>
-
-  </div> -->
-
-  
   <!-- Footer -->
   
 <footer class="row">

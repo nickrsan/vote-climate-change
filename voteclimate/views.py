@@ -12,6 +12,7 @@ import utils
 
 import simplejson
 import compile_less # we want to autocompile less scripts on load
+
 def log(msg):
 	# 	TODO: needs to be fized by the time we go live
 
@@ -59,6 +60,24 @@ def contact(request):
 	if request.method == "GET":
 		render_to_response("contact.django")
 
+def state(request, state_abbrev = None):
+	if state_abbrev is None:
+		return redirect("/")
+
+	state = models.state.objects.get(abbreviation=state_abbrev)
+
+	statements = models.statement.objects.filter(user__state=state)[:100]
+
+	#common_elements = get_common_elements()
+	template = loader.get_template("index.django")
+
+	cont = RequestContext(request,{'title':"Vote Climate Change",
+								   'pagetitle':"Statements for %s" % state.name,
+								   'statements':statements
+								   })
+
+	return HttpResponse(template.render(cont))
+
 def candidate(request,candidate_id=None,candidate_name = None, state = None):
 	if candidate_name is None and candidate_id is None:
 		return redirect("/")
@@ -67,7 +86,6 @@ def candidate(request,candidate_id=None,candidate_name = None, state = None):
 	single_candidate = None
 	possible_candidates = []
 	if candidate_id:
-		print candidate_id
 		single_candidate = models.candidate.objects.get(pk=candidate_id)
 		candidate_name = single_candidate.name
 	else:
@@ -93,8 +111,8 @@ def candidate(request,candidate_id=None,candidate_name = None, state = None):
 	elif single_candidate:
 		candidate_statements = models.statement.objects.filter(candidate = single_candidate).order_by('-id')
 		cont = RequestContext(request,{'title':"Vote Climate Change",
-								   'pagetitle':page_title,
-								   'statements': candidate_statements
+									   'pagetitle':page_title,
+									   'statements': candidate_statements
 		})
 	else:
 		for a_candidate in possible_candidates:
@@ -107,7 +125,7 @@ def candidate(request,candidate_id=None,candidate_name = None, state = None):
 			cont = RequestContext(request,{'title':"Vote Climate Change",
 										   'pagetitle':page_title,
 										   'statements': candidate_statements
-										   })
+			})
 	return HttpResponse(template.render(cont))
 
 
