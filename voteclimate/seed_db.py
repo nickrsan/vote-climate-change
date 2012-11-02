@@ -1,5 +1,8 @@
 import os
+from string import Template
+
 wd = os.getcwd()
+
 import models
 import utils
 
@@ -73,7 +76,7 @@ def seed():
 	style1 = models.style(name="voting_for",publisher="publisher_voting_for.django")
 	style1.template_string = "I'm voting for ${candidate} because he or she has taken or has promised to take constructive action on climate change.<span>${first_name} in ${state}"
 	style1.output_template = "template_voting_for.django_include"
-	style1.twitter_templat = ".@${handle}, ${name} in ${state} is voting for you b/c of your proactive stance on #climatechange See what they said ${link}"
+	style1.twitter_template = ".${handle}, ${name} ${state} ${support_type} you b/c of your proactive stance on #climatechange See what they said"
 	style1.save()
 
 	print "Seeding Facts"

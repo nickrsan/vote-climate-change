@@ -188,7 +188,6 @@ div#site_header.panel{
         font-size:.75em;
         text-align:right;
         margin:0;
-        font-variant:small-caps;
       }
     }
 
@@ -214,11 +213,22 @@ div#site_header.panel{
     }
 }
 
+div#statements{
+  div.statement{
+
+	  margin-bottom: 1em;
+
+	  p.sig_para{
+		margin-bottom:0;
+	  }
+  }
+}
+
 span.icon_sprite, li.icon_sprite{
   background-image: url('/static/icon_sprite.png');
   background-repeat: no-repeat;
-  height:16px;
-  width:16px;
+  height:16px !important;
+  width:16px !important;
   display: block;
   position:relative;
   float:left;
@@ -238,9 +248,7 @@ ul.iconset{
 
 	li.icon_sprite{
 	  	padding: 0;
-	  	margin: 3px 0;
-		position:static;
-		float:none;
+	  	margin: 3px 3px;
 	  	a{
 			display:block;
 			width:100%;

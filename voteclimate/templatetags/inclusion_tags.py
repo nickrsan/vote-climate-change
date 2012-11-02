@@ -30,10 +30,7 @@ def top_candidates():
 def highlight(number):
 	offset = number - 1
 	try:
-		print number
-		print offset
 		highlight = models.statement.objects.filter(highlight = True)[offset:number][0] # limit 1
-		print highlight.extra_text
 	except IndexError:
 		return {'highlight':None}
 	return {'highlight':highlight}
