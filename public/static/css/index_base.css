@@ -133,6 +133,14 @@ div#site_header.panel p {
   border-top: 1px double #bbb;
   border-bottom: 1px double #bbb;
 }
+#side_bar div.side_block.highlight_post .highlight_stamp {
+  color: #666;
+  font-size: .75em;
+  text-align: right;
+  margin: 0;
+  font-variant: small-caps;
+  text-shadow: #444;
+}
 #side_bar div.side_block#top_item {
   padding-top: 1em;
 }
