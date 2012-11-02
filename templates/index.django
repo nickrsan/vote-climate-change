@@ -192,8 +192,6 @@
   <script src="/static/js/index_base.js"></script>
 
   <script>
-	  <script type="text/javascript">
-
 	  var _gaq = _gaq || [];
 	  _gaq.push(['_setAccount', 'UA-36055738-1']);
 	  _gaq.push(['_trackPageview']);
@@ -204,7 +202,7 @@
 		  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 	  })();
 
-  		</script>
+
 	  (function(d,t,l){var q=d.createElement(t),s=d.getElementsByTagName(t)[0];q.async=1;
 		  q.src="https://secure.qatab.com/tab/load/50868c2ee779899747000012.js?d="+l.hostname;
 		  s.parentNode.insertBefore(q,s);}(document,"script",location));
