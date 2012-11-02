@@ -137,7 +137,8 @@ div#site_header.panel{
 		div.box_widget{
 			/*.rounded(6px);*/
 
-			background-color: #ddd ; /*#5BAFBA*/
+            border-top: 1px double #bbb;
+			background-color: #eee ; /*#5BAFBA*/
 
 
 			#reg_button{
@@ -175,12 +176,26 @@ div#site_header.panel{
     }
 
     div.side_block.highlight_post{
-      .rounded;
-      background-color: #ccc;
+      background-color: #eee;
+      border-top: 1px double #bbb;
+      border-bottom: 1px double #bbb;
     }
 
     div.side_block#top_item{
        padding-top: 1em;
+    }
+
+    div.side_block.stats_box{
+        font-style:normal;
+        padding:1em;
+        text-align:center;
+
+        span#num_pledges{
+            display:block;
+            width: 100%;
+            font-size:2em;
+            font-weight:bold;
+        }
     }
 }
 

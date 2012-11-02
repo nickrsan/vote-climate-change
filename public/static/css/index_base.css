@@ -92,7 +92,8 @@ div#site_header.panel p {
 #side_bar div.row div.box_widget {
   /*.rounded(6px);*/
 
-  background-color: #ddd ;
+  border-top: 1px double #bbb;
+  background-color: #eee ;
   /*#5BAFBA*/
 
 }
@@ -128,19 +129,23 @@ div#site_header.panel p {
   list-style-type: none;
 }
 #side_bar div.side_block.highlight_post {
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  border-radius: 4px;
-  /* useful if you don't want a bg color from leaking outside the border: */
-
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-  padding: 1em;
-  background-color: #ccc;
+  background-color: #eee;
+  border-top: 1px double #bbb;
+  border-bottom: 1px double #bbb;
 }
 #side_bar div.side_block#top_item {
   padding-top: 1em;
+}
+#side_bar div.side_block.stats_box {
+  font-style: normal;
+  padding: 1em;
+  text-align: center;
+}
+#side_bar div.side_block.stats_box span#num_pledges {
+  display: block;
+  width: 100%;
+  font-size: 2em;
+  font-weight: bold;
 }
 span.icon_sprite, li.icon_sprite {
   background-image: url('/static/icon_sprite.png');

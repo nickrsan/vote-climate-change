@@ -1,8 +1,8 @@
 {% if highlight %}
     <p>{{ highlight.user.name }}
     {% if highlight.user.state.abbreviation != "XOT" %}
-        in {{ highlight.user.state.name }}
+        in <a href="/state/{{ highlight.user.state.abbreviation }}">{{ highlight.user.state.name }}</a>
     {% endif %}
-        is voting for {{ highlight.candidate.name }} and said:</p>
+        is voting for <a href="/candidate/{{ highlight.candidate.id }}/{{ highlight.candidate.name }}">{{ highlight.candidate.name }}</a> and said:</p>
         <blockquote>{{ highlight.extra_text }}</blockquote>
 {% endif %}
