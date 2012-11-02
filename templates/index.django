@@ -6,7 +6,7 @@
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html class="no-js" lang="en" xmlns="http://www.w3.org/1999/html"> <!--<![endif]-->
+<html class="no-js" lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8" />
 	{% block description %}
@@ -142,9 +142,16 @@
   
 <footer class="row">
 	<div class="nine columns">
-	  <p>&copy; Copyright 2012 <a href="http://nicksantos.com" target="_blank">Nick Santos</a>. Vote Climate Change is a joint project with <a href="http://rooseveltpipeline.org" target="_blank">Roosevelt Institute: Pipeline</a>.<br/>
-		  Background image: <a href="http://www.nasa.gov/multimedia/imagegallery/image_feature_2377.html" target="_blank">NASA/GSFC/Jeff Schmaltz/MODIS Land Rapid Response Team</a></p>
-       <p>Logo based on <a href="http://thenounproject.com/noun/global-warming/#icon-No4963" target="_blank">Global Warming</a> designed by <a href="http://thenounproject.com/Luis" target="_blank">Luis Prado</a> from The Noun Project</p>
+		<div class="row">
+			<div class="one column" style="padding-right:0;">
+				<a id="pipeline_logo" href="http://rooseveltpipeline.com" target="_blank" class="offsite"><img src="/static/img/pipeline_small.png" border="0"></a>
+			</div>
+			<div class="eleven columns">
+				<p>&copy; Copyright 2012 <a href="http://nicksantos.com" target="_blank">Nick Santos</a>. Vote Climate Change is a joint project with <a href="http://rooseveltpipeline.org" target="_blank">Roosevelt Institute: Pipeline</a>.
+			  Background image: <a href="http://www.nasa.gov/multimedia/imagegallery/image_feature_2377.html" target="_blank">NASA/GSFC/Jeff Schmaltz/MODIS Land Rapid Response Team</a></p>
+		  	 <p>Logo based on <a href="http://thenounproject.com/noun/global-warming/#icon-No4963" target="_blank">Global Warming</a> designed by <a href="http://thenounproject.com/Luis" target="_blank">Luis Prado</a> from The Noun Project</p>
+			</div>
+		</div>
 	</div>
 	<div class="three columns">
 	  <ul class="link-list right">
@@ -170,27 +177,12 @@
 	<p stlye="font-weight: bold;">This feature is unimplemented. Expect it soon. Thanks for testing!</p>
 </div>
 
-
-<!--<script src="/static/js/modernizr.foundation.js"></script>-->
-
   <!-- IE Fix for HTML5 Tags -->
   <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
 
   <script src="/static/js/built-1.js"></script>-->
-
- <!-- <script src="/static/js/jquery-1.8.2.min.js"></script>
-  <script src="/static/js/foundation.min.js"></script>
-
-  <script src="/static/js/jquery.placeholder.js"></script>
-  <script src="/static/js/jquery.foundation.orbit.js"></script>
-  <script src="/static/js/jquery.backstretch.min.js"></script>
-  <!-- Initialize JS Plugins -->
-  <!--<script src="/static/js/app.js"></script>
-  <script src="/static/js/jquery-ui-1.8.24.custom.min.js"></script>
-
-  <script src="/static/js/filedrop-min.js"></script>-->
   <script src="/static/js/index_base.js"></script>
 
   <script>
