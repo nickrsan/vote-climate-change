@@ -168,7 +168,12 @@ def add_statement(request):
 
 		print new_statement.support_short
 		new_statement.save() # need to save before rendering or the id will be missing
-		utils.render_tweet(new_statement)
+
+		try:
+			utils.render_tweet(new_statement)
+		except:
+			save_error("Can't create tweet string for %s" % new_statement.id)
+
 		new_statement.rendered_text = render_to_string(added_style.output_template, {'statement':new_statement})
 		new_statement.save()
 
