@@ -70,6 +70,9 @@ div#site_header.panel {
 div#site_header.panel h1 {
   margin-top: 0;
 }
+div#site_header.panel h2 {
+  font-size: 1.7em;
+}
 div#site_header.panel p {
   margin-bottom: 0;
 }
@@ -235,6 +238,10 @@ form#publisher {
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
   padding: 1em;
+}
+form#publisher h3 {
+  margin-top: 0;
+  font-size: 1.4em;
 }
 form#publisher .error_box {
   display: none;

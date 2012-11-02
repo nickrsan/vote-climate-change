@@ -27,7 +27,8 @@ except:
 
 def home(request):
 
-	compile_less.compile_less(dirs = settings.STATICFILES_DIRS)
+	if settings.AUTOCOMPILE_LESS:
+		compile_less.compile_less(dirs = settings.STATICFILES_DIRS)
 
 	# set the publisher
 	common_elements = get_common_elements()
