@@ -1,4 +1,6 @@
 import os
+from string import Template
+
 from django.db.models import Q
 from django.template.loader import render_to_string
 from django.contrib.flatpages.models import FlatPage
@@ -9,7 +11,7 @@ from vote_climate import settings
 
 import sunlight
 import simplejson
-import twitter
+import twitter_patched as twitter
 
 twitter_api  = twitter.Api(
 	consumer_key = settings.twitter_consumer_key,
@@ -288,12 +290,49 @@ def _fix_photo_urls(base_folder):
 			candidate.photo_url = "/static/img/congress/100x125/null.jpg"
 			candidate.save()
 
-def tweet_statement(user,statement):
+def tweet_statement(statement):
 	global twitter_api
 
-	tweet_status = ''
+	tweet_status = statement.tweet_string
 
-	status = api.PostUpdate(tweet_status)
+	status = twitter_api.PostUpdate(tweet_status)
+
+def render_tweet(statement):
+	if statement.candidate.twitter_handle is None: # if they don't have a twitter handle
+		twitter_handle = statement.candidate.name # then just use their name
+	else:
+		twitter_handle = statement.candidate.twitter_handle
+		if twitter_handle[0] != "@": # if it doesn't already start with an @
+			twitter_handle = "@%s" % twitter_handle # then put it in
+
+	field_map = {
+		'handle':twitter_handle,
+		'name':statement.user.name,
+		'support_type': statement.support_short,
+	}
+
+	print statement.support_short
+	print field_map['support_type']
+
+	if statement.user.state.abbreviation != "XOT": # add state to the field map if we have it
+		field_map['state'] = "in %s" % statement.user.state.abbreviation
+	else:
+		field_map['state'] = ""
+
+	link = "http://voteclimatechange.com/statement/%s" % statement.id
+
+	max_len = 140 - settings.TCO_LENGTH - 1 # -1 at end is for the space between the tweet and the link
+
+	template = Template(statement.style.twitter_template)
+	tweet_str = template.safe_substitute(**field_map)
+
+	if len(tweet_str) > max_len: # if it's too long, then make something we're sure is short enough
+		tweet_str = ".%s, you've got votes! %s" % (statement.candidate.twitter_handle,link)
+	else: # we're in bounds, just append the link
+		tweet_str = "%s %s" % (tweet_str,link)
+
+	print tweet_str
+	statement.tweet_string = tweet_str
 
 
 def _rerender_statements():

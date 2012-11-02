@@ -85,9 +85,10 @@ class statement(models.Model):
 	date_updated = models.DateTimeField(auto_now=True)
 	highlight = models.BooleanField(default=False)
 	hidden = models.BooleanField(default=False)
+	tweet_string = models.CharField(max_length=140)
 
 	support_style = models.CharField(max_length=255,choices=(("I'm voting for","I'm voting for"),("I support","I support")))
-
+	support_short = models.CharField(max_length=25,choices=(("is voting for","is voting for"),("supports","supports")))
 	candidate = models.ForeignKey(candidate)
 
 	image = models.ImageField(upload_to="images/%Y/%m/%d",null=True)
@@ -98,6 +99,9 @@ class statement(models.Model):
 
 	video = models.URLField(null=True)
 
+	def make_tweet(self):
+		self.tweet_string = utils.render_tweet(self)
+		self.save()
 
 class fact(models.Model):
 	statement = models.TextField()

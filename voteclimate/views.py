@@ -158,9 +158,26 @@ def add_statement(request):
 			extra_text = statement_form.cleaned_data['extra_text'],
 			support_style = statement_form.cleaned_data['support_style'],
 		)
+		if new_statement.support_style == "I'm voting for":
+			print "hi"
+			new_statement.support_short = "is voting for"
+		elif new_statement.support_style == "I support":
+			new_statement.support_short = "supports"
+		else:
+			new_statement.support_short = "supports" # backup. Support is safer
+
+		print new_statement.support_short
 		new_statement.save() # need to save before rendering or the id will be missing
+		utils.render_tweet(new_statement)
 		new_statement.rendered_text = render_to_string(added_style.output_template, {'statement':new_statement})
 		new_statement.save()
+
+		try:
+			utils.tweet_statement(new_statement)
+		except: # ignore it if something goes wrong
+			save_error("Couldn't tweet statement %s" % new_statement.id)
+
+
 	else:
 		#TODO: Fix the error display
 		for error in statement_form.errors['__all__']:
@@ -174,6 +191,9 @@ def add_statement(request):
 		return HttpResponse(t_response.to_json(),mimetype="application/json")
 	else:
 		return redirect("/?show_confirm=True")
+
+def save_error(text):
+	print text
 
 def render_statement_to_json(statement,style):
 	html = render_to_string(style.output_template, statement)

@@ -8,24 +8,22 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js" lang="en" xmlns="http://www.w3.org/1999/html"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8" />
+	<meta charset="utf-8" />
+	<meta name="description" content="Conventional wisdom holds that climate change is not an 'election issue'—an issue that sways votes at the polls. We need to prove conventional wisdom wrong. Tell your elected officials that your vote comes with a requirement that they act on climate change." />
+	<meta name="keywords" content="climate, change, vote, voteclimate, voting, elections, statements,pledges,tell,politics,politicians,obama" />
+	<link rel="icon" type="image/png" href="/static/favicon.png"/>
 
-  <!-- Set the viewport width to device width for mobile -->
-  <meta name="viewport" content="width=device-width" />
+	<!-- Set the viewport width to device width for mobile -->
+	<meta name="viewport" content="width=device-width" />
 
-  <title>Vote Climate Change</title>
+	<title>Vote Climate Change</title>
 
-  <!-- Included CSS Files (Uncompressed) -->
-  <!--
-  <link rel="stylesheet" href="stylesheets/foundation.css">
-  -->
-  
-  <!-- Included CSS Files (Compressed) -->
-  <link href='http://fonts.googleapis.com/css?family=Archivo+Black' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="/static/css/foundation.min.css">
-  <link rel="stylesheet" href="/static/css/app.css">
-  <link rel="stylesheet" href="/static/css/jui-start/jquery-ui-1.8.24.custom.css">
-  <link rel="stylesheet" href="/static/css/index_base.css">
+	<!-- Included CSS Files (Compressed) -->
+	<link href='http://fonts.googleapis.com/css?family=Archivo+Black' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="/static/css/foundation.min.css">
+	<link rel="stylesheet" href="/static/css/app.css">
+	<link rel="stylesheet" href="/static/css/jui-start/jquery-ui-1.8.24.custom.css">
+	<link rel="stylesheet" href="/static/css/index_base.css">
 
 </head>
 <body>
@@ -119,12 +117,19 @@
                 <div class="side_block row twelve columns">
                     <h3>More Action</h3>
                     <p>Like this site? Be sure to get involved with these other organizations working on climate change.</p>
-                    <ul>
+                    <ul style="margin-bottom:0;">
                         <li><a href="http://350.org" target="_blank" class="offsite">350.org</a></li>
                         <li><a href="http://energyaction.org" target="_blank" class="offsite">Energy Action Coalition</a></li>
                         <li><a href="http://enviroconsumer.org" target="_blank" class="offsite">Environmental Consumer</a></li>
                     </ul>
                 </div>
+				<div class="side_block row twelve columns">
+					<h3>Follow Along</h3>
+					<p>Pledges will automatically show up in our twitter stream.</p>
+					<a href="https://twitter.com/vote_climate" class="button twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @vote_climate</a>
+
+
+				</div>
 		    </div>
         </div>
 	</aside>

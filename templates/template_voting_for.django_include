@@ -1,5 +1,5 @@
 <!-- Feed Entry -->
-<div class="row" xmlns="http://www.w3.org/1999/html">
+<div class="row statement">
 	<div class="two columns mobile-one">
 	{% if statement.candidate.photo_url %}
 		<img src="{{ statement.candidate.photo_url }}" width="100"/>
@@ -16,7 +16,7 @@
 		{% if statement.extra_text %}
 			<blockquote>{{ statement.extra_text }}</blockquote>
 		{% endif %}
-		<p>&mdash;<span class="signature">{{ statement.user.name }}
+		<p class="sig_para">&mdash;<span class="signature">{{ statement.user.name }}
 		{% if statement.user.state.abbreviation != 'XOT' %}
 			in <a href="/state/{{ statement.user.state.abbreviation }}/">{{ statement.user.state.name }}</a>
 		{% endif %}
