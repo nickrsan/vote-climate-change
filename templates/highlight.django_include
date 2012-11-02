@@ -3,7 +3,7 @@
     {% if highlight.user.state.abbreviation != "XOT" %}
         in <a href="/state/{{ highlight.user.state.abbreviation }}">{{ highlight.user.state.name }}</a>
     {% endif %}
-        {{ statement.support_short }} <a href="/candidate/{{ highlight.candidate.id }}/{{ highlight.candidate.name }}">{{ highlight.candidate.name }}</a> and said:</p>
+        {{ highlight.support_short }} <a href="/candidate/{{ highlight.candidate.id }}/{{ highlight.candidate.name }}">{{ highlight.candidate.name }}</a> and said:</p>
         <blockquote>{{ highlight.extra_text }}</blockquote>
     <p class="highlight_stamp">HIGHLIGHT</p>
 {% endif %}
