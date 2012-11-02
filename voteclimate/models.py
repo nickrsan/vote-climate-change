@@ -85,7 +85,7 @@ class statement(models.Model):
 	date_updated = models.DateTimeField(auto_now=True)
 	highlight = models.BooleanField(default=False)
 	hidden = models.BooleanField(default=False)
-	tweet_string = models.CharField(max_length=140)
+	tweet_string = models.CharField(max_length=512)
 
 	support_style = models.CharField(max_length=255,choices=(("I'm voting for","I'm voting for"),("I support","I support")))
 	support_short = models.CharField(max_length=25,choices=(("is voting for","is voting for"),("supports","supports")))
