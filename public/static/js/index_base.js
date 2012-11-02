@@ -115,22 +115,26 @@ function submit_statement(form_container){
 		success: submit_success,
 		dataType: 'json',
 		error: submit_error,
-		submit: submit_setup,
+		beforeSend: submit_setup,
 	});
 }
 
-function submit_setup(){
-	$(".error_box").hide();
+function submit_setup(jqXHR,settings){
+	$("#error_box").hide();
 }
 
-function submit_error(){
-	$(".error_box").show();
+function submit_error(jqXHR,textStatus,errorThrown){
+	var error_box = $("#error_box");
+	error_box.text("Error: " + jqXHR.responseText + ". If this error doesn't make sense, rest assured we're working on it.");
+	error_box.show();
 }
 
 function submit_success(data, textStatus, jqXHR){
 	if (data.status === "success") {
 		$( "#action_box").dialog("open");
 		add_to_page(data.data);
+	}else if(data.status === "error") {
+		submit_error(jqXHR,textStatus,data.data);
 	}
 }
 
