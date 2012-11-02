@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render_to_response
 from django.template import Context, Template, loader, TemplateDoesNotExist, RequestContext
 from django.template.loader import render_to_string
+from django.core import exceptions
 
 from vote_climate import settings
 import models
@@ -135,60 +136,65 @@ def add_statement(request):
 		data = request.GET
 
 	statement_form = models.publisher_form(data,request_ip=request.META['REMOTE_ADDR'])
-	if statement_form.is_valid():
-		try:
-			added_style = models.style.objects.get(pk=statement_form.cleaned_data['style_id'])
-		except:
-			added_style = 1
-			# TODO: Should we fail over to a default style, or should we return an error?
-
-		new_user = statement_form.cleaned_data['user_object']
-		new_state = statement_form.cleaned_data['state']
-		# next: if candidate doesn't exist - should check the existing candidates first
-		# then check the sunlight api. This way it learns as people add them
-
-		# then make a candidate record (function)
-
-		# if it does, use it
-
-		new_statement = models.statement(
-			candidate = statement_form.cleaned_data['candidate'],
-			user = new_user,
-			style = added_style,
-			extra_text = statement_form.cleaned_data['extra_text'],
-			support_style = statement_form.cleaned_data['support_style'],
-		)
-		if new_statement.support_style == "I'm voting for":
-			print "hi"
-			new_statement.support_short = "is voting for"
-		elif new_statement.support_style == "I support":
-			new_statement.support_short = "supports"
-		else:
-			new_statement.support_short = "supports" # backup. Support is safer
-
-		print new_statement.support_short
-		new_statement.save() # need to save before rendering or the id will be missing
-
-		new_statement.rendered_text = render_to_string(added_style.output_template, {'statement':new_statement})
-
-		try:
-			utils.render_tweet(new_statement)
-		except:
-			save_error("Can't create tweet string for %s" % new_statement.id)
-
-		if settings.AUTOTWEET:
+	try:
+		if statement_form.is_valid():
 			try:
-				utils.tweet_statement(new_statement)
-			except: # ignore it if something goes wrong
-				save_error("Couldn't tweet statement %s" % new_statement.id)
+				added_style = models.style.objects.get(pk=statement_form.cleaned_data['style_id'])
+			except:
+				added_style = 1
+				# TODO: Should we fail over to a default style, or should we return an error?
 
-		new_statement.save()
+			new_user = statement_form.cleaned_data['user_object']
+			new_state = statement_form.cleaned_data['state']
+			# next: if candidate doesn't exist - should check the existing candidates first
+			# then check the sunlight api. This way it learns as people add them
 
-	else:
-		#TODO: Fix the error display
-		for error in statement_form.errors['__all__']:
-			print error
-		return HttpResponse(statement_form.errors['__all__'])
+			# then make a candidate record (function)
+
+			# if it does, use it
+
+			new_statement = models.statement(
+				candidate = statement_form.cleaned_data['candidate'],
+				user = new_user,
+				style = added_style,
+				extra_text = statement_form.cleaned_data['extra_text'],
+				support_style = statement_form.cleaned_data['support_style'],
+			)
+			if new_statement.support_style == "I'm voting for":
+				new_statement.support_short = "is voting for"
+			elif new_statement.support_style == "I support":
+				new_statement.support_short = "supports"
+			else:
+				new_statement.support_short = "supports" # backup. Support is safer
+
+			print new_statement.support_short
+			new_statement.save() # need to save before rendering or the id will be missing
+
+			new_statement.rendered_text = render_to_string(added_style.output_template, {'statement':new_statement})
+
+			try:
+				utils.render_tweet(new_statement)
+			except:
+				save_error("Can't create tweet string for %s" % new_statement.id)
+
+			if settings.AUTOTWEET:
+				try:
+					utils.tweet_statement(new_statement)
+				except: # ignore it if something goes wrong
+					save_error("Couldn't tweet statement %s" % new_statement.id)
+
+			new_statement.save()
+
+		else:
+			#TODO: Fix the error display
+			err_str = ""
+			for error in statement_form.errors['__all__']:
+				err_str = "%s%s" % (err_str,error)
+			return HttpResponse(err_str)
+	except exceptions.ValidationError as e:
+		return HttpResponse(str(e))
+	except:
+		return HttpResponse("There was a problem saving your submission")
 
 	if request.is_ajax():
 		t_response = utils.submit_response()

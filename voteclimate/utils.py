@@ -45,7 +45,7 @@ def find_state(abbrev):
 		except models.state.DoesNotExist:
 			return models.state.objects.get(abbreviation="XOT") # XOT is a special case
 
-def search_only_candidate(search_str,request = None):
+def search_only_candidate(search_str,exact,request = None):
 	"""
 		Finds a candidate based upon name. request can be provided as an optional backup (not implemented)
 	"""
@@ -65,19 +65,23 @@ def search_only_candidate(search_str,request = None):
 	search_str = search_str.replace("%20"," ") # TODO: This is a HACK - should have to do this...
 	strings = search_str.split(" ")
 
-	tQ = Q(name__contains=strings[0]) # initialize the Q object by searching for the first string
+	if exact:
+		tQ = Q(name__iexact=search_str) # initialize the Q object by searching for the first string
 
-	for t_str in strings[1:]: # now compose the rest of it by searching for each string in first/last name fields and & with the other requirements
-		tQ = tQ & Q(name__contains=t_str)
+	else:
+		tQ = Q(name__contains=strings[0]) # initialize the Q object by searching for the first string
+
+		for t_str in strings[1:]: # now compose the rest of it by searching for each string in first/last name fields and & with the other requirements
+			tQ = tQ & Q(name__contains=t_str)
 
 	# now pass the Q object in for the search
 	found_candidates = models.candidate.objects.filter(tQ).order_by('name')
 	return found_candidates
 
-def find_candidate(search_str,request=None):
-	return search_and_merge(search_str)
+def find_candidate(search_str,exact=False,request=None):
+	return search_and_merge(search_str,exact)
 
-def search_and_merge(name_string):
+def search_and_merge(name_string,exact):
 
 	# commented out the searching for now because we bring in a dump and this will make it faster
 	#if len(name_string) > 4:
@@ -85,7 +89,7 @@ def search_and_merge(name_string):
 	#	sunlight_data = search_sunlight(name_string)
 	#	new_list = match_sunlight_to_db(sunlight_data)
 
-	found_candidates = search_only_candidate(name_string)
+	found_candidates = search_only_candidate(name_string,exact)
 	#print "found %s candidates" % len(found_candidates)
 	return found_candidates
 
@@ -255,17 +259,17 @@ def isiterable(item):
 		return False
 
 
-def find_or_make_candidate(candidate_name, user_object):
-	candidate_object = find_candidate(candidate_name)
+def find_or_make_candidate(candidate_name, user_object,exact=False):
+	candidate_object = find_candidate(candidate_name,exact)
 	if candidate_object is None or len(candidate_object) == 0:
 		candidate_object = make_candidate(candidate_name, user_object)
-		if candidate_object is None or len(candidate_object) == 0:
+		if candidate_object is None or (isiterable(candidate_object) and len(candidate_object) == 0):
 			# it's still None?? balls.
 			raise LookupError("Couldn't find or make a candidate")
 	return candidate_object
 
 def make_candidate(candidate_name, user_object):
-	new_candidate = models.candidate(name=candidate_name,user_submitted = True,submitted_by = user_object,unconfirmed=True)
+	new_candidate = models.candidate(name=candidate_name,user_submitted = True,submitted_by = user_object,unconfirmed=True,photo_url="/static/img/congress/100x125/null.jpg")
 	new_candidate.save()
 	return new_candidate
 

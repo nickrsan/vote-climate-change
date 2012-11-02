@@ -155,18 +155,45 @@ class publisher_form(forms.ModelForm):
 	candidate_id = forms.IntegerField(widget=forms.HiddenInput(),required=False)
 	#support_style = forms.ChoiceField()
 
-	def clean_state(self):
-		state_name = self.cleaned_data['state']
-		state_name = global_funcs.strip_tags(state_name) # get rid of any HTML
+	def clean_state(self, val = None):
+		try:
+			if val:
+				state_name = val
+			else:
+				state_name = self.cleaned_data['state']
+			state_name = global_funcs.strip_tags(state_name) # get rid of any HTML
 
-		# replace the cleaned_data['state'] with the object
-		self.cleaned_data['state'] = utils.find_state(abbrev=state_name)
+			# replace the cleaned_data['state'] with the object
+			self.cleaned_data['state'] = utils.find_state(abbrev=state_name)
+		except:
+			raise exceptions.ValidationError("Problem with your state - did you provide it (required)?")
+
 		return self.cleaned_data['state']
 
+	def clean_person_name(self, val = None):
+		try:
+			if val:
+				person = val
+			else:
+				person = self.cleaned_data['person_name']
+			if not person or person == "":
+				raise exceptions.ValidationError("Problem with your name - did you provide it (required)?")
+		except:
+			raise exceptions.ValidationError("Problem with your name - did you provide it (required)?")
 
+		return self.cleaned_data['person_name']
 
 	def clean(self):
+
 		cleaned_data = super(publisher_form,self).clean()
+
+		cleaned_data['person_name'] = self.clean_person_name(cleaned_data['person_name'])
+		cleaned_data['candidate'] = cleaned_data['candidate'].replace("%20",' ') # replace url entities
+		cleaned_data['candidate'] = cleaned_data['candidate'].replace("%25",' ') # replace url entities
+		cleaned_data['candidate'] = cleaned_data['candidate'].replace("  ",' ') # double space to single space
+
+		print cleaned_data['state']
+
 		if not 'candidate_id' in self.cleaned_data:
 			candidate_id = None
 		else:
@@ -178,15 +205,17 @@ class publisher_form(forms.ModelForm):
 			try:
 				cleaned_data['candidate'] = candidate.objects.get(pk=candidate_id)
 			except candidate.DoesNotExist:
-				raise exceptions.ValidationError('Candidate ID was set, but does not correspond to an actual candidate')
+				try:
+					cleaned_data['candidate'] = utils.find_or_make_candidate(cleaned_data['candidate'],cleaned_data['user_object'],exact=True)
+				except:
+					raise exceptions.ValidationError('Candidate ID was set, but does not correspond to an actual candidate')
 		else:
 			# ok, now make it do the magic of finding a candidate by name
 			if cleaned_data['candidate']:
 				try:
 					# TODO: This should be a single candidate and in some cases, it's returning more than one
-					cleaned_data['candidate'] = utils.find_or_make_candidate(cleaned_data['candidate'],cleaned_data['user_object'])
+					cleaned_data['candidate'] = utils.find_or_make_candidate(cleaned_data['candidate'],cleaned_data['user_object'],exact=True)
 				except:
-					raise
 					raise exceptions.ValidationError("Problem looking up candidate. We hope this is temporary. Would you care to try again?")
 			else:
 				raise exceptions.ValidationError("No candidate provided. Who are you planning on voting for?")

@@ -236,6 +236,12 @@ form#publisher {
   background-clip: padding-box;
   padding: 1em;
 }
+form#publisher .error_box {
+  display: none;
+  padding: 1em;
+  margin: .5em;
+  border: 1px solid #bd362f;
+}
 form#publisher .row {
   margin-bottom: 1em;
 }
