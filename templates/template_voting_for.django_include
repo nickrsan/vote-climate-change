@@ -30,9 +30,9 @@
 	<div class="one column">
 		<ul class="iconset">
 			<li class="icon_sprite sprite-permalink row"><a href="/statement/{{ statement.id }}" title="Permalink to this statement"></a></li>
-			<li class="icon_sprite sprite-gplus row"><a class="unimplemented" href="/statement/{{ statement.id }}" title="Share this statement on Google Plus"></a></li>
-			<li class="icon_sprite sprite-fb row"><a class="unimplemented"  href="/statement/{{ statement.id }}" title="Share this statement on Facebook"></a></li>
-			<li class="icon_sprite sprite-twitter row"><a class="unimplemented"  href="/statement/{{ statement.id }}" title="Share this statement on Twitter"></a></li>
+			<li class="icon_sprite sprite-gplus row"><a href="https://plus.google.com/share?url=http://voteclimatechange.com/statement/{{ statement.id }}" title="Share this statement on Google Plus" target="_blank"></a></li>
+			<li class="icon_sprite sprite-fb row"><a href="https://www.facebook.com/sharer/sharer.php?u=http://voteclimatechange.com/statement/{{ statement.id }}" title="Share this statement on Facebook" target="_blank"></a></li>
+			<li class="icon_sprite sprite-twitter row"><a href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fvoteclimatechange.com%2F&text={{ statement.user.name }}+pledged+their+vote+to+%23climate+candidates+to+break+%23climatesilence&url=http%3A%2F%2Fvoteclimatechange.com%2Fstatement%2F{{ statement.id }}%2F" title="Share this statement on Twitter" target="_blank"></a></li>
 		</ul>
 	</div>
 </div>
