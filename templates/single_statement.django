@@ -2,7 +2,7 @@
 
 {% block description %}
 	{% for statement in statements %}
-		<meta name="description" content="{{ statement.user.name }} pledged to vote for climate action: {{ statement.extra_text }}">
+		<meta name="description" content="{{ statement.user.name }} pledged to vote for climate action and said: {{ statement.extra_text|default:"nothing" }}">
 	{% endfor %}
 {% endblock %}
 
