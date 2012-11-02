@@ -9,7 +9,9 @@
 <html class="no-js" lang="en" xmlns="http://www.w3.org/1999/html"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8" />
-	<meta name="description" content="Conventional wisdom holds that climate change is not an 'election issue'—an issue that sways votes at the polls. We need to prove conventional wisdom wrong. Tell your elected officials that your vote comes with a requirement that they act on climate change." />
+	{% block description %}
+		<meta name="description" content="Conventional wisdom holds that climate change is not an 'election issue'—an issue that sways votes at the polls. We need to prove conventional wisdom wrong. Tell your elected officials that your vote comes with a requirement that they act on climate change." />
+	{%  endblock %}
 	<meta name="keywords" content="climate, change, vote, voteclimate, voting, elections, statements,pledges,tell,politics,politicians,obama" />
 	<link rel="icon" type="image/png" href="/static/favicon.png"/>
 
