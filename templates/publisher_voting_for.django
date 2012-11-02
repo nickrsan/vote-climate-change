@@ -37,7 +37,7 @@
 						<h6 id="add_head">Add:</h6>
 						<ul id="add_items" class="row">
 							<li><a class="selected trigger" data-trigger="text_addition_container"><span class="icon_sprite sprite-textfield_add">&nbsp;</span> Text</a></li>
-							<li><a class="trigger" data-trigger="image_addition_container"><span class="icon_sprite sprite-image_add">&nbsp;</span> Image</a></li>
+							<!--<li><a class="trigger" data-trigger="image_addition_container"><span class="icon_sprite sprite-image_add">&nbsp;</span> Image</a></li>-->
 							<!--<li>Audio Statement</li>
 							<li>Video Statement</li>-->
 						</ul>
