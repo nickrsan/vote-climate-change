@@ -280,6 +280,7 @@ def find_or_make_user(user_name,user_ip,user_state):
 	return new_user
 
 def _fix_photo_urls(base_folder):
+	print "Using %s as base folder" % base_folder
 	candidates = models.candidate.objects.all()
 	photo_folder = os.path.join(base_folder,"public","static","img","congress","100x125")
 	for candidate in candidates:
