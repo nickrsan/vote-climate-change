@@ -23,14 +23,15 @@ $(function () {
 	var slider = $("#facts_slider");
 	slider.orbit({ fluid: '2x1', animationSpeed: 400, advanceSpeed: 10000, bullets: true, directionalNav: false});
 	slider.children("div.fact_statement").first().css("left", 0); // bring the first fact back into view
+
+	$.backstretch('/static/background_nasa_1600_black50_blur.jpg');
+
     set_find_electable('input#candidate');
 
 	set_addition_triggers("#add_items");
 
 	var form_container = "form#publisher";
 	set_ajax_submit(form_container);
-
-	$.backstretch('/static/background_nasa_1600_black50_blur.jpg');
 	//set_file_drop();
 
 	$( "div#action_box" ).dialog({
