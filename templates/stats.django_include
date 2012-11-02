@@ -1,0 +1,2 @@
+<p id=pledge_stats"><span id="num_pledges">{{ num_pledges }}</span>
+pledges for climate candidates</p>

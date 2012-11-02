@@ -104,15 +104,17 @@
                     {% facts_box %}
                 </div>
                 <div class="side_block box_widget row twelve columns"><h3>Not Registered?</h3><p>TurboVote can help you get registered now <a class="button" id="reg_button" href="https://turbovote.org/register" target="_blank">Register Now</a></span></p></div>
-                <div class="highlight_post row twelve columns"><img src="http://placehold.it/300x150&text=[num_pledges]" style="width:300px;height:150px;background-color: #ccc;"/></div>
                 <div class="highlight_post row twelve columns">
-                    <div class="highlight_post side_block row twelve columns" id="top_item">
+                    <div class="highlight_post side_block row twelve columns">
                         {%  highlight 2 %}
                     </div>
                 </div>
                 <div class="side_block row twelve columns">
                     <h3>Top Candidates</h3>
                     {% top_candidates %}
+                </div>
+                <div class="side_block row twelve columns stats_box">
+                    {%  pledge_stats %}
                 </div>
                 <div class="side_block row twelve columns">
                     <h3>More Action</h3>
@@ -180,7 +182,7 @@
 	</p>
 </div>
 <div id="unimplemented_msg">
-	<p stlye="font-weight: bold;">This feature is unimplmented. Expect it soon. Thanks for testing!</p>
+	<p stlye="font-weight: bold;">This feature is unimplemented. Expect it soon. Thanks for testing!</p>
 </div>
 
 

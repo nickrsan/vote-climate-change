@@ -40,4 +40,4 @@ def highlight(number):
 
 @register.inclusion_tag('stats.django_include')
 def pledge_stats():
-	pass
+	return{'num_pledges':models.statement.objects.count()}
