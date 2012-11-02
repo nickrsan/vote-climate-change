@@ -193,7 +193,7 @@ def _load_congress(active=False):
 	print "Found %s congressional candidates" % len(all_congress_leg)
 	match_sunlight_to_db(all_congress_leg,mode="load")
 
-def match_openstates_to_db(results):
+def match_openstates_to_db(results,return_added = False):
 
 	return_candidates =[]
 
@@ -237,7 +237,8 @@ def match_openstates_to_db(results):
 			)
 
 			new_candidate.save()
-			return_candidates.append(new_candidate)
+			if return_added:
+				return_candidates.append(new_candidate)
 	return return_candidates
 
 def add_statement_to_db(name,state,text,style_id,candidate_text):
