@@ -67,7 +67,7 @@ def state(request, state_abbrev = None):
 
 	state = models.state.objects.get(abbreviation=state_abbrev)
 
-	statements = models.statement.objects.filter(user__state=state)[:100]
+	statements = models.statement.objects.filter(user__state=state).order_by('-id')[:100]
 
 	#common_elements = get_common_elements()
 	template = loader.get_template("index.django")
