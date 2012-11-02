@@ -287,6 +287,8 @@ def _fix_photo_urls(base_folder):
 		if candidate.bioguide_id and os.path.exists(photo_loc):
 			candidate.photo_url = "/static/img/congress/100x125/%s.jpg" % candidate.bioguide_id
 			candidate.save()
+		elif "http://" in candidate.photo_url: # already set correctly - just want to pass over it below
+			pass
 		else:
 			candidate.photo_url = "/static/img/congress/100x125/null.jpg"
 			candidate.save()
