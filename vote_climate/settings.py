@@ -212,3 +212,5 @@ twitter_access_token_key = '884550516-GK5jd3tnPA6Nzow0Cr5hIXLoHb93R4QFm8vWCNnU'
 twitter_access_token_secret = 'NUKePC99baGCC4vf1dmeW01wIzPBcXfSbe5qZda3vRc'
 
 AUTOTWEET = True
+
+TCO_LENGTH = 20
