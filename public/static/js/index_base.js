@@ -31,7 +31,7 @@ $(function () {
 	set_ajax_submit(form_container);
 
 	$.backstretch('/static/background_nasa_1600_black50_blur.jpg');
-	set_file_drop();
+	//set_file_drop();
 
 	$( "div#action_box" ).dialog({
 		modal: true,
@@ -43,10 +43,6 @@ $(function () {
 			}
 		}
 	});
-});
-
-$(window).load(function () {
-	//$('p').syncHeight();
 });
 
 function set_ajax_submit(form_container){
@@ -88,8 +84,14 @@ function trigger_action(event_target) {
 	var target_container = $('div#' + target_attribute);
 	if ($(event_target).hasClass('selected')) {
 		$(event_target).removeClass('selected');
+		if (target_container.attr('id') === "text_addition_container"){
+			$("textarea#text_addition").attr("disabled","disabled");
+		}
 		target_container.slideUp();
 	} else {
+		if (target_container.attr('id') === "text_addition_container"){
+			$("textarea#text_addition").removeAttr("disabled");
+		}
 		$(event_target).addClass('selected');
 		target_container.slideDown();
 	}
