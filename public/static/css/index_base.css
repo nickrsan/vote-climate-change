@@ -27,6 +27,25 @@
 .box p {
   margin: 0;
 }
+.success_box {
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  /* useful if you don't want a bg color from leaking outside the border: */
+
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  padding: 1em;
+  margin-bottom: 1em;
+  background-color: #eee;
+  color: #468847;
+  background-color: #aff0a8;
+  border-color: #b6f9a6;
+}
+.success_box p {
+  margin: 0;
+}
 body {
   background-image: url('/static/background_nasa_1600_black50_blur.jpg');
 }
@@ -322,6 +341,9 @@ form#publisher fieldset#statement #statement_text_row {
 form#publisher fieldset#statement div#statement_media_additions {
   margin-top: 1em;
   margin-bottom: 0;
+}
+form#publisher fieldset#statement div#statement_media_additions label {
+  color: #bbb;
 }
 form#publisher fieldset#statement div#statement_media_additions h6#add_head {
   margin-top: 0;

@@ -51,7 +51,7 @@
                     <div class="twelve columns">
 					<p>Conventional wisdom holds that climate change is not an "election issue"&mdash;an issue that sways votes at the polls.
 					We need to prove conventional wisdom wrong. <strong>Tell your elected officials that your vote comes with a requirement
-					that they act on climate change.</strong></p>
+					that they act on climate change by making your pledge below.</strong></p>
                     </div>
                 </div>
 				{%  endblock %}
@@ -162,7 +162,7 @@
 
 
 <div id="action_box">
-	<p style="font-weight:bold;">Your pledge has been saved and, if your candidate has a twitter handle, sent to the candidate.
+	<p id="success_statement" class="success_box success">Your pledge has been saved and, if your candidate has a twitter handle, sent to the candidate.
 	Thanks for pledging!</p>
 
 	<h3>Want to take more action?</h3>
