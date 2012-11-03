@@ -33,7 +33,7 @@ def home(request):
 	# set the publisher
 	common_elements = get_common_elements()
 
-	statements = models.statement.objects.all().order_by('-id')[:15]
+	statements = models.statement.objects.all().order_by('-id')[:30]
 
 	template = loader.get_template("index.django")
 	cont = RequestContext(request,{'title':"Vote Climate Change",

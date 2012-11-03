@@ -4,7 +4,7 @@
 	{% if statement.candidate.photo_url %}
 		<img src="{{ statement.candidate.photo_url }}" width="100"/>
 	{%  else %}
-		<img src="http://placehold.it/80x80&text=[img]" />
+		<img src="/img/static/img/congress/100x125/null.jpg" />
 	{% endif %}
 	</div>
 	<div class="nine columns">
@@ -21,11 +21,6 @@
 			in <a href="/state/{{ statement.user.state.abbreviation }}/">{{ statement.user.state.name }}</a>
 		{% endif %}
 		</span></p>
-		<!--		<p><strong>Some Personipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong.</p>
-		<ul class="link-list">
-			<li><a href="">Reply</a></li>
-			<li><a href="">Share</a></li>
-		</ul>-->
 	</div>
 	<div class="one column">
 		<ul class="iconset">

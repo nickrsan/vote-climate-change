@@ -42,8 +42,6 @@
 						<ul id="add_items" class="row">
 							<li><a class="selected trigger" data-trigger="text_addition_container"><span class="icon_sprite sprite-textfield_add">&nbsp;</span> Text</a></li>
 							<!--<li><a class="trigger" data-trigger="image_addition_container"><span class="icon_sprite sprite-image_add">&nbsp;</span> Image</a></li>-->
-							<!--<li>Audio Statement</li>
-							<li>Video Statement</li>-->
 						</ul>
 					</div>
 					<div class="nine columns">
@@ -68,8 +66,11 @@
 
 		</div>
 		<div class="row">
-			<div class="twelve columns">
+			<div class="three columns">
 				<input type="submit"  name="submit" value="Save" id="publish_button" class="submit publish button">
+			</div>
+			<div class="nine columns">
+				<p style="font-style:italic;font-size:.9em;text-shadow:none;color:#aaa;">We'll tweet your support to the candidates and show it on this site</p>
 			</div>
 		</div>
     </fieldset>

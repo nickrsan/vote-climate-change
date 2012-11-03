@@ -49,6 +49,14 @@ div#content div#statements {
 footer {
   padding: 1em;
 }
+footer a#pipeline_logo img {
+  display: block;
+  width: 50px;
+  position: relative;
+  float: left;
+  margin-right: 1em;
+  margin-bottom: 1em;
+}
 footer .nine.columns {
   padding-left: 0;
 }
@@ -359,6 +367,9 @@ form#publisher fieldset#statement div#statement_media_additions ul#add_items li.
 }
 form#publisher fieldset#statement div#statement_media_additions div#image_addition_container {
   display: none;
+}
+form#publisher input#publish_button {
+  width: 100%;
 }
 div.new_insert {
   -moz-border-radius: 4px;
