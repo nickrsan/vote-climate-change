@@ -130,8 +130,17 @@
 					<h3>Follow Along</h3>
 					<p>Pledges will automatically show up in our twitter stream.</p>
 					<a href="https://twitter.com/vote_climate" class="button twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @vote_climate</a>
+				</div>
 
-
+				<div class="highlight_post row twelve columns">
+					<div class="highlight_post side_block row twelve columns">
+						{%  highlight 3 %}
+					</div>
+				</div>
+				<div class="highlight_post row twelve columns">
+					<div class="highlight_post side_block row twelve columns">
+						{%  highlight 4 %}
+					</div>
 				</div>
 		    </div>
         </div>
