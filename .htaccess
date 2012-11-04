@@ -9,6 +9,9 @@
 #   perishablepress.com/press/2006/01/10/stupid-htaccess-tricks/
 #   Sample .htaccess file of CMS MODx: modxcms.com
 
+# admin
+Alias /static/admin/ "/home/voteclimatechange/local/python-2.7.3/lib/python2.7/site-packages/django/contrib/admin/static/admin"
+
 
 # ----------------------------------------------------------------------
 # Better website experience for IE users
