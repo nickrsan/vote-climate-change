@@ -23,6 +23,9 @@
                 <div class="row">
                     <input class="text_input" name="person_name" id="person_name" />
                 </div>
+                <div class="row" id="website_row">
+                    <label for="website">Website</label><input class="text_input" name="website" id="website" />
+                </div>
 			</div>
 			<div class="six columns">
                 <div class="row">
