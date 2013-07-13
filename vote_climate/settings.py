@@ -74,6 +74,7 @@ STATICFILES_DIRS = (
     media_folder,
 	static_main,
 	static_server,
+    'C:/Users/nrsantos/Documents/Code/voteclimate/public/static',
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -119,7 +120,7 @@ WSGI_APPLICATION = 'vote_climate.wsgi.application'
 templates_dir = os.path.join(_current_dir,'templates')
 TEMPLATE_DIRS = (
 	templates_dir,
-	'C:/Users/Nick/Eclipse/workspace-main/voteclimate/vote_climate/templates',
+	'C:/Users/nrsantos/Documents/Code/voteclimate/vote_climate/templates',
 )
 
 INSTALLED_APPS = (

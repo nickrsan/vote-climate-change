@@ -7,37 +7,41 @@ import global_funcs
 import utils
 import simplejson as json
 
+
 class state(models.Model):
 	name = models.CharField(max_length=255)
 	abbreviation = models.CharField(max_length=4)
 	fips_code = models.IntegerField(null=True)
 
+
 class user(models.Model):
 	name = models.CharField(max_length=255)
 	ip = models.IPAddressField()
-	state = models.ForeignKey(state,null=True)
+	state = models.ForeignKey(state, null=True)
+
 
 class style(models.Model):
 	name = models.CharField(max_length=255)
 	publisher = models.CharField(max_length=50) # the publisher template to use
 	template_string = models.TextField()
 	available = models.BooleanField(default=True)
-	output_template = models.CharField(max_length=255,null=False)
+	output_template = models.CharField(max_length=255, null=False)
 	twitter_template = models.CharField(max_length=200)
+
 
 class candidate(models.Model):
 	name = models.CharField(max_length=255)
-	state = models.ForeignKey(state,null=True)
-	district = models.CharField(max_length=50,null=True)
-	gender = models.CharField(max_length=5,null=True)
-	senate_class = models.CharField(max_length=5,null=True)
+	state = models.ForeignKey(state, null=True)
+	district = models.CharField(max_length=50, null=True)
+	gender = models.CharField(max_length=5, null=True)
+	senate_class = models.CharField(max_length=5, null=True)
 	webform_url = models.URLField(null=True)
-	twitter_handle = models.CharField(max_length=255,null=True)
+	twitter_handle = models.CharField(max_length=255, null=True)
 	party = models.CharField(max_length=5, null=True)
 	level = models.CharField(max_length=50, null=True)
 
 	# the following are for matching searches
-	bioguide_id = models.CharField(max_length=50,null=True)
+	bioguide_id = models.CharField(max_length=50, null=True)
 	fec_id = models.CharField(max_length=50, null=True)
 	crp_id = models.CharField(max_length=50, null=True)
 	votesmart_id = models.CharField(max_length=50, null=True)
@@ -50,13 +54,13 @@ class candidate(models.Model):
 
 	unconfirmed = models.BooleanField(default=False)
 	user_submitted = models.BooleanField(default=False)
-	submitted_by = models.ForeignKey(user,null=True)
+	submitted_by = models.ForeignKey(user, null=True)
 
 	def __str__(self):
 		return self.__unicode__(self)
 
 	def __unicode__(self):
-		uni_str = "%s\n%s\n%s\n" % (self.name,self.state.name,self.district)
+		uni_str = "%s\n%s\n%s\n" % (self.name, self.state.name, self.district)
 		return uni_str
 
 	def to_json(self):
@@ -71,9 +75,10 @@ class candidate(models.Model):
 			'state_abbrev': state_abbrev,
 			'congresspedia_url': self.congresspedia_url,
 			'twitter_handle': self.twitter_handle,
-			'gender':self.gender,
+			'gender': self.gender,
 			}
 		)
+
 
 class statement(models.Model):
 	user = models.ForeignKey(user)
@@ -87,12 +92,14 @@ class statement(models.Model):
 	hidden = models.BooleanField(default=False)
 	tweet_string = models.CharField(max_length=512)
 
-	support_style = models.CharField(max_length=255,choices=(("I'm voting for","I'm voting for"),("I support","I support")))
-	support_short = models.CharField(max_length=25,choices=(("is voting for","is voting for"),("supports","supports")))
+	support_style = models.CharField(max_length=255,
+	                                 choices=(("I'm voting for", "I'm voting for"), ("I support", "I support")))
+	support_short = models.CharField(max_length=25,
+	                                 choices=(("is voting for", "is voting for"), ("supports", "supports")))
 	candidate = models.ForeignKey(candidate)
 
-	image = models.ImageField(upload_to="images/%Y/%m/%d",null=True)
-	audio = models.FileField(upload_to="audio/%Y/%m/%d",null=True)
+	image = models.ImageField(upload_to="images/%Y/%m/%d", null=True)
+	audio = models.FileField(upload_to="audio/%Y/%m/%d", null=True)
 
 	# 	Using a URL field for the video, because I don't think we'll be able to record video. Better to just point
 	# 	people to the correct sites.
@@ -103,23 +110,27 @@ class statement(models.Model):
 		self.tweet_string = utils.render_tweet(self)
 		self.save()
 
+
 class fact(models.Model):
 	statement = models.TextField()
-	short_statement = models.CharField(max_length=255,null=True)
+	short_statement = models.CharField(max_length=255, null=True)
 	source = models.URLField()
 	source_name = models.CharField(max_length=255)
 	cite = models.TextField(null=True)
 
-class sunlight_search (models.Model):
+
+class sunlight_search(models.Model):
 	"""
 		meant to track what searches we've done with sunlight so we don't double up
 	"""
 
 	search = models.CharField(max_length=255)
 
+
 class visit(models.Model):
 	user = models.ForeignKey(user)
 	time_visited = models.DateTimeField(auto_now_add=True)
+
 
 class random_manager(models.Manager):
 	"""
@@ -128,16 +139,18 @@ class random_manager(models.Manager):
 	"""
 	pass
 
+
 class ImageUploadForm(forms.Form):
-	file  = forms.FileField()
+	file = forms.FileField()
+
 
 class publisher_form(forms.ModelForm):
 	# TODO: make the actual publisher form use these
 	# TODO: Add Honeypot
 
 	class Meta:
-		model=statement
-		fields=('support_style',)
+		model = statement
+		fields = ('support_style',)
 
 	def __init__(self, *args, **kwargs):
 		"""
@@ -150,12 +163,13 @@ class publisher_form(forms.ModelForm):
 	person_name = forms.CharField()
 	state = forms.CharField()
 	style_id = forms.IntegerField(widget=forms.HiddenInput())
-	extra_text = forms.CharField(widget=forms.Textarea(),required=False)
+	extra_text = forms.CharField(widget=forms.Textarea(), required=False)
 	candidate = forms.CharField()
-	candidate_id = forms.IntegerField(widget=forms.HiddenInput(),required=False)
+	candidate_id = forms.IntegerField(widget=forms.HiddenInput(), required=False)
 	#support_style = forms.ChoiceField()
+	website = forms.URLField(required=False, label="Website",)  # honeypot!
 
-	def clean_state(self, val = None):
+	def clean_state(self, val=None):
 		try:
 			if val:
 				state_name = val
@@ -170,7 +184,7 @@ class publisher_form(forms.ModelForm):
 
 		return self.cleaned_data['state']
 
-	def clean_person_name(self, val = None):
+	def clean_person_name(self, val=None):
 		try:
 			if val:
 				person = val
@@ -185,38 +199,44 @@ class publisher_form(forms.ModelForm):
 
 	def clean(self):
 
-		cleaned_data = super(publisher_form,self).clean()
+		cleaned_data = super(publisher_form, self).clean()
 
 		cleaned_data['person_name'] = self.clean_person_name(cleaned_data['person_name'])
-		cleaned_data['candidate'] = cleaned_data['candidate'].replace("%20",' ') # replace url entities
-		cleaned_data['candidate'] = cleaned_data['candidate'].replace("%25",' ') # replace url entities
-		cleaned_data['candidate'] = cleaned_data['candidate'].replace("  ",' ') # double space to single space
+		cleaned_data['candidate'] = cleaned_data['candidate'].replace("%20", ' ') # replace url entities
+		cleaned_data['candidate'] = cleaned_data['candidate'].replace("%25", ' ') # replace url entities
+		cleaned_data['candidate'] = cleaned_data['candidate'].replace("  ", ' ') # double space to single space
 
-		print cleaned_data['state']
+		if cleaned_data['website'] != '':  # when empty, it's an empty string - we want it to be empty - it's a honeypot
+			raise exceptions.ValidationError('Thanks for filling in the website field!')
 
 		if not 'candidate_id' in self.cleaned_data:
 			candidate_id = None
 		else:
 			candidate_id = self.cleaned_data['candidate_id']
 
-		cleaned_data['user_object'] = utils.find_or_make_user(cleaned_data['person_name'],self.request_ip,cleaned_data['state'])
+		cleaned_data['user_object'] = utils.find_or_make_user(cleaned_data['person_name'], self.request_ip,
+		                                                      cleaned_data['state'])
 
 		if candidate_id: # if they provided a candidate_id
 			try:
 				cleaned_data['candidate'] = candidate.objects.get(pk=candidate_id)
 			except candidate.DoesNotExist:
 				try:
-					cleaned_data['candidate'] = utils.find_or_make_candidate(cleaned_data['candidate'],cleaned_data['user_object'],exact=True)
+					cleaned_data['candidate'] = utils.find_or_make_candidate(cleaned_data['candidate'],
+					                                                         cleaned_data['user_object'], exact=True)
 				except:
-					raise exceptions.ValidationError('Candidate ID was set, but does not correspond to an actual candidate')
+					raise exceptions.ValidationError(
+						'Candidate ID was set, but does not correspond to an actual candidate')
 		else:
 			# ok, now make it do the magic of finding a candidate by name
 			if cleaned_data['candidate']:
 				try:
 					# TODO: This should be a single candidate and in some cases, it's returning more than one
-					cleaned_data['candidate'] = utils.find_or_make_candidate(cleaned_data['candidate'],cleaned_data['user_object'],exact=True)
+					cleaned_data['candidate'] = utils.find_or_make_candidate(cleaned_data['candidate'],
+					                                                         cleaned_data['user_object'], exact=True)
 				except:
-					raise exceptions.ValidationError("Problem looking up candidate. We hope this is temporary. Would you care to try again?")
+					raise exceptions.ValidationError(
+						"Problem looking up candidate. We hope this is temporary. Would you care to try again?")
 			else:
 				raise exceptions.ValidationError("No candidate provided. Who are you planning on voting for?")
 
