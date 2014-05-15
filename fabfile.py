@@ -5,6 +5,7 @@ from fabric.api import run, local, sudo, prompt, reboot
 
 checkpoint_file = os.path.join(os.getcwd(),".voteclimate_fabric_checkpoint_file.txt")
 
+
 def log(message):
 	print message
 
@@ -34,9 +35,10 @@ def linux_setup():
 	if checkpoint is None:
 		log("Starting at the beginning")
 		_checkpoint_initial()
-	if checkpoint == 1:
+	if checkpoint == 1:  # TODO: Test to make sure that we don't need to strip newlines before doing this check
 		log("Resuming at Checkpoint 1")
 		_checkpoint_one()
+
 
 	branch = prompt("staging or release?", default="release", validate=str)
 
